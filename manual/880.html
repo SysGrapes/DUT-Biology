@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>880 生物化学（含实验）· 高频考点高速复习手册</title>
+<style>
+:root{
+  --paper:#f5f4ef; --card:#fffefb; --ink:#1d2126; --ink2:#495057; --ink3:#7a828b;
+  --line:#e0dcd2; --acc:#1f5f6b; --acc-l:#e4eff0; --red:#a8323a; --red-l:#f7e8e7;
+  --gold:#8a6d2f; --gold-l:#f7f0dd; --green:#2f6b4f; --green-l:#e7f1ec;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font-family:"Source Han Serif SC","Songti SC","SimSun",Georgia,serif;
+ font-size:16px;line-height:1.78;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--acc),#5b9aa5);width:0;z-index:99}
+.wrap{display:flex;max-width:1500px;margin:0 auto}
+nav{width:252px;flex:0 0 252px;position:sticky;top:0;height:100vh;overflow-y:auto;
+ padding:26px 12px 60px;border-right:1px solid var(--line);background:#f1efe8}
+nav h4{margin:0 0 10px;font-size:12px;letter-spacing:.14em;color:var(--ink3);font-weight:600}
+nav a{display:block;padding:3.5px 8px;font-size:13px;color:var(--ink2);text-decoration:none;
+ border-left:2px solid transparent;line-height:1.5}
+nav a:hover{color:var(--acc);background:#e9e5da}
+nav a.on{color:var(--acc);border-left-color:var(--acc);font-weight:600;background:#eee9dc}
+nav .grp{margin-top:12px;font-size:11.5px;color:var(--ink3);letter-spacing:.08em;padding-left:8px}
+main{flex:1;min-width:0;padding:44px 54px 120px;max-width:1040px}
+header.hero{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:8px}
+.kicker{font-size:12.5px;letter-spacing:.22em;color:var(--acc);font-weight:700;margin-bottom:10px}
+h1{font-size:33px;line-height:1.25;margin:0 0 12px;letter-spacing:-.01em}
+.sub{color:var(--ink2);font-size:14.6px}
+.meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:20px;font-size:13px;color:var(--ink3)}
+.meta b{color:var(--ink);font-size:20px;font-family:"SF Mono",Consolas,monospace;display:block;line-height:1.2}
+.note{background:var(--gold-l);border-left:3px solid var(--gold);padding:14px 18px;margin:24px 0;
+ font-size:13.6px;color:#5d4a1e;border-radius:0 4px 4px 0}
+.note b{color:#3f3212}
+h2{font-size:22.5px;margin:50px 0 6px;padding-top:14px;border-top:1px solid var(--line);letter-spacing:-.01em}
+h2 .num{font-family:"SF Mono",Consolas,monospace;font-size:13px;color:var(--acc);display:block;letter-spacing:.1em;margin-bottom:2px}
+h3{font-size:17.3px;margin:28px 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h4{font-size:15px;margin:16px 0 6px;color:var(--acc)}
+p{margin:9px 0}
+ul,ol{margin:9px 0;padding-left:22px}
+li{margin:4px 0}
+.stars{font-size:12px;color:var(--red);letter-spacing:1px;white-space:nowrap}
+.freq{font-family:"SF Mono",Consolas,monospace;font-size:11.5px;background:var(--acc-l);color:var(--acc);
+ padding:1px 7px;border-radius:10px;white-space:nowrap;border:1px solid #c7dcdd}
+.freq.mid{background:var(--gold-l);color:var(--gold);border-color:#e5d5ad}
+.freq.low{background:#eef0f2;color:#68707a;border-color:#dfe3e7}
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);
+ border-radius:0 5px 5px 0;padding:11px 16px;margin:11px 0;font-size:14.2px;color:var(--ink2)}
+.q .tag{font-size:11px;letter-spacing:.08em;color:var(--acc);font-weight:700;margin-right:8px}
+.q em{font-style:normal;color:var(--ink);font-weight:600}
+.k{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px 20px;margin:14px 0;
+ box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.k .hd{font-size:12px;letter-spacing:.12em;color:var(--ink3);font-weight:700;margin-bottom:6px}
+table{border-collapse:collapse;width:100%;font-size:13.3px;margin:14px 0;background:var(--card)}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#ece8dd;font-weight:600;font-size:12.5px;letter-spacing:.03em}
+tbody tr:nth-child(even){background:#fbf9f4}
+td.c,th.c{text-align:center}
+.trap{background:var(--red-l);border:1px solid #eccfcb;border-radius:5px;padding:10px 14px;margin:10px 0;font-size:13.8px}
+.trap b{color:var(--red)}
+.tip{background:var(--green-l);border:1px solid #cfe3d8;border-radius:5px;padding:10px 14px;margin:10px 0;font-size:13.8px}
+.tip b{color:var(--green)}
+.filters{position:sticky;top:0;z-index:20;background:var(--paper);padding:10px 0;margin:18px 0 4px;
+ border-bottom:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filters button{font-family:inherit;font-size:12.6px;padding:5px 12px;border:1px solid var(--line);
+ background:var(--card);color:var(--ink2);border-radius:14px;cursor:pointer}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.hide{display:none !important}
+details{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:10px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--acc)}
+details[open] summary{margin-bottom:8px;padding-bottom:6px;border-bottom:1px dashed var(--line)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tagline{font-size:12.4px;color:var(--ink3);margin-top:4px}
+.lead{font-size:15.3px;color:var(--ink2);border-left:3px solid var(--acc);padding-left:14px;margin:16px 0 10px}
+code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#ece8dd;padding:1px 5px;border-radius:3px}
+.eq{font-family:"SF Mono",Consolas,monospace;font-size:13px;background:#f2efe6;padding:2px 6px;border-radius:3px;display:inline-block;margin:2px 0}
+.term{display:inline-block;background:#f0f3f3;border:1px solid #dbe3e3;border-radius:3px;padding:1px 6px;margin:2px 2px;font-size:12.8px}
+@media(max-width:1100px){nav{display:none}main{padding:28px 20px 90px}.grid2{grid-template-columns:1fr}}
+@media print{
+ nav,#bar,.filters{display:none}main{max-width:none;padding:0}
+ body{background:#fff;font-size:11.5pt}h2{page-break-after:avoid}.k,.q{page-break-inside:avoid}
+ table{page-break-inside:auto}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div class="wrap">
+<nav id="toc">
+<h4>目录</h4>
+<a href="#s0">数据说明与用法</a>
+<a href="#s1">① 章节热度总表</a>
+<div class="grp">静态生化</div>
+<a href="#s2">② 糖类</a>
+<a href="#s3">③ 脂类</a>
+<a href="#s4">④ 氨基酸</a>
+<a href="#s5">⑤ 蛋白质</a>
+<a href="#s6">⑥ 酶</a>
+<a href="#s7">⑦ 核酸</a>
+<a href="#s8">⑧ 维生素与辅酶</a>
+<a href="#s9">⑨ 生物膜</a>
+<div class="grp">动态生化</div>
+<a href="#s10">⑩ 糖酵解与糖异生</a>
+<a href="#s11">⑪ 三羧酸循环</a>
+<a href="#s12">⑫ 氧化磷酸化</a>
+<a href="#s13">⑬ 磷酸戊糖与乙醛酸循环</a>
+<a href="#s14">⑭ 糖原代谢</a>
+<a href="#s15">⑮ 脂类代谢</a>
+<a href="#s16">⑯ 氨基酸代谢</a>
+<a href="#s17">⑰ 核苷酸代谢</a>
+<div class="grp">分子生物学</div>
+<a href="#s18">⑱ DNA 复制与修复</a>
+<a href="#s19">⑲ RNA 合成与加工</a>
+<a href="#s20">⑳ 遗传密码与翻译</a>
+<a href="#s21">㉑ 基因表达调控与基因工程</a>
+<div class="grp">实验与工具</div>
+<a href="#s22">㉒ 生化实验专题</a>
+<a href="#s23">㉓ 计算题模板</a>
+<a href="#s24">㉔ 名词解释速查</a>
+<a href="#s25">㉕ 冲刺清单</a>
+</nav>
+<main>
+
+<header class="hero">
+<div class="kicker">大连理工大学 · 880 生物化学及生物化学实验 · 考研</div>
+<h1>高频考点高速复习手册</h1>
+<p class="sub">以 <b>真题按章节分类（22 章全）</b> 为主干，<b>真题名词解释（283 条）</b> 补名词，<b>本科讲义与复习纲要</b> 定重点。每条考点都标注真题年份；凡本文补写的答案均标 【补全】，与原答案区分。</p>
+<div class="meta">
+<div><b>659</b>道真题（含名解与小题）</div>
+<div><b>23</b>个年份（1999—2025）</div>
+<div><b>283</b>条名词解释</div>
+<div><b>18</b>个大纲模块</div>
+</div>
+</header>
+
+<h2 id="s0"><span class="num">00</span>数据说明与用法</h2>
+<div class="lead">880 的真题标注比 631 密得多：同一道题常标 3~4 个年份。这让你能真正做“频次排序”，而不是猜。</div>
+
+<h3>统计口径</h3>
+<ul>
+<li><b>主数据</b>：<code>真题按章节分类.docx</code>（45 页，22 章）＋ <b>2024-11 新增的 82 页真题卷照片</b>（覆盖 1999—2025）。合并去重后题库共 <b>659 题</b>（含名解与填空、选择、判断等小题），按章列出<b>名词解释</b>与<b>简答论述</b>，每题带<b>年份标注</b>（如“波尔效应 <sup>10/12/19</sup>”＝2010、2012、2019 都考过）。</li>
+<li><b>年份覆盖</b>：1999、2000—2005、2010—2025，共 <b>23 个年份</b>；<b>缺 2006—2009</b>（题库中确无这一段真题）。因此下文“次数”是这 23 年的计数，不是建校以来的全部历史。</li>
+<li><b>名词解释</b>：<code>真题分类--名词解释.docx</code> 与新增卷合并后共 <b>283 条</b>词条（同一名词的不同写法合并后 260 条），其中 <b>86 条</b>带年份标注（同一名词的不同写法合并后为 <b>57 条</b>）。第 ㉔ 节按主题全部列出，可直接当“名解题库”刷。</li>
+<li><b>2024-11 更新</b>：新增 82 页真题卷照片，覆盖 1999—2025，已与旧 docx 数据按“卷头年份 + 科目”合并去重；题库总量由 181 题增至 <b>659 题</b>，年份覆盖由 11 个增至 <b>23 个</b>。本版首屏数字、各章副标题、第 ① 节总表、各章“本轮新增真题”表均按新库重算；旧版“资料中无大题”“资料无此题”一类判断，凡新库已有该章题目的，均已改正。</li>
+<li><b>另有</b>：<code>真题分类--填空.docx</code>（6 页）与新增卷中的填空题用于补小题细节；<code>真题分类--简答题.docx</code>（86 页）是同批题目的长篇答案版，本手册在需要“多写几句”的地方引用了它的展开。</li>
+<li><b>口径边界（重要）</b>：早期资料里标注过的 98、99、00—05、08、09 等年份，现已按<b>卷头年份</b>重判并归位到 1999—2025；同一题在不同副本里标注不一致时，<b>一律取卷头</b>。因此个别题目与旧资料的年份标注可能差一年，不影响考点判断。</li>
+<li><b>“命中”的定义</b>：各章副标题中的“命中 N”＝该章题目里<b>带年份标注的条目数</b>（不是考试次数，也不是分值）；“真题 N”＝该章条目总数（含名解与小题）。故“命中”恒 ≤ “真题”，差额即<b>无年份的回忆版</b>；第 ① 节总表的“年份命中”同此口径。</li>
+<li><b>章节重要性</b>另参考 <code>1-1、高分学长复习攻略/3-生化、分子重要知识点总结（复习纲要）.docx</code> 的分级（非重点/次重点/重点/超级重点），但<b>本手册的星级只由真题数据决定</b>，纲要仅用于解释“为什么某章题少”。</li>
+</ul>
+
+<h3>资料自身的 12 处年份矛盾（已按并集处理）</h3>
+<p class="tagline">同一个题目在《按章节分类》的“题目区”与“答案区（副本）”里年份标注不同。这不是你的错，是资料抄录时留下的；考试不会考年份，但如果你要复核频次，请看这张表。</p>
+<table>
+<thead><tr><th style="width:42%">题目</th><th class="c" style="width:26%">题目区标注</th><th class="c">答案区/其它文件标注</th></tr></thead>
+<tbody>
+<tr><td>第一章 凝集素</td><td class="c">16</td><td class="c">15</td></tr>
+<tr><td>第四章 抗体</td><td class="c">11</td><td class="c">13</td></tr>
+<tr><td>第四章 结合 Hb 分析四级结构、比较 Hb/Mb</td><td class="c">13</td><td class="c">12</td></tr>
+<tr><td>第四章 解释 CO 中毒原理及处理</td><td class="c">13</td><td class="c">11</td></tr>
+<tr><td>第四章 SDS-PAGE 的四个为什么</td><td class="c">13</td><td class="c">12</td></tr>
+<tr><td>第四章 给分子量写两种分离方法</td><td class="c">20</td><td class="c">20/22</td></tr>
+<tr><td>第四章 CO 中毒时机体耗氧量减少</td><td class="c">21</td><td class="c">22</td></tr>
+<tr><td>第七章 DNA 变性</td><td class="c">19</td><td class="c">13</td></tr>
+<tr><td>第七章 如何判断 DNA 中混入蛋白质</td><td class="c">20</td><td class="c">副本缺此题</td></tr>
+<tr><td>第十五章 β-氧化与 TCA 的异同</td><td class="c">13</td><td class="c">12/19</td></tr>
+<tr><td>第十六章 血中 Ala、Gln 浓度为何最高</td><td class="c">21</td><td class="c">23</td></tr>
+<tr><td>第十八章 端粒酶（诺贝尔奖）</td><td class="c">10</td><td class="c">10/09；简答题文件标 17</td></tr>
+</tbody>
+</table>
+<p class="tagline">以上 12 处冲突，新数据已按<b>卷头年份</b>重判，冲突处一律取卷头标注；表中旧标注仅作留档。</p>
+
+<div class="note"><b>三条使用建议</b><br>
+① <b>先看第 ① 节总表</b>，把时间按“题量×年份数”分配：蛋白质（105 题）、脂类代谢（58 题）、酶（57 题）、糖酵解与糖异生（53 题）四块占了全部题量的四成以上。<br>
+② <b>名解不要背 283 条</b>。第 ㉔ 节已把“带年份的 57 条”加粗，先把这些吃透，其余按主题扫读留印象。<br>
+③ <b>计算题单独练</b>。第 ㉓ 节给了 5 类模板（ATP 产能、米氏方程、双倒数、纯化倍数、Tm），这类题是“会就会、不会就 0 分”，投入产出比最高。</div>
+
+<h2 id="s1"><span class="num">01</span>章节热度总表</h2>
+<p class="tagline">题量＝该章在题库中出现的题目条数（含名解与小题）；年份命中＝该章带年份标注的条目数之和。星级按题量分档：<b>≥30 题 ★★★、10—29 题 ★★、1—9 题 ★</b>，0 题为「—」。</p>
+
+<table>
+<thead><tr><th style="width:8%" class="c">星级</th><th style="width:26%">章节</th><th class="c" style="width:9%">题量</th><th class="c" style="width:11%">名解/简答</th><th class="c" style="width:10%">年份命中</th><th>一句话定位</th></tr></thead>
+<tbody>
+<tr><td class="c stars">★★★</td><td><b>第四章 蛋白质</b></td><td class="c">105</td><td class="c">15 / 58</td><td class="c">83</td><td>全书第一大章，Hb/Mb 与分离纯化是双核心</td></tr>
+<tr><td class="c stars">★★★</td><td><b>第七章 核酸</b></td><td class="c">77</td><td class="c">5 / 32</td><td class="c">57</td><td>变性复性 + Tm + 测序，题量大但套路固定</td></tr>
+<tr><td class="c stars">★★★</td><td><b>第十五章 脂类代谢</b></td><td class="c">58</td><td class="c">1 / 36</td><td class="c">45</td><td>β-氧化、酮体、产能计算三件套</td></tr>
+<tr><td class="c stars">★★★</td><td><b>第五章 酶</b></td><td class="c">57</td><td class="c">8 / 27</td><td class="c">41</td><td>动力学 + 抑制类型 + 纯化，年年有计算</td></tr>
+<tr><td class="c stars">★★★</td><td><b>第十章 糖酵解 糖异生</b></td><td class="c">53</td><td class="c">5 / 22</td><td class="c">42</td><td>三步不可逆 + 调节 + 6-磷酸葡萄糖枢纽</td></tr>
+<tr><td class="c stars">★★★</td><td><b>第三章 氨基酸</b></td><td class="c">39</td><td class="c">1 / 19</td><td class="c">30</td><td>pI、20 种分类、肽链测序（推理题）</td></tr>
+<tr><td class="c stars">★★★</td><td><b>第十六章 氨基酸代谢</b></td><td class="c">36</td><td class="c">4 / 15</td><td class="c">28</td><td>联合脱氨、尿素循环、Ala-葡萄糖循环</td></tr>
+<tr><td class="c stars">★★</td><td>名词解释</td><td class="c">26</td><td class="c">26 / 0</td><td class="c">24</td><td>全库 283 条，第 ㉔ 节按主题全收录</td></tr>
+<tr><td class="c stars">★★</td><td>第十四章 氧化磷酸化</td><td class="c">26</td><td class="c">6 / 8</td><td class="c">20</td><td>呼吸链、P/O、解偶联剂与 ATP 合酶抑制剂</td></tr>
+<tr><td class="c stars">★★</td><td>第一章 糖类</td><td class="c">20</td><td class="c">2 / 8</td><td class="c">17</td><td>20/21 年连考“淀粉 vs 纤维素”，其他年份考构型与小糖</td></tr>
+<tr><td class="c stars">★★</td><td>综合</td><td class="c">18</td><td class="c">0 / 1</td><td class="c">15</td><td>跨章综合与实验设计，多取自卷末压轴题</td></tr>
+<tr><td class="c stars">★★</td><td>第二十章 遗传密码与蛋白质的合成</td><td class="c">16</td><td class="c">1 / 6</td><td class="c">11</td><td>给 DNA 写 mRNA 再翻译，纯操作题</td></tr>
+<tr><td class="c stars">★★</td><td>第十七章 核苷酸代谢</td><td class="c">16</td><td class="c">1 / 8</td><td class="c">14</td><td>抗代谢物 + 痛风（纲要指定重点）</td></tr>
+<tr><td class="c stars">★★</td><td>第十八章 DNA 复制、修复、重组</td><td class="c">15</td><td class="c">4 / 7</td><td class="c">11</td><td>半保留/半不连续 + 复制酶系 + 端粒酶</td></tr>
+<tr><td class="c stars">★★</td><td>第六章 维生素与辅酶</td><td class="c">14</td><td class="c">0 / 5</td><td class="c">10</td><td>B 族辅酶与缺乏症，简答已开始出现</td></tr>
+<tr><td class="c stars">★★</td><td>第十一章 柠檬酸循环</td><td class="c">14</td><td class="c">0 / 8</td><td class="c">9</td><td>TCA 枢纽 + 三调控酶，题少但必考</td></tr>
+<tr><td class="c stars">★★</td><td>第十九章 RNA 生物合成与加工</td><td class="c">14</td><td class="c">3 / 10</td><td class="c">9</td><td>启动子/操纵子名解 + 终止 + 转录后加工</td></tr>
+<tr><td class="c stars">★★</td><td>第二十二章 基因工程与蛋白质工程</td><td class="c">13</td><td class="c">1 / 9</td><td class="c">11</td><td>PCR 条件、限制酶、质粒条件</td></tr>
+<tr><td class="c stars">★★</td><td>第九章 生物膜</td><td class="c">12</td><td class="c">1 / 7</td><td class="c">10</td><td>组成 + 流动镶嵌模型 + 物质运输</td></tr>
+<tr><td class="c stars">★</td><td>第十三章 磷酸戊糖途径、乙醛酸循环</td><td class="c">9</td><td class="c">2 / 5</td><td class="c">8</td><td>名解“乙醛酸循环”+ NADPH 来源</td></tr>
+<tr><td class="c stars">★</td><td>第八章 抗生素与激素</td><td class="c">8</td><td class="c">0 / 7</td><td class="c">4</td><td>抗生素作用靶点 + 激素信号，以简答为主</td></tr>
+<tr><td class="c stars">★</td><td>第二十一章 细胞代谢与基因表达</td><td class="c">5</td><td class="c">0 / 4</td><td class="c">4</td><td>代谢调节层级与关键酶，小题为主</td></tr>
+<tr><td class="c stars">★</td><td>第二章 脂类</td><td class="c">4</td><td class="c">0 / 3</td><td class="c">3</td><td>分类框架 + 碘值/皂化值/酸败；4 题中脂类本体 0，余为生物膜/激素/胆固醇交叉</td></tr>
+<tr><td class="c stars">★</td><td>第十二章 糖原的合成与分解</td><td class="c">4</td><td class="c">0 / 1</td><td class="c">3</td><td>糖原合成/分解与共价修饰调节</td></tr>
+</tbody>
+</table>
+
+<div class="tip"><b>30 秒结论</b><br>
+① <b>“蛋白质 + 酶”＝静态生化半壁江山</b>（162 题、124 次命中），而且几乎全部集中在“Hb/Mb 别构”与“纯化+动力学”两条线。<br>
+② <b>“三大代谢”＝动态生化半壁江山</b>（糖酵解 + 脂代谢 + 氨基酸代谢：147 题、115 次命中），且都爱用“临床情景 + 产能计算”包装。<br>
+③ <b>名解铺得很宽</b>（283 条），但高频重复的只有 30 条左右（波尔效应、同工酶、竞争性抑制、Tm、增色/减色、氧化磷酸化、酮体、糖异生……），第 ㉔ 节已用<b>粗体</b>标出。<br>
+④ <b>实验是隐形加分项</b>：大纲第 18 条明写 6 项实验，真题里以“SDS-PAGE 四个为什么”“考马斯亮蓝”“酶活测定”“核酸提取”形式反复出现，第 ㉒ 节单独成章。</div>
+<div class="filters" id="f1">
+<span style="font-size:12.4px;color:var(--ink3);margin-right:6px">章节筛选：</span>
+<button class="on" data-f="all">全部</button>
+<button data-f="hi">只看 ★★★</button>
+<button data-f="mid">★★ 及以上</button>
+</div>
+
+<h2 id="s2" class="sec" data-lv="mid"><span class="num">02</span>糖类<span class="freq">真题 20 · 命中 17 · 年份 2005—2025（共 10 年）</span></h2>
+<p class="lead">纲要定级“次重点”，但 2020、2021 连续两年考了“淀粉 vs 纤维素”，说明它已从“了解”升格为“必背对比表”。</p>
+
+<h3 class="item" data-lv="mid">淀粉与纤维素的结构差异 <span class="stars">★★</span> <span class="freq">真题 20、21</span></h3>
+<div class="q"><span class="tag">真题回放</span>2020、2021：<em>简述淀粉和纤维素的结构特点，并举例说明纤维素在我们生活中的应用</em>（5 分，连续两年）。</div>
+<div class="k">
+<div class="hd">一句话抓住本质</div>
+<p>两者都是<b>葡萄糖的聚合物</b>，唯一区别是<b>糖苷键构型</b>：淀粉用 <b>α-1,4</b>（可被人体 α-淀粉酶水解），纤维素用 <b>β-1,4</b>（人体缺乏<b>纤维素酶</b>，即内切/外切 β-1,4-葡聚糖酶，无法切断 β-1,4 主链，故不能消化）。<b>一个键型之差，决定了“粮食”与“膳食纤维”两种命运。</b></p>
+<table>
+<thead><tr><th style="width:16%"></th><th>淀粉</th><th>纤维素</th></tr></thead>
+<tbody>
+<tr><td>糖苷键</td><td><b>α-1,4</b>（支链另有 <b>α-1,6</b>）</td><td><b>β-1,4</b></td></tr>
+<tr><td>类型</td><td>直链淀粉（不分支，遇碘蓝）+ 支链淀粉（每约 30 个残基一个 α-1,6 分支，遇碘紫红）</td><td>线形葡聚糖，二糖单位为<b>纤维二糖</b>；每个残基相对前一个<b>翻转 180°</b></td></tr>
+<tr><td>构象</td><td>直链卷曲成螺旋（每圈 6 个残基）</td><td><b>完全伸展</b>的链，链内/链间氢键成<b>片层</b> → 微晶（胶束）→ 微纤维</td></tr>
+<tr><td>溶解性/消化</td><td>可糊化，可消化</td><td>不溶、不消化（膳食纤维）</td></tr>
+</tbody>
+</table>
+<p><b>纤维素的应用（3 条，直接背）</b>：① <b>调整肠道微生态</b>——作为菌群发酵底物，促益生菌、抑有害菌；② <b>刺激肠道蠕动</b>——机械刺激，防治便秘；③ <b>增加饱腹感</b>——吸水膨胀，减少能量摄入，防治肥胖。</p>
+</div>
+
+<h3 class="item" data-lv="low">糖类名解与小题 <span class="stars">★</span> <span class="freq">真题 10（构型）、16（凝集素）</span></h3>
+<table>
+<thead><tr><th style="width:16%">名词</th><th>踩分定义</th></tr></thead>
+<tbody>
+<tr><td><b>构型</b>（10）</td><td>立体异构体中原子或取代基团的<b>空间排列关系</b>；构型不同的分子在立体化学上可区分（D/L）。<b>构型改变必须断裂共价键</b>，并导致光学活性变化。（对比：<b>构象</b>改变只需单键旋转，不断键）</td></tr>
+<tr><td><b>凝集素</b>（16）</td><td>从植物、无脊椎动物、高等动物中提纯的<b>糖蛋白或结合糖的蛋白</b>，能<b>凝集红细胞</b>（与血型物质结合），故名；可用于血型鉴定、糖链分析。</td></tr>
+<tr><td><b>变旋</b></td><td>单糖在水溶液中 α/β 端基异构体通过<b>开链醛式</b>互变、旋光度逐渐改变并趋于平衡的现象。</td></tr>
+<tr><td><b>糖苷</b></td><td>单糖<b>端基碳</b>上的半缩醛羟基与另一分子（糖或非糖）的羟基/氨基缩合形成的化合物，连接键为<b>糖苷键</b>。</td></tr>
+<tr><td><b>肽聚糖</b></td><td>细菌细胞壁的骨架：<b>N-乙酰葡糖胺</b>与<b>N-乙酰胞壁酸</b>交替以 β-1,4 连接成糖链，再由短肽交联；是青霉素（抑制转肽酶）的作用靶点。</td></tr>
+</tbody>
+</table>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2024</td><td class="c">简答</td><td>试从营养物质代谢的角度解释为什么减肥者要减少糖类物质的摄入量（写出有关的代谢途径及其细胞定位、主要反应、关键酶）。</td></tr>
+<tr><td class="c">2014</td><td class="c">问答</td><td>直链淀粉和纤维素都是由葡萄糖分子聚合而成，为何物理性质差别如此之大？</td></tr>
+<tr><td class="c">回忆版</td><td class="c">论述</td><td>（1）减肥人士在减肥期间需要控制糖类物质的摄入，请解释为什么？ （2）在服用减肥药的时候，是否需要限制糖类物质的摄入？</td></tr>
+<tr><td class="c">回忆版</td><td class="c">问答</td><td>五只试剂瓶中分别装的是核糖、葡萄糖、果糖、蔗糖和淀粉溶液，试用最简便的化学方法鉴别。</td></tr>
+</tbody>
+</table>
+<h2 id="s3" class="sec" data-lv="low"><span class="num">03</span>脂类<span class="freq">真题 4 · 命中 3 · 年份 2005、2018</span></h2>
+<p class="lead">纲要：“次重点、不出大题，但内容杂乱”。策略：只背分类框架 + 4 个常数名词（碘值、皂化值、酸败、乳化），其余留给第 ⑮ 节代谢。<b>口径必须说清</b>：本章 4 题（真题 4 · 命中 3）中<b>脂类本体题 0</b>——实为 <b>2 条生物膜题</b>（流体镶嵌模型 / 磷脂双分子层，已归第 ⑨ 节）+ <b>1 条激素填空题</b>（2005：激素定义、溶解性质分类、固醇类激素由胆固醇合成）+ <b>1 条 2018 胆固醇题</b>。所以“真题 4”只是章节归属计数，<b>不代表脂类本体出过大题</b>。</p>
+<div class="k">
+<div class="hd">分类框架（一张图记住）</div>
+<p><b>按是否皂化</b>：<br>
+① <b>可皂化脂</b>（含酯键，能被碱水解）——<b>三酰甘油（中性脂肪）</b>、<b>磷脂</b>（甘油磷脂、鞘磷脂）、<b>糖脂</b>（脑苷脂、神经节苷脂）、<b>蜡</b>。<br>
+② <b>不可皂化脂</b>——<b>固醇</b>（胆固醇、植物固醇、麦角固醇）、<b>萜类</b>、<b>前列腺素</b>。</p>
+<p><b>脂肪酸</b>：偶数碳为主（16、18 最常见）；<b>必需脂肪酸</b>——亚油酸（18:2）、亚麻酸（18:3）、花生四烯酸（20:4），人体不能合成，缺乏致生长迟缓、皮炎。<b>不饱和脂肪酸</b>的顺式双键造成<b>折角</b>，使膜流动性升高、熔点降低。</p>
+</div>
+<table>
+<thead><tr><th style="width:16%">名词</th><th>定义与考点</th></tr></thead>
+<tbody>
+<tr><td><b>碘值</b></td><td>100 g 油脂所能吸收的碘的克数，衡量<b>不饱和度</b>；碘值越高，双键越多，越易氧化酸败。</td></tr>
+<tr><td><b>皂化值</b></td><td>皂化 1 g 油脂所需 KOH 的毫克数，反映<b>平均分子量</b>（皂化值大→脂肪酸链短）。</td></tr>
+<tr><td><b>酸败</b></td><td>油脂长期存放，不饱和脂肪酸氧化生成醛、酮、酸（“哈喇味”），或水解产生游离脂肪酸。</td></tr>
+<tr><td><b>乳化作用</b></td><td>胆汁酸盐等<b>乳化剂</b>把大脂滴分散成微滴，增大水-脂界面，便于脂肪酶作用（不是化学消化）。</td></tr>
+<tr><td><b>血浆脂蛋白</b></td><td>按密度分 <b>CM、VLDL、LDL、HDL</b>；密度与脂含量<b>成反比</b>、与蛋白含量成正比；LDL 运胆固醇至外周（“坏”），HDL 逆向转运（“好”）。</td></tr>
+</tbody>
+</table>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2005</td><td class="c">填空</td><td>激素的更广泛定义；按溶解性质激素分为哪两类；所有固醇类激素均由什么合成（胆固醇）。</td></tr>
+<tr><td class="c">2018</td><td class="c">问答</td><td>胆固醇相关问答（原卷记为“胆固醇的偏见等”，题干残缺）。</td></tr>
+</tbody>
+</table>
+<h2 id="s4" class="sec" data-lv="hi"><span class="num">04</span>氨基酸<span class="freq">真题 39 · 命中 30 · 年份 1999—2025（共 17 年）</span></h2>
+<p class="lead">这一章只有两类题：<b>pI 的计算与滴定曲线</b>（名解 + 计算）和<b>肽链测序推理</b>（21 年真题，最容易丢分的“逻辑题”）。</p>
+
+<h3 class="item" data-lv="mid">氨基酸等电点 pI <span class="stars">★★</span> <span class="freq">真题 12、19（名解）· 21（计算）</span></h3>
+<div class="q"><span class="tag">真题回放</span>2012、2019 名解：<em>氨基酸等电点</em>——原答：“在某一 pH 溶液中，氨基酸解离成阳离子与阴离子的趋势及程度相等，成为<b>兼性离子</b>，呈电中性，此时溶液的 pH 即该氨基酸的等电点。”<br>
+<span class="tag">真题回放</span>2021：<em>根据 His 的滴定曲线，写 A/B/C 结构式、求 pI、写 pI 外结构式、解释血红蛋白富含 His 的原因</em>（答案 pI = <b>7.585</b>）。</div>
+<div class="k">
+<div class="hd">三个必须会的公式</div>
+<p>① <b>无侧链解离</b>（中性氨基酸）：pI = (pK₁ + pK₂) / 2 —— 取<b>两侧</b> pK 的均值。<br>
+② <b>酸性氨基酸</b>（Asp、Glu）：pI = (pK_α-COOH + pK_R) / 2 —— 取<b>两个最低</b>的 pK。<br>
+③ <b>碱性氨基酸</b>（Lys、Arg、His）：pI = (pK_R + pK_α-NH₃⁺) / 2 —— 取<b>两个最高</b>的 pK。</p>
+<p class="tagline">口诀：<b>“看电荷为零的那一态，取它两侧的 pK 平均”</b>——不用背三种情况，画滴定曲线数质子即可。</p>
+<div class="hd" style="margin-top:12px">His 为什么特殊</div>
+<p>His 的咪唑基 pK_R ≈ <b>6.0</b>，是<b>唯一在生理 pH 附近缓冲</b>的侧链。因此：① 在红细胞中作为<b>质子供体/受体</b>参与 Hb 的 Bohr 效应（<b>His146</b> 与 <b>His122</b> 是关键）；② 在酶活性中心执行<b>酸碱催化</b>；③ 其咪唑基可与血红素 Fe²⁺ 配位，影响 T→R 转变。</p>
+</div>
+<div class="trap"><b>易错</b>：pI 时分子净电荷为 0，但<b>不是没有电荷</b>（是等量正负电荷，即兼性离子）；pH &gt; pI 时氨基酸带<b>负</b>电，电泳向<b>正极</b>；pH &lt; pI 时带正电，向<b>负极</b>。</div>
+
+<h3 class="item" data-lv="mid">20 种氨基酸的分类与特殊性质 <span class="stars">★★</span> <span class="freq">真题 17、18、19</span></h3>
+<div class="q"><span class="tag">真题回放</span>2017、2018、2019：<em>给出 6 种氨基酸的结构式和名称，问：分支氨酸是？紫外吸收 280 nm 的是？电泳向负极移动的是？可平衡血液 pH 的是？胰蛋白酶降解位点是？</em>（10 个小问）——本质是“把 20 种氨基酸的个性一次考完”。</div>
+<div class="k">
+<div class="hd">分类（按 R 基，五组）</div>
+<p><b>非极性脂肪族</b>：Gly、Ala、Pro、Val、Leu、Ile、Met（7）<br>
+<b>芳香族</b>：Phe、Tyr、Trp（3）<br>
+<b>极性不带电</b>：Ser、Thr、Cys、Asn、Gln（5）<br>
+<b>极性带正电（碱性）</b>：Lys、Arg、His（3）<br>
+<b>极性带负电（酸性）</b>：Asp、Glu（2）</p>
+<div class="hd" style="margin-top:12px">“个性清单”（直接对应 10 个小问）</div>
+<table>
+<thead><tr><th style="width:30%">问法</th><th>答案与理由</th></tr></thead>
+<tbody>
+<tr><td>分支/侧链氨基酸</td><td><b>Val、Leu、Ile</b>——β、γ 位有甲基，结构相似，共用同一降解途径（共用酶），故常一起考（“枫糖尿症”即此途径缺陷）</td></tr>
+<tr><td>紫外吸收 280 nm</td><td><b>Trp &gt; Tyr &gt; Phe</b>；Trp 吸收最强，故蛋白 A280 定量主要靠 Trp/Tyr</td></tr>
+<tr><td>电泳向负极</td><td><b>碱性氨基酸</b>（Lys、Arg、His）——在 pH 7 带正电</td></tr>
+<tr><td>平衡血液 pH</td><td><b>His</b>——咪唑基 pK≈6.0，接近生理 pH，缓冲能力最强</td></tr>
+<tr><td>胰蛋白酶切割位点</td><td><b>Lys、Arg 的 C 端</b>（碱性氨基酸）</td></tr>
+<tr><td>胰凝乳蛋白酶</td><td><b>Phe、Trp、Tyr 的 C 端</b>（芳香族）</td></tr>
+<tr><td>胃蛋白酶</td><td><b>Phe、Trp、Tyr、Leu、Val 的 N 端</b>（疏水）</td></tr>
+<tr><td>弹性蛋白酶</td><td><b>Ala、Gly 等小侧链的 C 端</b></td></tr>
+<tr><td>含硫</td><td><b>Cys、Met</b>；Met 是<b>甲基供体</b>（SAM 前体），Cys 形成<b>二硫键</b></td></tr>
+<tr><td>无侧链/无旋光</td><td><b>Gly</b>——唯一无侧链、无手性碳，最灵活，常见于 β-转角与胶原三股螺旋</td></tr>
+<tr><td>亚氨基酸</td><td><b>Pro</b>——环状仲胺，无游离 α-氨基；刚性，<b>易形成 β-转角</b>，是 <b>α-螺旋的破坏者</b>（使螺旋中断）；与茚三酮显<b>黄色</b></td></tr>
+<tr><td>磷酸化位点</td><td><b>Ser、Thr、Tyr</b> 的羟基</td></tr>
+<tr><td>一碳单位/甲基供体</td><td><b>Met</b>（经 SAM）、Ser、Gly、His</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="item" data-lv="mid">肽链序列测定（推理题）<span class="stars">★★</span> <span class="freq">真题 21</span></h3>
+<div class="q"><span class="tag">真题回放</span>2021：<em>某九肽含 2 Gly、2 Phe、Tyr、Met、Asp、Arg、Pro。胰凝乳蛋白酶切成五肽+四肽；四肽组成为 Phe、Tyr、Gly、Pro；CNBr 处理后经阳离子交换层析得一三肽 Arg-Phe-Gly；胰蛋白酶处理得 Phe；DNFB 处理得 DNP-Tyr，求序列。</em></div>
+<div class="k">
+<div class="hd">解题四步（照此模板写，过程分比答案分多）</div>
+<ol>
+<li><b>定 N 端</b>：DNFB（Sanger 试剂）标记<b>游离 α-氨基</b>，水解后得 <b>DNP-Tyr</b> → N 端是 <b>Tyr</b>。</li>
+<li><b>用专一性切割定位</b>：胰凝乳蛋白酶切 <b>Phe/Tyr/Trp 的 C 端</b>；因 N 端为 Tyr 且切成 5+4 两段，故第一刀在 <b>Tyr 之后</b>，四肽以 Tyr 开头。</li>
+<li><b>用 CNBr 定位 Met</b>：CNBr 切 <b>Met 的 C 端</b>；本题用于确定 Met 的位置（结合片段组成排除）。</li>
+<li><b>用胰蛋白酶收尾</b>：切 <b>Arg/Lys 的 C 端</b>，得到单个 Phe → 说明 Arg 紧邻 Phe 的 N 侧。</li>
+</ol>
+<p><b>资料原答案：Tyr-Pro-Gly-Phe-Asp-Met-Gly-Arg-Phe</b>。</p>
+<div class="trap"><b>必须知道的一处矛盾</b>：按这个答案，CNBr 在 Met 之后切开应得 <b>Gly-Arg-Phe</b>，而题干写的是“得三肽 <b>Arg-Phe-Gly</b>”，两者顺序不符；若真为 Arg-Phe-Gly，则胰蛋白酶切 Arg 后应得<b>二肽</b> Phe-Gly，与题干“得 Phe”也冲突。<b>结论：题干或原答案有记忆失真</b>。考场策略：把四组切割约束逐条写清、能自圆其说即可，<b>不要死背这个序列</b>。</div>
+</div>
+<div class="tip"><b>这类题的通用套路</b>：<b>先定两端（DNFB/羧肽酶），再用专一性酶切出“片段拼图”，最后用重叠片段或组成约束拼回去。</b>写答案时把每一步推理写出来，即使最终序列错，也能拿到大半过程分。</div>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">1999</td><td class="c">简答</td><td>简述从 AA 混合物中分离鉴定 AA 的方法（AA 表示氨基酸）</td></tr>
+<tr><td class="c">回忆版</td><td class="c">论述</td><td>现有一六肽，其中含有 3 个 Gly、1 个 Arg、1 个 Ala 和 1 个 Phe。 已知： 用糜蛋白酶处理后生…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>写出氨基酸的结构是，哪些是酸性氨基酸，哪些是碱性氨基酸等（氨基酸分类、性质）</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>有问某个密码子突变后产生什么氨基酸。</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>请你设计一个实验合成一个四肽库，这个肽库必须满足 C 端为 Ala，其他三个氨基酸为 Glu，Phe，Lys（氨基酸为…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>用标记的丙氨酸饲喂缺乏该氨基酸的机体，即使在天冬氨酸缺乏的情况下，也能在机体内检测到带标记的天冬氨酸，请运用你所学的生…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>Asp：① pH=2. pH=6 解离 ② 阳离子交换树脂 lys. phe. Asp. pH=7</td></tr>
+</tbody>
+</table>
+<h2 id="s5" class="sec" data-lv="hi"><span class="num">05</span>蛋白质<span class="freq">真题 105 · 命中 83 · 年份 1999—2025（共 22 年） · 全书第一大章</span></h2>
+<p class="lead">两条主线：<b>结构-功能（Hb/Mb 别构 + Bohr 效应 + CO 中毒）</b> 与 <b>分离纯化（盐析/层析/电泳/含量测定）</b>。前者考“解释现象”，后者考“设计实验”。</p>
+
+<h3 class="item" data-lv="hi">蛋白质的结构层次与二级结构 <span class="stars">★★★</span> <span class="freq">真题 19</span></h3>
+<div class="q"><span class="tag">真题回放</span>2019：<em>什么是蛋白质二级结构？主要有哪几种形式（特点）</em>（5 分）。</div>
+<div class="k">
+<div class="hd">四级层次（先给定义，再举例）</div>
+<p><b>一级</b>：氨基酸的<b>排列顺序</b>（含二硫键位置），由肽键维系。<br>
+<b>二级</b>：主链骨架<b>局部盘绕折叠</b>的构象，由<b>主链氢键</b>维系（<b>不涉及侧链</b>）。<br>
+<b>三级</b>：整条肽链在二级/超二级基础上折叠成<b>紧密球状</b>构象，由疏水作用（主要）、氢键、离子键、二硫键共同维系。<br>
+<b>四级</b>：<b>多个亚基</b>通过非共价键缔合成特定空间排布（Hb 是典型）。</p>
+<div class="hd" style="margin-top:12px">四种二级结构（题干要“特点”，务必写参数）</div>
+<table>
+<thead><tr><th style="width:18%">类型</th><th>关键特点</th></tr></thead>
+<tbody>
+<tr><td><b>α-螺旋</b></td><td><b>右手</b>螺旋；每圈 <b>3.6</b> 个残基，螺距 <b>0.54 nm</b>，每个残基上升 <b>0.15 nm</b>；相邻圈之间（第 n 个 C=O 与第 n+4 个 N-H）形成<b>链内氢键</b>；<b>侧链伸向螺旋外侧</b>；Pro 会中断螺旋</td></tr>
+<tr><td><b>β-折叠</b></td><td>若干条肽段<b>平行或反平行</b>排列成片；<b>所有肽键</b>的 C=O 与 N-H 形成<b>链间氢键</b>（与链轴垂直）；侧链交替位于片层上下；<b>反平行更稳定</b></td></tr>
+<tr><td><b>β-转角</b></td><td>肽链 <b>180° 回折</b>，通常 <b>4 个残基</b>，由第 1 个 C=O 与第 4 个 N-H 形成氢键；常见 <b>Pro、Gly</b>（名解 13 年）</td></tr>
+<tr><td><b>无规卷曲</b></td><td>不能归入上述类型的<b>柔性</b>区段，仍有确定构象，并非“无规”</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="item" data-lv="hi">蛋白质变性 <span class="stars">★★★</span> <span class="freq">真题 11</span></h3>
+<div class="q"><span class="tag">真题回放</span>2011：<em>什么叫蛋白质变性？变性后引起什么现象？原因有哪些</em>。</div>
+<div class="k">
+<div class="hd">三问三答</div>
+<p><b>本质</b>：受物理/化学因素影响，<b>空间构象（二级以上）被破坏</b>，非共价键断裂，<b>一级结构不变</b>（肽键未断）。</p>
+<p><b>现象（4 条）</b>：① <b>生物活性丧失</b>（最重要标志）；② 分子形状改变、肽链松散、<b>易被酶水解</b>；③ 疏水基团外露 → 水化层破坏 → <b>溶解度下降、易沉淀</b>、黏度增加、紫外吸收改变；④ 丧失结晶能力。</p>
+<p><b>原因</b>：加热、强酸强碱、有机溶剂（乙醇/丙酮）、尿素与盐酸胍（破坏氢键）、SDS（去污剂）、重金属离子、紫外线、剧烈震荡/剪切。</p>
+<p><b>复性</b>：变性较轻时去除变性因素可恢复构象（Anfinsen 核糖核酸酶实验证明“一级结构决定高级结构”）。</p>
+</div>
+
+<h3 class="item" data-lv="hi">Hb 与 Mb：别构、协同、Bohr 效应 <span class="stars">★★★</span> <span class="freq">真题 12、13、20 · 波尔效应 10/12/19</span></h3>
+<div class="q"><span class="tag">真题回放</span>2012、2013：<em>结合血红蛋白分析四级结构，比较 Hb 与 Mb 结构与功能的差异</em>；2020：<em>阐述 Hb 结构与功能的关系，还有哪些机制影响别构效应</em>。<br>
+<span class="tag">名解回放</span>2010、2012、2019：<em>波尔效应</em>。</div>
+<div class="k">
+<div class="hd">结构对比（表格化最省分）</div>
+<table>
+<thead><tr><th style="width:18%"></th><th>肌红蛋白 Mb</th><th>血红蛋白 Hb</th></tr></thead>
+<tbody>
+<tr><td>亚基组成</td><td><b>单体</b>（1 条珠蛋白链 + 1 个血红素）</td><td><b>四聚体 α₂β₂</b>（各带 1 个血红素）</td></tr>
+<tr><td>氧合曲线</td><td><b>双曲线</b></td><td><b>S 形（sigmoid）</b></td></tr>
+<tr><td>协同效应</td><td>无</td><td><b>正协同</b>：一个 O₂ 结合后促进其余亚基结合（T 态→R 态）</td></tr>
+<tr><td>对氧敏感性</td><td>不敏感，<b>易结合难释放</b></td><td>敏感，<b>肺部结合、组织释放</b></td></tr>
+<tr><td>功能定位</td><td>肌肉中<b>储存</b>氧（缺氧时才放氧）</td><td>血液中<b>运输</b>氧</td></tr>
+</tbody>
+</table>
+<div class="hd" style="margin-top:12px">波尔效应（名解原文）</div>
+<p><b>CO₂ 浓度升高及相应 pH 降低，能降低血红蛋白对氧的亲和性，使 p50 升高</b>，这一现象称波尔效应。<br>
+<b>分子基础</b>：CO₂ 与 N 端氨基形成<b>氨基甲酸酯</b>，以及 H⁺ 质子化 <b>His146</b>，形成<b>盐桥</b>稳定 <b>T 态</b>，从而降低氧亲和力。<br>
+<b>生理意义</b>：在代谢旺盛的组织（低 pH、高 CO₂）促氧释放，在肺部（高 pH、低 CO₂）促氧结合——<b>“需要氧的地方给氧”</b>。</p>
+<div class="hd" style="margin-top:12px">影响氧亲和力的其它因素（2020 年“还有哪些机制”的答案）</div>
+<p>① <b>2,3-BPG</b>：结合在 β 链中央空穴，稳定 T 态，降低亲和力（高原、慢性缺氧时升高，利于放氧）；② <b>温度</b>：升高降低亲和力；③ <b>H⁺（pH）</b>：即 Bohr 效应；④ <b>CO₂</b>：直接结合 + 间接降 pH；⑤ <b>CO</b>：竞争性结合，亲和力高约 <b>210~250 倍</b>。</p>
+</div>
+<div class="k">
+<div class="hd">CO 中毒（2011、2013、2021、2024 四年重复）</div>
+<p><b>原理</b>：CO 与 Hb 的亲和力比 O₂ 大 <b>约 210 倍</b>（教材口径 210~250 倍），且形成 CO-Hb 后<b>协同效应消失</b>、剩余亚基更难结合 O₂（<b>别构抑制</b>），使血液<b>携氧能力与释氧能力双降</b>。<br>
+<b>处理</b>：迅速脱离中毒环境 → <b>高浓度/高压氧</b>吸入（提高 O₂ 分压竞争置换 CO）→ 必要时输血/换血。<br>
+<b>2021 年变式问法</b>：<em>用生化解释 CO 中毒时机体耗氧量减少</em>——除 Hb 外，<b>CO 与肌红蛋白亲和力也极高</b>，使肌肉不能正常贮氧，进一步减少组织可利用氧。</p>
+</div>
+<div class="q"><span class="tag">真题回放</span>2016：<em>去西藏高原反应的原因及预防</em>。<br>
+<b>答</b>：高原<b>氧分压低</b> → Hb 氧饱和度下降、组织缺氧 → 代偿性<b>呼吸加深加快、心率加快、2,3-BPG 升高</b>（使氧解离曲线<b>右移</b>，利于组织放氧）、促红细胞生成素增加。<b>预防</b>：阶梯式上升、避免剧烈运动、必要时吸氧/用乙酰唑胺。</div>
+
+<h3 class="item" data-lv="hi">分离纯化：四大原理与五种方法 <span class="stars">★★★</span> <span class="freq">真题 11、19、20、22</span></h3>
+<div class="q"><span class="tag">真题回放</span>2011：<em>简述凝胶过滤、离子交换、亲和层析分离纯化蛋白质的原理</em>；2019：<em>给出酶的分子量与等电点，至少写出三种分离提纯方法</em>；2020、2022：<em>给出 5 种蛋白的分子量，写两种分离方法、原理与结果</em>。</div>
+<div class="k">
+<div class="hd">按“分离依据”归组（答题时按这四组展开，不会漏）</div>
+<table>
+<thead><tr><th style="width:20%">依据</th><th style="width:30%">方法</th><th>原理一句话</th></tr></thead>
+<tbody>
+<tr><td><b>分子大小</b></td><td>透析、超滤、<b>凝胶过滤</b>、密度梯度离心</td><td>凝胶珠有大孔：<b>大分子进不去</b>，走颗粒间空隙，<b>先出柱</b>；小分子进颗粒，路径长，<b>后出柱</b>（“大快小慢”）</td></tr>
+<tr><td><b>电荷</b></td><td><b>离子交换层析</b>、电泳、等电聚焦</td><td>pH &gt; pI 时蛋白带负电（结合阴离子交换剂），pH &lt; pI 带正电；<b>电荷越多结合越紧</b>，用盐梯度或改变 pH 洗脱</td></tr>
+<tr><td><b>疏水性/溶解度</b></td><td><b>盐析</b>、盐溶、有机溶剂沉淀、疏水层析</td><td><b>盐析</b>：高浓度中性盐（硫酸铵）<b>中和表面电荷 + 破坏水化层</b> → 蛋白聚集沉淀；不同蛋白沉淀所需盐浓度不同，可分级</td></tr>
+<tr><td><b>专一性亲和</b></td><td><b>亲和层析</b>、免疫沉淀</td><td>把配体（底物类似物、抗体、金属离子）固定在载体上，目标蛋白<b>特异结合</b>，杂蛋白流走，再用游离配体洗脱</td></tr>
+</tbody>
+</table>
+<div class="hd" style="margin-top:12px">“给 5 个分子量，写两种方法”的标准答法</div>
+<p><b>方法一：SDS-PAGE / 凝胶过滤（按分子量）</b>。SDS-PAGE 中迁移率与 <b>lg M</b> 成反比 → 分子量<b>由大到小</b>依次排列（大分子跑得慢、在上方）；凝胶过滤中则<b>大分子先洗脱</b>。<br>
+<b>方法二：离子交换层析 / 等电聚焦（按电荷）</b>。按 pI 与 pH 的关系决定带电量与结合强度，<b>电荷差异越大分离越开</b>。</p>
+</div>
+
+<h3 class="item" data-lv="hi">蛋白质含量测定：五法 + 三聚氰胺 <span class="stars">★★★</span> <span class="freq">真题 11</span></h3>
+<div class="q"><span class="tag">真题回放</span>2011：<em>简述考马斯亮蓝法原理与实验方法；列举其他三种测蛋白含量的方法；解释为何奶粉中加三聚氰胺能虚增蛋白</em>。</div>
+<table>
+<thead><tr><th style="width:22%">方法</th><th style="width:26%">原理</th><th>灵敏度/特点</th></tr></thead>
+<tbody>
+<tr><td><b>凯氏定氮法</b></td><td>蛋白平均含氮 <b>16%</b>，测氮量 ×<b>6.25</b> 即粗蛋白</td><td>经典、准确；<b>但会把非蛋白氮算进去</b>（三聚氰胺事件的根源）</td></tr>
+<tr><td><b>紫外吸收法</b></td><td>Trp、Tyr 在 <b>280 nm</b> 有吸收；A280 与浓度成正比</td><td>快速、不损耗样品；受核酸干扰（需校正 A260）</td></tr>
+<tr><td><b>考马斯亮蓝 G-250</b></td><td>酸性下呈棕红色，与蛋白<b>疏水结合</b>后变蓝，最大吸收由 465 → <b>595 nm</b>，与浓度成正比</td><td>灵敏（μg 级）、快速；<b>受去污剂干扰</b></td></tr>
+<tr><td><b>Folin-酚（Lowry）</b></td><td>酚试剂被 Tyr/Trp 还原成蓝色（钼蓝），<b>745~750 nm</b></td><td>灵敏；步骤多、受还原剂干扰</td></tr>
+<tr><td><b>双缩脲反应</b></td><td>肽键在碱性中与 <b>Cu²⁺</b> 形成紫色络合物</td><td>简单；<b>需 ≥2 个肽键</b>（二肽不反应）</td></tr>
+</tbody>
+</table>
+<div class="tip"><b>三聚氰胺为什么能造假</b>：其含氮量高达 <b>66.7%</b>，加入奶粉后<b>凯氏定氮测得的氮升高</b>，按 ×6.25 折算的“蛋白质”随之虚增——但它是<b>非蛋白氮</b>，毫无营养价值。<b>反制手段</b>：改用不依赖氮的方法（考马斯亮蓝、紫外法），或直接检测三聚氰胺本身。</div>
+
+<h3 class="item" data-lv="hi">SDS-PAGE 的“四个为什么” <span class="stars">★★★</span> <span class="freq">真题 12、13</span></h3>
+<div class="q"><span class="tag">真题回放</span>2013：<em>SDS-PAGE 为什么能测分子量？为什么要加巯基乙醇？为什么要沸水煮沸？为什么凝胶前要抽气？</em></div>
+<div class="k">
+<p><b>① 为什么能测分子量</b>：SDS 是阴离子去污剂，按约 1.4 g/g 蛋白的比例结合，带来<b>远超过原有电荷的大量负电荷</b>，掩盖了不同蛋白间的电荷差异；同时 SDS 使蛋白<b>变性伸展为同样的棒状</b>。因此迁移率只取决于<b>分子量</b>，且与 <b>lg M</b> 呈线性关系。<br>
+<b>② 巯基乙醇</b>：还原<b>二硫键</b>，解离亚基，使蛋白成单链、消除构象差异。<br>
+<b>③ 沸水煮沸</b>：充分<b>变性</b>、破坏高级结构并促使 SDS 充分结合（原答案写“去除亚稳态化合物”，本质相同）。<br>
+<b>④ 凝胶前抽气</b>：除去凝胶液中的<b>气泡</b>，否则聚合不均、条带畸变、电泳短路。</p>
+</div>
+<div class="trap"><b>易错</b>：SDS-PAGE 测的是<b>亚基</b>分子量（二硫键被还原后），不是天然完整蛋白的分子量；要测天然分子量用<b>凝胶过滤</b>或<b>非变性 PAGE</b>。另外“迁移率与分子量成反比”不严谨，应为<b>与 lg M 成线性负相关</b>。</div>
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2025</td><td class="c">简答</td><td>试结合镰刀型细胞贫血症，说明蛋白质一级结构与生物学功能之间的关系。</td></tr>
+<tr><td class="c">2025</td><td class="c">简答</td><td>什么是蛋白质的二级结构？蛋白质二级结构主要有哪些类型？</td></tr>
+<tr><td class="c">2025</td><td class="c">简答</td><td>现有一蛋白质混合物，请分别根据以下四种性质设计分离方法，并各举一具体例子说明其原理： （1）分子量大小 （2）溶解度差…</td></tr>
+<tr><td class="c">2025</td><td class="c">简答</td><td>关于 SDS-PAGE 电泳：</td></tr>
+<tr><td class="c">2024</td><td class="c">简答</td><td>CO 中毒的原理。</td></tr>
+<tr><td class="c">2024</td><td class="c">简答</td><td>蛋白质分离纯化。给了一个表格，给了四个蛋白质，其中四个的饱和硫酸铵溶液的沉淀率，其中三个蛋白质的相对分子质量、等电点，…</td></tr>
+<tr><td class="c">2014</td><td class="c">问答</td><td>什么是蛋白质变性和蛋白质复性?蛋白质变性后哪些性质会发生改变?</td></tr>
+<tr><td class="c">2001</td><td class="c">简答</td><td>简述血红蛋白的结构，这种结构和它的功能有何关系？</td></tr>
+<tr><td class="c">2001</td><td class="c">简答</td><td>请简要说明真核生物编码蛋白质基因的表达调节的作用特点</td></tr>
+<tr><td class="c">2001</td><td class="c">简答</td><td>要测定蛋白质的二硫键位置需要什么方法?请简述之</td></tr>
+<tr><td class="c">2000</td><td class="c">问答</td><td>生物酶在生物体中起着十分重要的作用，请说出它作为生物催化剂与其他催化剂比较有哪些异同，并论述与酶高效率催化作用有关的因素</td></tr>
+<tr><td class="c">2000</td><td class="c">问答</td><td>在生物大分子的分离纯化中，柱层析分离是最常用最有效的分离手段，请列举 5 种柱层析方法，并说明其中 3 种方法的分离原…</td></tr>
+</tbody>
+</table>
+<h2 id="s6" class="sec" data-lv="hi"><span class="num">06</span>酶<span class="freq">真题 57 · 命中 41 · 年份 1999—2025（共 19 年）</span></h2>
+<p class="lead">全书“最能拉开分差”的一章：<b>米氏方程与双倒数作图</b>几乎每隔一年就考一次计算；<b>三种可逆抑制</b>是必背表格；<b>纯化倍数/提取率</b>是 2022 年新增的实操计算。</p>
+
+<h3 class="item" data-lv="mid">酶的结构与活性中心 <span class="stars">★★</span> <span class="freq">真题 19（结构）、10（活性中心测定）</span></h3>
+<div class="q"><span class="tag">真题回放</span>2019：<em>简述酶的结构特点</em>；2010：<em>判断和确定酶活性中心的主要方法</em>。</div>
+<div class="k">
+<div class="hd">两条分类线（答题骨架）</div>
+<p><b>按组成</b>：<b>简单酶</b>（仅蛋白）与<b>缀合酶/全酶</b>= <b>脱辅酶</b>（蛋白部分，决定<b>专一性</b>、结合底物）+ <b>辅因子</b>（非蛋白，决定<b>反应类型</b>、传递电子/基团）。辅因子又分 <b>辅酶</b>（非共价、可透析除去）与 <b>辅基</b>（共价、需化学处理才能除去）。</p>
+<p><b>按功能</b>：<b>活性部位</b>（结合部位 + 催化部位，个别酶另有<b>调节部位</b>）与非活性部位。活性部位六大特点：① 只占分子<b>很小一部分</b>；② 是<b>三维实体</b>；③ 位于表面<b>空穴/裂缝</b>，内部疏水（低介电常数），但含极性残基参与催化；④ 与底物<b>诱导契合</b>而非“锁钥”刚性互补；⑤ 靠<b>多种次级键</b>结合底物；⑥ 具有<b>柔性/可运动性</b>。</p>
+<div class="hd" style="margin-top:12px">活性中心的研究方法（4 种）</div>
+<p>① <b>化学修饰法</b>——用特异试剂共价修饰侧链基团（巯基、咪唑基、羧基），活性显著下降者该基团为必需基团；② <b>动力学法</b>——测 pH-活性曲线推断关键基团 pK；③ <b>X 射线衍射</b>——解析酶-底物类似物复合物，直接看空间构象；④ <b>蛋白质工程/定点突变</b>——逐个替换氨基酸，看活性变化（最精确）。</p>
+</div>
+
+<h3 class="item" data-lv="hi">米氏方程与 Km 的意义 <span class="stars">★★★</span> <span class="freq">真题 10、13、19、21（同一题四次）</span></h3>
+<div class="q"><span class="tag">真题回放</span>2010、2013、2019、2021：<em>以丙酮酸为底物测 LDH 活性，双倒数作图得斜率 1.2×10⁻³ min、1/V 轴截距 0.02 μM⁻¹·min，求米氏方程，并说明用什么方法测该反应</em>。</div>
+<div class="k">
+<div class="hd">方程与推导（考“推导”时按这三步写）</div>
+<p class="eq">E + S ⇌(k₁/k₋₁) ES →(k₂) E + P</p>
+<p class="eq">v = Vmax·[S] / (Km + [S])　其中 Km = (k₋₁ + k₂)/k₁，Vmax = k₂[E]₀</p>
+<p><b>稳态假设</b>：ES 生成速率 = 分解速率 → d[ES]/dt = 0 → 解出 [ES]，代入 v = k₂[ES]。</p>
+<div class="hd" style="margin-top:12px">Km 的三层意义（名解/简答都考）</div>
+<p>① <b>物理意义</b>：v = ½Vmax 时的底物浓度，单位是浓度；② <b>反映亲和力</b>：Km 越小，酶与底物亲和力<b>越大</b>；③ <b>反映酶的种类</b>（是酶的特征常数，与酶浓度无关，随 pH、温度、底物种类改变）。</p>
+<div class="hd" style="margin-top:12px">本题计算（务必会）</div>
+<p>双倒数式：<span class="eq">1/v = (Km/Vmax)(1/[S]) + 1/Vmax</span><br>
+截距 1/Vmax = 0.02 → <b>Vmax = 50 μM·min⁻¹</b>；斜率 Km/Vmax = 1.2×10⁻³ → Km = 1.2×10⁻³ × 50 = <b>0.06 μM</b>。<br>
+米氏方程：<span class="eq">v = 50[S] / (0.06 + [S])</span>。</p>
+<p><b>为什么用紫外分光光度法</b>：LDH 催化 丙酮酸 + NADH + H⁺ → 乳酸 + NAD⁺；<b>NADH 在 340 nm 有吸收，NAD⁺ 没有</b>，故监测 340 nm 吸光度的下降速率即可反映酶活。</p>
+</div>
+
+<h3 class="item" data-lv="hi">三种可逆抑制（必背表） <span class="stars">★★★</span> <span class="freq">真题 12 · 名解 10/11</span></h3>
+<div class="q"><span class="tag">真题回放</span>2012：<em>简述酶可逆抑制的几种类型及其特点</em>；名解：<em>竞争性抑制</em>（2010、2011）。</div>
+<table>
+<thead><tr><th style="width:16%">类型</th><th style="width:24%">结合对象</th><th class="c" style="width:10%">Km</th><th class="c" style="width:10%">Vmax</th><th>双倒数图特征 / 能否解除</th></tr></thead>
+<tbody>
+<tr><td><b>竞争性</b></td><td>只与<b>游离酶</b>结合（与底物争活性中心）</td><td class="c"><b>↑</b></td><td class="c">不变</td><td>纵轴截距不变、<b>横轴截距右移</b>（交于 y 轴）；<b>增大 [S] 可解除</b></td></tr>
+<tr><td><b>非竞争性</b></td><td>与游离酶<b>和</b>ES 都能结合（结合在别处）</td><td class="c">不变</td><td class="c"><b>↓</b></td><td>横轴截距不变、<b>纵轴截距上移</b>（交于 x 轴）；增大 [S] <b>不能</b>解除</td></tr>
+<tr><td><b>反竞争性</b></td><td><b>只与 ES</b> 结合</td><td class="c"><b>↓</b></td><td class="c"><b>↓</b></td><td>两线<b>平行</b>（斜率不变，Km/Vmax 不变）；[S] 越高抑制越强</td></tr>
+</tbody>
+</table>
+<div class="tip"><b>判别口诀</b>：<b>“竞争抬 Km，非竞争压 Vmax，反竞争双降且平行。”</b>考场上先看双倒数图两线交点：交于 <b>y 轴</b>＝竞争性；交于 <b>x 轴</b>＝非竞争性；<b>平行</b>＝反竞争性。</div>
+<div class="q"><span class="tag">真题回放</span>2022：<em>如何确定某抑制剂是可逆还是不可逆？</em><br>
+<b>答</b>：<b>透析/超滤除去抑制剂后</b>再测活性——活性恢复者为<b>可逆</b>抑制（非共价结合），不恢复者为<b>不可逆</b>抑制（共价修饰，如有机磷对胆碱酯酶）。也可用双倒数作图：可逆抑制改变斜率/截距，不可逆抑制表现为<b>Vmax 下降且无法被底物逆转</b>。</div>
+
+<h3 class="item" data-lv="hi">酶活力、比活力与纯化计算 <span class="stars">★★★</span> <span class="freq">真题 19、22</span></h3>
+<div class="q"><span class="tag">真题回放</span>2019：<em>测酶活力实验设计</em>；2022：<em>根据条件计算酶活的提取率和纯化倍数</em>；2019：<em>给酶的 Mr 与 pI，写三种分离提纯方法</em>。</div>
+<div class="k">
+<div class="hd">四个定义（务必分清）</div>
+<p><b>酶活力（U）</b>：一定条件下每分钟催化 1 μmol 底物转化所需的酶量。<br>
+<b>比活力</b>：<b>每毫克蛋白</b>所含的酶活力单位（U/mg），代表<b>纯度</b>。<br>
+<b>回收率（提取率）</b>：纯化后总活力 ÷ 纯化前总活力 × 100%。<br>
+<b>纯化倍数</b>：纯化后比活力 ÷ 纯化前比活力。</p>
+<div class="hd" style="margin-top:12px">计算模板（2022 年题型）</div>
+<p class="eq">总活力 = 酶活力(U/mL) × 体积(mL)　比活力 = 总活力 / 总蛋白(mg)</p>
+<p class="eq">回收率% = (总活力₂ / 总活力₁) × 100　纯化倍数 = 比活力₂ / 比活力₁</p>
+<p class="tagline">判断成败：<b>纯化倍数升高、回收率下降</b>是正常的（每步都会损失）；若<b>纯化倍数上升而比活力下降</b>，说明该步把目标酶丢了。</p>
+</div>
+
+<h3 class="item" data-lv="mid">酶的调节：别构、共价修饰、酶原激活 <span class="stars">★★</span> <span class="freq">名解 12、16</span></h3>
+<div class="k">
+<div class="hd">三种调节方式</div>
+<p><b>① 别构调节</b>：调节物结合<b>调节部位</b>（非活性中心），引起构象改变 → 活性升高/降低；动力学曲线呈 <b>S 形</b>（正协同），不服从米氏方程；<b>别构酶</b>通常是代谢通路的<b>关键酶/限速酶</b>，多为寡聚酶，受<b>反馈抑制</b>。<br>
+<b>② 共价修饰</b>：可逆的磷酸化/去磷酸化（激酶/磷酸酶）、腺苷化、二硫键互变——<b>级联放大</b>，效率极高（如糖原磷酸化酶）。<br>
+<b>③ 酶原激活</b>：无活性的酶原经<b>专一性水解</b>切除一段肽段后暴露活性中心（胰蛋白酶原 → 胰蛋白酶、胃蛋白酶原、凝血酶原）。意义：<b>避免自身消化、便于储存与快速启动</b>。</p>
+<p><b>同工酶</b>（名解 2010/2011/2017/2019，四星高频）：催化<b>相同化学反应</b>，但<b>分子结构、理化性质、免疫特性</b>不同的一组酶。经典例子 <b>LDH₁~LDH₅</b>（四聚体，H/M 亚基不同组合）：心肌以 LDH₁ 为主，肝以 LDH₅ 为主——<b>临床用来定位组织损伤</b>。</p>
+</div>
+<div class="trap"><b>易错三连</b>：① 别构酶<b>不遵守</b>米氏方程，但 Km 可近似用 <b>K₀.₅</b> 表示；② 酶原激活是<b>不可逆</b>的共价断裂，不是别构；③ “酶活力单位 U”与“比活力 U/mg”差一个“每毫克蛋白”，写混直接扣分。</div>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2014</td><td class="c">问答</td><td>丙二酸是 TCA 循环中琥珀酸脱氢酶的抑制剂，预测丙二酸是琥珀酸脱氢酶的抑制剂的类型，为什么?加入丙二酸到反应体系后动…</td></tr>
+<tr><td class="c">2001</td><td class="c">问答</td><td>对于下列反应： E + S ⇔ ES ⇔ E + P （1）用稳态方法推出米氏方程（要求写出推导过程） （2）如果此酶…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>葡萄糖 6 磷酸脱氢酶的酶促反应（计算题）酶促反应的各种分析，加抑制剂后画图</td></tr>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>考察的是酶相关知识。给出琥珀酸脱氢酶的Km、Vmax让画双倒数曲线，求酶促反应的速度，问FADH₂的全称，让画丙二酸的…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>称取 25mg 蛋白酶粉配制成 25mL 酶溶液，从中取出 0.1mL 酶液，以酪蛋白为底物，用 Folin-酚比色法…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>现有以下数据，底物浓度 mmol/L，每分钟生成产物浓度，并作出图像，判断加入的抑制剂是竞争类抑制剂，还是非竞争抑制剂…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">论述</td><td>下图是具有别构效应的酶与非调节酶的动力学曲线，请指出曲线 1，2 分别代表那种酶，并依图中的数据说明什么是酶的别构效应…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>【图示题·原题含图】某酶的动力学曲线如下图所示，请回答下列问题： （20 年就是这种类型题） （1）Km 和 Vmax…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>生物化学过程的调控有哪几种形式？</td></tr>
+</tbody>
+</table>
+<h2 id="s7" class="sec" data-lv="hi"><span class="num">07</span>核酸<span class="freq">真题 77 · 命中 57 · 年份 1999—2025（共 21 年）</span></h2>
+<p class="lead">核心就三件事：<b>变性-复性（Tm、增色/减色）</b>、<b>核酸含量测定</b>、<b>Sanger 测序</b>。</p>
+
+<h3 class="item" data-lv="hi">变性、复性与 Tm <span class="stars">★★★</span> <span class="freq">真题 12、13、19</span></h3>
+<div class="q"><span class="tag">名解回放</span>2012：<em>Tm</em>、<em>减色效应</em>；2013：<em>增色效应</em>；2019：<em>DNA 变性</em>。<br>
+<span class="tag">真题回放</span>2012：<em>Tm 值高低与 G+C 含量的关系</em>。</div>
+<div class="k">
+<div class="hd">四个名词，一条逻辑链</div>
+<p><b>变性</b>：双链间<b>氢键断裂、碱基堆积力破坏</b>，双链解为单链，<b>不涉及一级结构（磷酸二酯键）改变</b>。因素：加热、强酸强碱、尿素/甲酰胺、乙醇。<br>
+<b>增色效应</b>：变性后碱基<b>充分暴露</b>，260 nm 吸光度<b>升高</b>（因碱基间的电子相互作用消失）。<br>
+<b>复性</b>：缓慢降温，互补单链重新配对成双链（<b>退火</b>）。<br>
+<b>减色效应</b>：复性时 260 nm 吸光度<b>下降</b>，回到天然水平。<br>
+<b>Tm（熔解温度）</b>：<b>吸光度上升到最大增幅一半</b>（即双螺旋有一半被解开）时的温度。</p>
+<div class="hd" style="margin-top:12px">Tm 的影响因素（考点密度最高）</div>
+<p><b>① G+C 含量</b>：G≡C 有 <b>3 个氢键</b>、堆积力强 → GC 越高，Tm <b>越高</b>。经验式：<b>Tm = 69.3 + 0.41×(G+C)%</b>。<br>
+② <b>链长</b>：越长 Tm 越高（&lt;100 bp 时明显）。<br>
+③ <b>离子强度</b>：盐浓度越高，磷酸基负电荷被屏蔽，Tm <b>越高</b>（所以杂交缓冲液要加盐）。<br>
+④ <b>pH</b>：极端 pH 破坏氢键，Tm 降低；⑤ <b>变性剂</b>（尿素、甲酰胺）降低 Tm。</p>
+</div>
+<div class="trap"><b>易错</b>：增色效应是<b>变性</b>时吸光<b>升高</b>，减色效应是<b>复性</b>时吸光<b>下降</b>——两者方向相反，别记反。另外 Tm 是“半数变性”的温度，不是“完全变性”的温度。</div>
+
+<h3 class="item" data-lv="mid">核酸含量测定与纯度判断 <span class="stars">★★</span> <span class="freq">真题 20</span></h3>
+<div class="q"><span class="tag">真题回放</span>2020：<em>如何判断 DNA 样品中是否混入蛋白质？若混入，如何分别检测 DNA 与蛋白质含量？写原理和步骤</em>。</div>
+<div class="k">
+<div class="hd">判断纯度：A260/A280</div>
+<p>纯 DNA：<b>A260/A280 ≈ 1.8</b>；纯 RNA ≈ <b>2.0</b>；若比值<b>明显低于 1.8</b>（如 1.5）→ 提示<b>蛋白质污染</b>；若 A260/A230 &lt; 2.0 → 提示<b>多糖/酚/胍盐</b>残留。</p>
+<div class="hd" style="margin-top:12px">两套定量方法</div>
+<table>
+<thead><tr><th style="width:20%">对象</th><th>方法</th><th>原理</th></tr></thead>
+<tbody>
+<tr><td rowspan="2"><b>DNA/RNA</b></td><td><b>紫外分光光度法</b></td><td>A260 = 1 相当于约 <b>50 μg/mL</b> 双链 DNA（RNA 约 40 μg/mL）</td></tr>
+<tr><td><b>二苯胺法 / 地衣酚法</b></td><td>DNA 与二苯胺显蓝色（测 DNA）；RNA 与地衣酚显绿色（测 RNA）——可区分 DNA 与 RNA</td></tr>
+<tr><td><b>蛋白质</b></td><td><b>双缩脲</b>（初判是否含蛋白，紫色）+ <b>考马斯亮蓝 G-250</b>（定量，595 nm）</td><td>见第 ⑤ 节</td></tr>
+</tbody>
+</table>
+<p><b>标准作答顺序</b>：① 先测 A260/A280 初判 → ② 双缩脲显色确认蛋白存在 → ③ 考马斯亮蓝法（标准曲线）定量蛋白 → ④ 紫外法或二苯胺法定量 DNA → ⑤ 琼脂糖电泳看完整性（有无降解拖尾）。</p>
+</div>
+
+<h3 class="item" data-lv="mid">Sanger 双脱氧链终止法 <span class="stars">★★</span> <span class="freq">真题 13</span></h3>
+<div class="q"><span class="tag">真题回放</span>2013：<em>Sanger 双脱氧链终止法的原理</em>。</div>
+<div class="k">
+<p><b>核心机关</b>：<b>ddNTP</b>（2',3'-双脱氧核苷三磷酸）的 <b>3' 位没有羟基</b>，一旦掺入，无法与下一个 dNTP 形成磷酸二酯键 → <b>链合成终止</b>。<br>
+<b>四管法</b>：模板 + 引物 + DNA 聚合酶 + 四种 dNTP（其一放射性标记）+ <b>少量一种 ddNTP</b>（四管分别加 ddA/ddT/ddG/ddC）→ 每管得到一系列<b>以同一引物为 5' 端、以特定 ddNTP 为 3' 端</b>、长度不等的片段。<br>
+<b>读序</b>：四管产物在同一块<b>变性 PAGE</b> 上分四个泳道电泳 → 放射自显影 → 从<b>最短片段（凝胶最下）往上</b>依次读出，即得新合成链的序列（再互补即得模板序列）。<br>
+<b>现代演进</b>：荧光标记 + 毛细管电泳 + 单管四色，即第一代自动测序仪的原理。</p>
+</div>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2025</td><td class="c">简答</td><td>简述沃森—克里克提出的 DNA 双螺旋结构模型的主要特点。</td></tr>
+<tr><td class="c">2025</td><td class="c">简答</td><td>已知一段 DNA 序列:</td></tr>
+<tr><td class="c">2024</td><td class="c">简答</td><td>提取某个细胞中全部的 RNA 如何检测其(1)完整性(2)纯度(3)浓度，并给出判断依据;</td></tr>
+<tr><td class="c">2014</td><td class="c">问答</td><td>DNA 的复制精确度大于 RNA 转录的大于蛋白质翻译的，简述 DNA 复制保持高度忠实性的主要机制。</td></tr>
+<tr><td class="c">2014</td><td class="c">问答</td><td>碱基堆积力在稳定核酸结构中非常重要。 (1)碱基堆积力的化学本质究竟是什么。 (2)嘌呤和嘧啶中哪种碱基堆积力的作用更…</td></tr>
+<tr><td class="c">2000</td><td class="c">问答</td><td>什么是后基因组研究，请简述其现实意义</td></tr>
+<tr><td class="c">2000</td><td class="c">简答</td><td>DNA 作为遗传物质，其直接和间接证据是什么？</td></tr>
+<tr><td class="c">1999</td><td class="c">简答</td><td>哪些因素会引起 DNA 损伤?何谓诱导修复?</td></tr>
+<tr><td class="c">回忆版</td><td class="c">问答</td><td>从组织中提取细胞 DNA 后，如何鉴定其纯度?</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>如何测定核酸含量</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>给了一段 DNA 序列和密码子表 （1）写出以该序列为模板转录出的 mRNA 序列 （2）写出翻译出的蛋白质的序列 （…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>（3）RNA 携带的 AUG 是什么氨基酸</td></tr>
+</tbody>
+</table>
+<h2 id="s8" class="sec" data-lv="mid"><span class="num">08</span>维生素与辅酶<span class="freq">真题 14 · 命中 10 · 年份 2005、2012、2014、2015、2017、2019、2021、2022</span></h2>
+<p class="lead">纲要：“非重点、不涉及大题，但有助于理解代谢机理”。策略：<b>只背“维生素—辅酶—转移基团—缺乏症”四列表</b>，20 分钟搞定，能救选择填空。<b>注意</b>：新库该章已有 14 题、其中简答类 5 道，“不涉及大题”的旧说法已不成立。</p>
+<table>
+<thead><tr><th style="width:16%">维生素</th><th style="width:20%">辅酶形式</th><th style="width:22%">转移的基团/作用</th><th>缺乏症</th></tr></thead>
+<tbody>
+<tr><td><b>B₁ 硫胺素</b></td><td><b>TPP</b>（硫胺素焦磷酸）</td><td>转移<b>醛基/α-酮酸脱羧</b>（丙酮酸脱氢酶、α-KG 脱氢酶、转酮醇酶）</td><td>脚气病、Wernicke 脑病</td></tr>
+<tr><td><b>B₂ 核黄素</b></td><td><b>FMN / FAD</b></td><td>传递<b>电子（氢）</b>，呼吸链与脱氢酶</td><td>口角炎、舌炎</td></tr>
+<tr><td><b>PP 烟酸</b></td><td><b>NAD⁺ / NADP⁺</b></td><td>传递<b>电子（氢）</b>；NADPH 供合成</td><td>癞皮病（3D：皮炎、腹泻、痴呆）</td></tr>
+<tr><td><b>B₆ 吡哆醇</b></td><td><b>磷酸吡哆醛（PLP）</b></td><td><b>转氨基、脱羧</b>（所有转氨酶的辅酶）</td><td>皮炎、贫血、惊厥</td></tr>
+<tr><td><b>泛酸</b></td><td><b>辅酶 A（CoA-SH）</b></td><td>转移<b>酰基</b>（乙酰 CoA）</td><td>疲乏、胃肠障碍</td></tr>
+<tr><td><b>生物素</b></td><td>生物胞素</td><td><b>羧化</b>（丙酮酸羧化酶、乙酰 CoA 羧化酶）</td><td>皮炎、脱发</td></tr>
+<tr><td><b>叶酸</b></td><td><b>THF</b>（四氢叶酸）</td><td>转移<b>一碳单位</b>（甲基、甲酰基）</td><td>巨幼红细胞贫血</td></tr>
+<tr><td><b>B₁₂ 钴胺素</b></td><td>甲基钴胺素 / 5'-脱氧腺苷钴胺素</td><td><b>甲基转移</b>、变位反应</td><td>恶性贫血、神经损伤</td></tr>
+<tr><td><b>维生素 C</b></td><td>—（抗氧化剂）</td><td><b>羟化</b>（脯氨酸/赖氨酸羟化，胶原合成）、抗氧化</td><td>坏血病</td></tr>
+<tr><td><b>维生素 A</b></td><td>视黄醛</td><td>构成<b>视紫红质</b>、维持上皮</td><td>夜盲症、干眼病</td></tr>
+<tr><td><b>维生素 D</b></td><td>1,25-(OH)₂-D₃</td><td>促<b>钙磷吸收</b>（激素样作用）</td><td>佝偻病、骨软化</td></tr>
+<tr><td><b>维生素 E</b></td><td>生育酚</td><td><b>抗氧化</b>，保护膜脂</td><td>溶血、不育</td></tr>
+<tr><td><b>维生素 K</b></td><td>—</td><td>促<b>凝血因子</b>（Ⅱ、Ⅶ、Ⅸ、Ⅹ）的 γ-羧化</td><td>出血倾向</td></tr>
+</tbody>
+</table>
+<div class="tip"><b>速记</b>：<b>“B 族管代谢（B₁ 醛、B₂ 氢、PP 氢、B₆ 氨、泛酸酰、生物素碳、叶酸一碳、B₁₂ 甲基），A 看、D 钙、E 抗氧、K 凝血、C 胶原。”</b></div>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>能量计算：1mol 丙氨酸氧化产生多少 ATP?</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>维生素又叫维他命，是人体不可缺少的物质 （1）从代谢角度 解释为什么维生素是人体必需物质 （2）请举一个例子说明维生素…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>丙酮酸羧化酶</td></tr>
+</tbody>
+</table>
+<h2 id="s9" class="sec" data-lv="mid"><span class="num">09</span>生物膜<span class="freq">真题 12 · 命中 10 · 年份 1999—2019（共 9 年）</span></h2>
+<h3 class="item" data-lv="mid">膜的组成与流动镶嵌模型 <span class="stars">★★</span> <span class="freq">真题 18、13</span></h3>
+<div class="q"><span class="tag">真题回放</span>2018：<em>生物膜的组成与特征</em>；2013：<em>流体镶嵌模型（写结构、功能、应用）</em>；名解 2019：<em>生物膜</em>。</div>
+<div class="k">
+<div class="hd">组成（三类物质）</div>
+<p><b>① 膜脂</b>：<b>磷脂</b>（甘油磷脂为主：PC、PE、PS、PI）、<b>鞘脂</b>（鞘磷脂、脑苷脂、神经节苷脂）、<b>固醇</b>（动物为胆固醇，植物为谷固醇，<b>细菌一般不含</b>）。<br>
+<b>② 膜蛋白</b>：<b>外周蛋白</b>（ peripheral，靠离子键/氢键附着表面）、<b>整合蛋白</b>（跨膜，疏水段埋入脂双层）、<b>脂锚定蛋白</b>。膜蛋白是<b>膜功能的体现者</b>。<br>
+<b>③ 膜糖</b>：以<b>糖蛋白/糖脂</b>形式存在于膜<b>外表面</b>，构成<b>糖萼</b>，参与识别、黏附、免疫。</p>
+<div class="hd" style="margin-top:12px">两大结构特征（答题必写）</div>
+<p><b>流动性</b>（脂分子侧向扩散、翻转极少；蛋白可侧向移动）与 <b>不对称性</b>（脂、蛋白、糖在两侧分布不同）。<br>
+<b>影响因素</b>：<b>胆固醇</b>双向调节（低温防凝固、高温防过流动）；不饱和脂肪酸越多越流动；温度升高流动性增大。</p>
+</div>
+<h3 class="item" data-lv="mid">物质运输：被动、主动、协同 <span class="stars">★★</span> <span class="freq">名解 13（主动运输）</span></h3>
+<table>
+<thead><tr><th style="width:18%">方式</th><th style="width:14%">耗能</th><th style="width:14%">载体</th><th>要点/例子</th></tr></thead>
+<tbody>
+<tr><td><b>简单扩散</b></td><td>不耗能</td><td>无</td><td>顺浓度梯度，O₂、CO₂、乙醇、尿素</td></tr>
+<tr><td><b>协助扩散</b></td><td>不耗能</td><td>有（通道/载体）</td><td>顺梯度、饱和性、特异性；<b>葡萄糖转运体 GLUT</b>、水通道</td></tr>
+<tr><td><b>主动运输</b></td><td><b>耗能</b></td><td>有</td><td><b>逆</b>浓度梯度；<b>Na⁺-K⁺ ATP 酶</b>（3 Na⁺ 出 / 2 K⁺ 入）、Ca²⁺ 泵、质子泵</td></tr>
+<tr><td><b>协同运输</b></td><td>间接耗能</td><td>有</td><td>依靠离子梯度驱动：<b>同向</b>（葡萄糖-Na⁺ 同向转运）/<b>反向</b>（Na⁺-Ca²⁺ 交换）</td></tr>
+</tbody>
+</table>
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2001</td><td class="c">简答</td><td>试述生物膜的两侧不对称性</td></tr>
+<tr><td class="c">2000</td><td class="c">简答</td><td>请列举生物膜有哪些生理功能</td></tr>
+<tr><td class="c">1999</td><td class="c">简答</td><td>简述什么是生物膜，其主要生理功能有哪些?</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>什么是生物膜的流动性？请从生物膜的化学组成上说明为什么生物膜会具有流动性，并说明生物膜的流动性对生物体的重要意义</td></tr>
+</tbody>
+</table>
+<h2 id="s10" class="sec" data-lv="hi"><span class="num">10</span>糖酵解与糖异生<span class="freq">真题 53 · 命中 42 · 年份 1999—2025（共 18 年）</span></h2>
+<p class="lead">超级重点章。考题只有四种：<b>三步不可逆反应</b>、<b>三个限速酶及调节物</b>、<b>6-磷酸葡萄糖的枢纽地位</b>、<b>糖异生的 3 步绕行（4 个关键酶）</b>。把这四块背成条件反射，这一章就满分。</p>
+
+<h3 class="item" data-lv="hi">糖酵解十步与三步不可逆 <span class="stars">★★★</span> <span class="freq">真题 18、20 · 名解 19</span></h3>
+<div class="q"><span class="tag">真题回放</span>2018：<em>糖酵解的三大步骤（限速步骤）</em>；2020：<em>EMP 途径的三个限速酶及其活性调节物质，及详细反应步骤</em>。</div>
+<div class="k">
+<div class="hd">十步反应（只需牢记“耗能-裂解-产能”三段结构）</div>
+<table>
+<thead><tr><th class="c" style="width:6%">步</th><th style="width:38%">反应</th><th style="width:26%">酶</th><th>能量</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td>葡萄糖 → 6-磷酸葡萄糖</td><td><b>己糖激酶</b>（肝为葡萄糖激酶）</td><td><b>−1 ATP</b>（不可逆）</td></tr>
+<tr><td class="c">2</td><td>G6P → 6-磷酸果糖</td><td>磷酸己糖异构酶</td><td>—</td></tr>
+<tr><td class="c">3</td><td>F6P → <b>1,6-二磷酸果糖</b></td><td><b>磷酸果糖激酶-1（PFK-1）</b></td><td><b>−1 ATP</b>（不可逆，<b>最重要限速步</b>）</td></tr>
+<tr><td class="c">4</td><td>F1,6BP → 磷酸二羟丙酮 + 3-磷酸甘油醛</td><td>醛缩酶</td><td>—</td></tr>
+<tr><td class="c">5</td><td>DHAP ⇌ 3-磷酸甘油醛</td><td>磷酸丙糖异构酶</td><td>—</td></tr>
+<tr><td class="c">6</td><td>G3P + NAD⁺ + Pi → <b>1,3-二磷酸甘油酸</b></td><td>3-磷酸甘油醛脱氢酶</td><td><b>+2 NADH</b></td></tr>
+<tr><td class="c">7</td><td>1,3-BPG + ADP → 3-磷酸甘油酸 + ATP</td><td>磷酸甘油酸激酶</td><td><b>+2 ATP</b>（底物水平磷酸化）</td></tr>
+<tr><td class="c">8</td><td>3-PG → 2-PG</td><td>磷酸甘油酸变位酶</td><td>—</td></tr>
+<tr><td class="c">9</td><td>2-PG → <b>磷酸烯醇式丙酮酸</b> + H₂O</td><td>烯醇化酶</td><td>—（形成高能键）</td></tr>
+<tr><td class="c">10</td><td>PEP + ADP → 丙酮酸 + ATP</td><td><b>丙酮酸激酶</b></td><td><b>+2 ATP</b>（不可逆）</td></tr>
+</tbody>
+</table>
+<p class="tagline"><b>净反应</b>：葡萄糖 + 2 ADP + 2 Pi + 2 NAD⁺ → 2 丙酮酸 + 2 ATP + 2 NADH + 2 H⁺ + 2 H₂O。<b>净得 2 ATP、2 NADH</b>（若从糖原开始，省去第 1 步，净得 <b>3 ATP</b>）。</p>
+</div>
+
+<h3 class="item" data-lv="hi">三个限速酶与它们的调节物 <span class="stars">★★★</span> <span class="freq">真题 20、18</span></h3>
+<div class="q"><span class="tag">真题回放</span>2020：<em>EMP 三个限速酶及其活性调节物质</em>（本节是全章最可能出大题的地方）。</div>
+<table>
+<thead><tr><th style="width:22%">限速酶</th><th style="width:30%">激活剂</th><th>抑制剂</th></tr></thead>
+<tbody>
+<tr><td><b>己糖激酶</b>（HK）</td><td>无经典别构激活剂；<b>Pi 可解除 G6P 的抑制</b>；胰岛素诱导（肝葡萄糖激酶）</td><td><b>6-磷酸葡萄糖</b>（产物反馈，最主要）、长链脂酰 CoA</td></tr>
+<tr><td><b>PFK-1</b>（最关键）</td><td><b>AMP、ADP</b>、<b>2,6-二磷酸果糖</b>（最强激活剂）、F6P（前馈）</td><td><b>ATP</b>（高浓度）、<b>柠檬酸</b>、<b>H⁺</b>、长链脂肪酸</td></tr>
+<tr><td><b>丙酮酸激酶</b>（PK）</td><td><b>1,6-二磷酸果糖</b>（前馈激活，最主要）、高血糖（肝）</td><td><b>ATP</b>、<b>丙氨酸</b>、长链脂肪酸、乙酰 CoA（肝）</td></tr>
+</tbody>
+</table>
+<div class="tip"><b>一句话理解调节逻辑</b>：<b>“能量低（AMP/ADP 高）就加速，能量高（ATP/柠檬酸高）就刹车。”</b>果糖-2,6-二磷酸（<b>F-2,6-BP</b>，注意不是 2,3-BPG）是 PFK-1 最强的别构激活剂，由双功能酶 PFK-2/FBPase-2 生成与水解，受胰高血糖素/胰岛素经 PKA 磷酸化调控——它是激素控制糖酵解的关键<b>信号代谢物</b>，但不是“第二信使”（第二信使是 cAMP）。</div>
+
+<h3 class="item" data-lv="hi">6-磷酸葡萄糖：糖代谢的十字路口 <span class="stars">★★★</span> <span class="freq">真题 18、19</span></h3>
+<div class="q"><span class="tag">真题回放</span>2018、2019：<em>6-磷酸葡萄糖作为糖代谢枢纽，说明它参与哪些糖代谢过程</em>。</div>
+<div class="grid2">
+<div class="k"><div class="hd">来源（3 条）</div>
+<p>① <b>糖酵解</b>：葡萄糖经己糖激酶/葡萄糖激酶磷酸化；<br>
+② <b>糖原分解</b>：糖原 → 1-磷酸葡萄糖 →（变位酶）→ G6P；<br>
+③ <b>糖异生</b>：乳酸、甘油、生糖氨基酸异生为 G6P。</p></div>
+<div class="k"><div class="hd">去路（4 条）</div>
+<p>① <b>糖酵解/有氧氧化</b> → 丙酮酸 → 乳酸或乙酰 CoA → TCA；<br>
+② <b>磷酸戊糖途径</b> → 5-磷酸核糖 + NADPH；<br>
+③ <b>糖原合成</b>：G6P → G1P → UDPG → 糖原；<br>
+④ <b>释放葡萄糖</b>：肝/肾的<b>6-磷酸葡萄糖酶</b>水解成葡萄糖入血（肌肉无此酶，故肌糖原不能直接补血糖）。</p></div>
+</div>
+<p class="tagline">结论一句话：<b>G6P 是糖酵解、有氧氧化、糖异生、磷酸戊糖途径、糖原合成与分解五条通路的共同中间物，所以称“枢纽/交叉点”。</b></p>
+
+<h3 class="item" data-lv="hi">糖异生：3 步绕行、4 个关键酶 <span class="stars">★★★</span> <span class="freq">真题 12 · 名解 12</span></h3>
+<div class="q"><span class="tag">真题回放</span>2012：<em>EMP 与糖异生有差异的酶及其催化反应</em>。</div>
+<div class="k">
+<div class="hd">糖酵解三步不可逆 → 糖异生四步绕行</div>
+<table>
+<thead><tr><th style="width:26%">糖酵解（不可逆）</th><th>糖异生（绕行）</th><th>酶</th></tr></thead>
+<tbody>
+<tr><td>葡萄糖 → G6P<br><span class="tagline">己糖激酶</span></td><td>G6P + H₂O → 葡萄糖 + Pi</td><td><b>6-磷酸葡萄糖酶</b>（仅肝、肾）</td></tr>
+<tr><td>F6P → F1,6BP<br><span class="tagline">PFK-1</span></td><td>F1,6BP + H₂O → F6P + Pi</td><td><b>果糖-1,6-二磷酸酶（FBPase-1）</b></td></tr>
+<tr><td>PEP → 丙酮酸<br><span class="tagline">丙酮酸激酶</span></td><td>丙酮酸 + CO₂ + ATP → 草酰乙酸<br>草酰乙酸 + GTP → PEP + GDP + CO₂</td><td><b>丙酮酸羧化酶</b>（线粒体，<b>生物素</b>辅酶）<br><b>PEP 羧激酶（PEPCK）</b></td></tr>
+</tbody>
+</table>
+<p><b>能量账</b>：由 2 分子丙酮酸合成 1 分子葡萄糖，消耗 <b>4 ATP + 2 GTP = 6 个高能键</b>；而糖酵解只净得 2 ATP——<b>糖异生是“亏本生意”，所以只在肝、肾进行且受严格调控</b>。</p>
+<p><b>原料</b>：乳酸、甘油、生糖氨基酸、丙酸。 <b>乳酸循环（Cori 循环）</b>：肌肉产乳酸 → 血液 → 肝异生为葡萄糖 → 回肌肉。</p>
+</div>
+<div class="q"><span class="tag">真题回放</span>2011：<em>为什么剧烈运动后肌肉酸痛，一段时间后又消失</em>。<br>
+<b>答</b>：剧烈运动时供氧不足，丙酮酸不能彻底氧化，为再生 <b>NAD⁺</b> 维持糖酵解，丙酮酸被还原为<b>乳酸</b>；乳酸堆积降低局部 pH，引起酸中毒、血管受压 → 酸痛。运动停止后，乳酸经血液入肝，经<b>Cori 循环</b>异生为葡萄糖（或直接氧化），堆积清除 → 酸痛消失。</div>
+<div class="q"><span class="tag">真题回放</span>2017、2021：<em>EMP 途径中间产物磷酸化的重要作用</em>。<br>
+<b>答</b>：磷酸化使中间产物<b>带负电荷、不能自由通过细胞膜</b>，从而<b>把代谢物“锁”在细胞内</b>；同时磷酸酯键是<b>高能键</b>，为<b>底物水平磷酸化</b>提供能量；磷酸基还作为<b>识别标记</b>与酶的活性中心结合，降低反应活化能。</div>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2014</td><td class="c">问答</td><td>糖酵解的中间产物在其他代谢途径中的应用有哪些?</td></tr>
+<tr><td class="c">2000</td><td class="c">简答</td><td>请简述糖代谢紊乱可能造成的疾病</td></tr>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>请计算 1 mol 甘油彻底氧化分解共生成多少 mol ATP？</td></tr>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>一摩尔乳酸完全氧化成二氧化碳和水产生多少 ATP。</td></tr>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>一摩尔磷酸烯醇式丙酮酸完全氧化成二氧化碳和水产生多少 ATP。</td></tr>
+<tr><td class="c">回忆版</td><td class="c">问答</td><td>碘乙酸抑制酵母糖酵解的实验中， （1）酵母+葡萄糖溶液+三氯乙酸的试管中没有气泡产生 （2）酵母+葡萄糖溶液+碘乙酸的…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>糖酵解，带磷酸的中间产物，与别的代谢有关的方程式写出来(几大代谢共有的中间产物)</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>乳酸循环（肝糖原、肌糖原的区别）</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>乳酸脱氢酶的活性测定(说明乳酸脱氢酶催化的化学反应，并怎样测该酶的活性)</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>磷酸葡萄糖异构酶</td></tr>
+</tbody>
+</table>
+<h2 id="s11" class="sec" data-lv="mid"><span class="num">11</span>三羧酸循环<span class="freq">真题 14 · 命中 9 · 年份 2001、2011、2015、2016、2017、2020、2021 · 题少但必考</span></h2>
+<p class="lead">全章 <b>14 题、覆盖 7 个年份</b>，题型却高度集中：八步反应、三个调控酶、“一分子乙酰 CoA 产 10 ATP”。同一个考点每年换个包装再考，必须能默写。</p>
+
+<h3 class="item" data-lv="hi">八步反应与能量结算 <span class="stars">★★★</span></h3>
+<table>
+<thead><tr><th class="c" style="width:6%">步</th><th style="width:36%">反应</th><th style="width:28%">酶</th><th>产物</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td>乙酰 CoA + 草酰乙酸 → <b>柠檬酸</b> + CoA-SH</td><td><b>柠檬酸合酶</b>（限速）</td><td>—</td></tr>
+<tr><td class="c">2</td><td>柠檬酸 → 顺乌头酸 → <b>异柠檬酸</b></td><td>顺乌头酸酶</td><td>—</td></tr>
+<tr><td class="c">3</td><td>异柠檬酸 → <b>α-酮戊二酸</b> + CO₂</td><td><b>异柠檬酸脱氢酶</b>（限速）</td><td><b>NADH</b></td></tr>
+<tr><td class="c">4</td><td>α-KG + CoA + NAD⁺ → <b>琥珀酰 CoA</b> + CO₂</td><td><b>α-KG 脱氢酶复合体</b>（限速）</td><td><b>NADH</b></td></tr>
+<tr><td class="c">5</td><td>琥珀酰 CoA + GDP + Pi → 琥珀酸 + <b>GTP</b></td><td>琥珀酰 CoA 合成酶</td><td><b>1 GTP</b>（底物水平磷酸化）</td></tr>
+<tr><td class="c">6</td><td>琥珀酸 → 延胡索酸</td><td>琥珀酸脱氢酶（<b>即呼吸链复合体Ⅱ</b>）</td><td><b>FADH₂</b></td></tr>
+<tr><td class="c">7</td><td>延胡索酸 + H₂O → 苹果酸</td><td>延胡索酸酶</td><td>—</td></tr>
+<tr><td class="c">8</td><td>苹果酸 → 草酰乙酸</td><td>苹果酸脱氢酶</td><td><b>NADH</b></td></tr>
+</tbody>
+</table>
+<p class="tagline"><b>一分子乙酰 CoA</b>：3 NADH ×2.5 + 1 FADH₂ ×1.5 + 1 GTP = <b>10 ATP</b>（旧教材按 12 ATP）<br>
+<b>一分子葡萄糖</b>彻底氧化：糖酵解 2 ATP + 2 NADH（胞质）→ 2 丙酮酸 → 2 乙酰 CoA（+2 NADH）→ TCA（2×10）。合计 <b>2 + 2×10 + 2×2.5 + 2×（1.5 或 2.5）= 30 或 32 ATP</b>（取决于胞质 NADH 走 3-磷酸甘油穿梭还是苹果酸-天冬氨酸穿梭）。</p>
+
+<h3 class="item" data-lv="hi">TCA 的三调控酶与调节物 <span class="stars">★★★</span> <span class="freq">真题 20</span></h3>
+<div class="q"><span class="tag">真题回放</span>2020：<em>柠檬酸循环的三个调控酶、调控物质（激活剂/抑制剂）及三步反应方程</em>。</div>
+<table>
+<thead><tr><th style="width:24%">酶</th><th>激活剂</th><th>抑制剂</th></tr></thead>
+<tbody>
+<tr><td><b>柠檬酸合酶</b></td><td>NAD⁺、ADP<br><span class="tagline">（乙酰 CoA 是<b>底物</b>，不是激活剂）</span></td><td><b>NADH、ATP、柠檬酸</b></td></tr>
+<tr><td><b>异柠檬酸脱氢酶</b></td><td><b>ADP、Ca²⁺</b>、NAD⁺</td><td>NADH、ATP、α-KG</td></tr>
+<tr><td><b>α-KG 脱氢酶复合体</b></td><td>ADP、Ca²⁺、NAD⁺</td><td>NADH、ATP、琥珀酰 CoA</td></tr>
+</tbody>
+</table>
+<div class="tip"><b>统一逻辑</b>：<b>ADP/AMP、Ca²⁺、NAD⁺ 是“能量不足”信号 → 激活；ATP、NADH、产物堆积 → 抑制。</b>记住这一句，三个酶的表可以现场推。</div>
+
+<h3 class="item" data-lv="hi">TCA 为什么是代谢枢纽 <span class="stars">★★★</span> <span class="freq">真题 17</span></h3>
+<div class="q"><span class="tag">真题回放</span>2017：<em>TCA 为什么是糖、脂肪、核酸、蛋白质的枢纽？各类共同代谢的中间产物与相互联系渠道</em>。</div>
+<div class="k">
+<p><b>① 共同的“最终氧化通路”</b>：糖 → 丙酮酸 → 乙酰 CoA；脂肪 → 甘油 → 丙酮酸、脂肪酸 → β-氧化 → 乙酰 CoA；蛋白质 → 氨基酸脱氨后碳骨架 → 乙酰 CoA/α-KG/琥珀酰 CoA/延胡索酸/OAA。<b>四类物质最终都汇入 TCA 彻底氧化</b>。</p>
+<p><b>② 共同的“合成原料库”</b>：OAA → 糖异生 → 葡萄糖；乙酰 CoA → 脂肪酸/胆固醇；α-KG、OAA → 转氨生成氨基酸；琥珀酰 CoA → 血红素；OAA + 乙酰 CoA → 柠檬酸 → 运出线粒体供脂肪酸合成。</p>
+<p><b>③ 三大关键中间产物</b>：<b>6-磷酸葡萄糖、丙酮酸、乙酰 CoA</b>（这三个是各大类物质互变的“关卡”，纲要明确要求）。</p>
+<p><b>④ 两用代谢途径（amphibolic）</b>：既分解又合成，因此其中间物必须靠<b>添补反应</b>补充。</p>
+</div>
+<div class="k">
+<div class="hd">添补反应（回补 OAA，必考小点）</div>
+<p>① <b>丙酮酸羧化酶</b>：丙酮酸 + CO₂ + ATP → OAA（最重要）；② <b>PEP 羧化激酶（PEPCK）</b>：生理方向是 OAA + GTP → PEP（糖异生方向）；只有在细菌/植物的 <b>PEP 羧化酶（PEPC）</b>中才走 PEP + CO₂ → OAA，动物体内不靠它回补；③ <b>苹果酸酶</b>：丙酮酸 + CO₂ + NADPH → 苹果酸 → OAA；④ <b>转氨/脱氨</b>：Asp、Glu 直接补充 OAA、α-KG。</p>
+</div>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2001</td><td class="c">问答</td><td>说明天冬氨酸是如何成糖的，天冬氨酸的成糖过程与丙氨酸成糖过程有何异同？</td></tr>
+<tr><td class="c">回忆版</td><td class="c">论述</td><td>试述为什么三羧酸循环是糖类、脂类和蛋白质三大营养物质代谢的共同通路和中心枢纽。</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>根据下列酶促反应回答问题： 谷氨酸 + 丙酮酸 → α-酮戊二酸 + 丙氨酸 （1）写出上述酶促反应所需要的酶及其辅酶…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>Glu → α-酮戊二酸 丙氨酸 ① 酶+辅酶 Vit B6 ② 有 Ala. 缺乏 Asp. 为什么不缺乏 Asp</td></tr>
+</tbody>
+</table>
+<h2 id="s12" class="sec" data-lv="mid"><span class="num">12</span>氧化磷酸化<span class="freq">真题 26 · 命中 20 · 年份 2001—2024（共 14 年）</span></h2>
+<h3 class="item" data-lv="mid">呼吸链与 P/O 比 <span class="stars">★★</span> <span class="freq">名解 10、12/19、13</span></h3>
+<div class="q"><span class="tag">名解回放</span>2010：<em>呼吸链</em>；2012、2019：<em>氧化磷酸化</em>；2013：<em>磷氧比</em>。</div>
+<div class="k">
+<div class="hd">两条呼吸链（按起点分）</div>
+<p><b>NADH 呼吸链</b>：NADH → <b>复合体Ⅰ</b>（NADH 脱氢酶，泵 4H⁺）→ <b>CoQ</b> → <b>复合体Ⅲ</b>（细胞色素 bc₁，泵 4H⁺）→ <b>Cyt c</b> → <b>复合体Ⅳ</b>（细胞色素氧化酶，泵 2H⁺）→ O₂。<br>
+<b>FADH₂ 呼吸链</b>：FADH₂ → <b>复合体Ⅱ</b>（琥珀酸脱氢酶，<b>不泵质子</b>）→ CoQ → Ⅲ → Cyt c → Ⅳ → O₂。</p>
+<p><b>P/O 比</b>：每消耗 <b>1 mol 氧原子</b>所消耗的无机磷摩尔数（即生成的 ATP 数）。NADH = <b>2.5</b>，FADH₂ = <b>1.5</b>（旧值 3 与 2）。<br>
+<b>化学渗透假说</b>（Mitchell）：电子传递泵出 H⁺ 形成<b>跨膜质子电化学梯度</b>，H⁺ 经 <b>ATP 合酶（F₀F₁）</b>回流驱动 ADP + Pi → ATP。</p>
+</div>
+<h3 class="item" data-lv="mid">抑制剂与解偶联剂 <span class="stars">★★</span> <span class="freq">真题 10、22</span></h3>
+<div class="q"><span class="tag">真题回放</span>2010：<em>解偶联剂的作用</em>；2022：<em>抗霉素 A 为什么比鱼藤酮更有害</em>。</div>
+<table>
+<thead><tr><th style="width:22%">类别</th><th style="width:22%">代表</th><th>作用位点/机制</th></tr></thead>
+<tbody>
+<tr><td rowspan="3"><b>呼吸链抑制剂</b><br><span class="tagline">阻断电子传递</span></td><td><b>鱼藤酮、阿米妥</b></td><td>复合体Ⅰ（只阻断 NADH 来路，<b>FADH₂ 仍可氧化</b>）</td></tr>
+<tr><td><b>抗霉素 A</b></td><td>复合体Ⅲ（<b>两条链的共同通道，全堵</b>）</td></tr>
+<tr><td>CN⁻、CO、NaN₃、H₂S</td><td>复合体Ⅳ（细胞色素氧化酶），<b>最致命</b></td></tr>
+<tr><td><b>ATP 合酶抑制剂</b></td><td><b>寡霉素、DCCD</b></td><td>堵 F₀ 质子通道，<b>不阻断电子传递</b>但 ATP 不能生成（属氧化磷酸化抑制剂，与呼吸链抑制剂并列的第三类）</td></tr>
+<tr><td><b>解偶联剂</b></td><td><b>2,4-二硝基苯酚（DNP）</b>、<b>FCCP</b>、<b>双香豆素</b></td><td>把 H⁺ 直接“搬”过膜，<b>破坏质子梯度</b>：电子照常传递、<b>ATP 不生成</b>，能量全变热。<b>表现为耗氧增加而 ATP 减少</b>（“只烧油不出力”）。<b>注</b>：<b>缬氨霉素</b>是 <b>K⁺ 离子载体</b>（离子载体抗生素），<b>不是解偶联剂</b>，别写混</td></tr>
+</tbody>
+</table>
+<div class="tip"><b>2022 年那道题的标准答法</b>：鱼藤酮抑制复合体Ⅰ，<b>只切断 NADH 通路</b>，FADH₂（如琥珀酸氧化）仍能供电子，故毒性有限；抗霉素 A 抑制复合体Ⅲ，<b>位于两条链的汇合之后</b>，无论从 NADH 还是 FADH₂ 来的电子都被堵死，<b>全部电子流中断</b>，故毒性更强。</div>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2024</td><td class="c">简答</td><td>鱼藤酮和抗霉素哪个毒性强。</td></tr>
+<tr><td class="c">2001</td><td class="c">问答</td><td>氰化物为什么能引起细胞窒息死亡？其解救机理是什么？</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>简述什么是光合磷酸化</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>请解释氰化物对电子呼吸链的抑制作用。</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>试述为什么煤气（CO）中毒时，为什么人体内耗氧量会下降？</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>糖酵解中间产物氧化磷酸化的意义？</td></tr>
+</tbody>
+</table>
+<h2 id="s13" class="sec" data-lv="low"><span class="num">13</span>磷酸戊糖途径与乙醛酸循环<span class="freq">真题 9 · 命中 8 · 年份 2005、2010、2014、2015、2018、2021</span></h2>
+<h3 class="item" data-lv="mid">PPP 的两大产物 · 乙醛酸循环 <span class="stars">★★</span> <span class="freq">名解 18（乙醛酸循环）</span></h3>
+<div class="k">
+<div class="hd">磷酸戊糖途径（PPP）：只记“两产物 + 两阶段”</div>
+<p><b>氧化阶段（不可逆）</b>：G6P →（<b>6-磷酸葡萄糖脱氢酶 G6PDH</b>，限速）→ 6-磷酸葡萄糖酸内酯 →（6-磷酸葡萄糖酸脱氢酶）→ <b>5-磷酸核酮糖 + 2 NADPH + CO₂</b>。<br>
+<b>非氧化阶段（可逆）</b>：核酮糖-5-P ⇌ 核糖-5-P ⇌ 木酮糖-5-P，经<b>转酮醇酶（TPP）</b>、<b>转醛醇酶</b>重排为己糖、丙糖。</p>
+<p><b>生理意义（必背 3 条）</b>：① 产生 <b>NADPH</b>——供脂肪酸/胆固醇合成、维持谷胱甘肽还原（保护红细胞）；② 产生 <b>5-磷酸核糖</b>——核苷酸合成的原料；③ 连接糖酵解与核苷酸代谢（C3、C4、C5、C6、C7 互通）。<br>
+<b>临床</b>：G6PDH 缺陷 → NADPH 不足 → 谷胱甘肽不能还原 → 红细胞膜脂过氧化 → <b>蚕豆病（溶血性贫血）</b>。</p>
+</div>
+<div class="k">
+<div class="hd">乙醛酸循环（名解 2018）</div>
+<p><b>定义</b>：植物、微生物中，脂肪酸 β-氧化产生的<b>乙酰 CoA</b> 在<b>乙醛酸体（glyoxysome）</b>内，经<b>异柠檬酸裂解酶</b>与<b>苹果酸合酶</b>两步特有反应生成<b>琥珀酸</b>，进而异生为糖的途径。</p>
+<p><b>关键点</b>：① 绕过 TCA 的两个脱羧步骤（不产生 CO₂、不损失碳）；② <b>净结果：2 乙酰 CoA → 1 琥珀酸</b> → OAA → 葡萄糖，实现了<b>“脂肪变糖”</b>；③ 动物<b>没有</b>这两个酶，故动物不能把脂肪酸净转化为糖（这是“只吃脂肪不吃糖会酮症”的根本原因）。</p>
+</div>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2014</td><td class="c">问答</td><td>乙醛酸循环是什么?有什么生物学意义?</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>大多数未控制的糖尿病患者，往往会伴随苯丙酮尿症的出现，请从生物化学角度解释。</td></tr>
+</tbody>
+</table>
+<h2 id="s14" class="sec" data-lv="low"><span class="num">14</span>糖原的合成与分解<span class="freq">真题 4 · 命中 3 · 年份 2013、2025</span></h2>
+<div class="grid2">
+<div class="k"><div class="hd">合成（4 步）</div>
+<p>① G6P → G1P（磷酸葡萄糖变位酶）；② G1P + UTP → <b>UDPG</b>（UDPG 焦磷酸化酶）；③ <b>糖原合酶</b>把 UDPG 的葡萄糖加到引物非还原端（<b>α-1,4</b>）；④ <b>分支酶</b>转移 6~7 个残基形成 <b>α-1,6</b> 分支。<br>
+<b>限速酶</b>：糖原合酶（去磷酸化时<b>有活性</b>）。</p></div>
+<div class="k"><div class="hd">分解（2 步）</div>
+<p>① <b>糖原磷酸化酶</b>（限速）从非还原端切下 <b>G1P</b>（磷酸解，<b>不耗 ATP</b>）；② <b>脱支酶</b>处理 α-1,6 分支（转移 3 个残基 + 水解分支点）。G1P → G6P →（肝的 G6Pase）→ 血糖。</p></div>
+</div>
+<p><b>激素调节级联</b>：肾上腺素/胰高血糖素 → cAMP↑ → PKA → 磷酸化酶激酶 → 糖原磷酸化酶（<b>活化</b>）；同时 PKA 磷酸化糖原合酶（<b>失活</b>）。<b>“一个信号同时踩油门和刹车”</b>，避免无效循环。</p>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2025</td><td class="c">简答</td><td>为什么糖原分解主要采用磷酸解而不是水解？请从能量利用和代谢意义等方面加以说明。</td></tr>
+</tbody>
+</table>
+<h2 id="s15" class="sec" data-lv="hi"><span class="num">15</span>脂类代谢<span class="freq">真题 58 · 命中 45 · 年份 2002—2025（共 17 年）</span></h2>
+<p class="lead">超级重点。全章围绕三件事：<b>β-氧化四步 + 肉碱穿梭</b>、<b>产能计算</b>、<b>酮体与酮症</b>。58 道题里有 5 道是“临床情景 + 解释”，答案都指向同一个机制：<b>草酰乙酸被糖异生耗尽 → 乙酰 CoA 转向酮体</b>。</p>
+
+<h3 class="item" data-lv="hi">β-氧化的四步与肉碱穿梭 <span class="stars">★★★</span> <span class="freq">真题 12、13、19</span></h3>
+<div class="q"><span class="tag">真题回放</span>2012：<em>脂肪酸合成与氧化途径的异同</em>；2013、2019：<em>脂肪酸 β-氧化与柠檬酸循环的相同点与不同点</em>。</div>
+<div class="k">
+<div class="hd">四步循环（每轮缩短 2 个碳）</div>
+<p><b>① 脱氢</b>：脂酰 CoA → 反-Δ²-烯脂酰 CoA，<b>FAD → FADH₂</b>（脂酰 CoA 脱氢酶）<br>
+<b>② 水合</b>：加水生成 <b>L-β-羟脂酰 CoA</b>（烯脂酰 CoA 水合酶）<br>
+<b>③ 再脱氢</b>：→ β-酮脂酰 CoA，<b>NAD⁺ → NADH</b>（β-羟脂酰 CoA 脱氢酶）<br>
+<b>④ 硫解</b>：+CoA → <b>乙酰 CoA + 少 2 碳的脂酰 CoA</b>（β-酮脂酰 CoA 硫解酶）</p>
+<p><b>活化与转运</b>：胞质中 脂肪酸 + CoA + ATP → <b>脂酰 CoA</b>（消耗 2 个高能键，即“−2 ATP”）；长链脂酰 CoA 不能直接过线粒体内膜，须经<b>肉碱穿梭</b>：<b>CPTⅠ</b>（肉碱棕榈酰转移酶Ⅰ，<b>限速酶</b>，受丙二酰 CoA 抑制）→ 肉碱-脂酰肉碱 → <b>CPTⅡ</b> → 线粒体基质。</p>
+</div>
+<div class="k">
+<div class="hd">β-氧化 vs TCA（2013、2019 真题答案）</div>
+<table>
+<thead><tr><th style="width:16%"></th><th>β-氧化</th><th>TCA</th></tr></thead>
+<tbody>
+<tr><td>相同点</td><td colspan="2">都经历 <b>脱氢 → 水合 → 再脱氢</b> 这三步；都产生 NADH、FADH₂ 进入呼吸链；都在线粒体基质</td></tr>
+<tr><td>不同点</td><td>降解<b>脂肪酸</b>，产物是<b>乙酰 CoA</b>；硫解用 <b>CoA</b></td><td>氧化<b>乙酰 CoA</b>，产物是 <b>CO₂ + 还原当量</b>；缩合用 <b>草酰乙酸</b></td></tr>
+<tr><td>关系</td><td colspan="2">β-氧化是 TCA 的<b>上游</b>，为 TCA 提供底物乙酰 CoA</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="item" data-lv="hi">产能计算（每年必考）<span class="stars">★★★</span> <span class="freq">真题 19、20、21、22</span></h3>
+<div class="q"><span class="tag">真题回放</span>2019、2020：<em>1 mol 软脂酸彻底氧化成 CO₂ 产生多少 ATP</em>；2021：<em>1 mol 甘油（经 3-磷酸甘油穿梭）</em>；2022：<em>1 mol 十八碳甘油三酯</em>。</div>
+<div class="k">
+<div class="hd">三步算法（任何脂肪酸都能套）</div>
+<p>设碳数 n（偶数）：<br>
+<b>① β-氧化轮数</b> = n/2 − 1；<b>② 乙酰 CoA 数</b> = n/2；<b>③ 每轮产</b> 1 FADH₂ + 1 NADH。</p>
+<p class="eq">ATP = (n/2)×10 + (n/2−1)×(1.5+2.5) − 2</p>
+<p><b>软脂酸 C16</b>：8×10 + 7×4 − 2 = 80 + 28 − 2 = <b>106 ATP</b>。<br>
+<b>硬脂酸 C18</b>：9×10 + 8×4 − 2 = 90 + 32 − 2 = <b>120 ATP</b>。<br>
+<b>甘油</b>：−1（甘油激酶）+ 2（糖酵解底物水平）+ 2×1.5（胞质 NADH 经 3-磷酸甘油穿梭）+ 12.5（丙酮酸→TCA）= <b>16.5 ATP</b>。<br>
+<b>十八碳甘油三酯</b>：16.5 + 3×120 = <b>376.5 ATP</b>。</p>
+</div>
+<div class="trap"><b>关于甘油的两个版本（务必看清题干）</b>：资料原答案给 <b>18.5</b>（把 2 个胞质 NADH 按 2.5 计，即<b>苹果酸-天冬氨酸穿梭</b>）；但题干明确写“<b>经 3-磷酸甘油穿梭</b>”，此时每个胞质 NADH 只产 <b>1.5</b>，正确值为 <b>16.5</b>。同一份资料对甘油三酯也给了 376.5 与 378.5 两解。<b>考场原则：按题干指定的穿梭方式算；题干没写就写两个答案并注明假设。</b></div>
+
+<h3 class="item" data-lv="hi">酮体与酮症（5 道题同一套逻辑）<span class="stars">★★★</span> <span class="freq">真题 10、13、16、19、21</span></h3>
+<div class="q"><span class="tag">真题回放</span>2013：<em>过度饥饿为何呼出异味气体</em>；2016、2019：<em>为什么节食会导致酸中毒</em>；2019：<em>酮体的定义、过量原因、危害</em>；2016/2017/2021：<em>只吃脂类不吃糖会怎样？缺糖时吃奇数碳还是偶数碳脂类好</em>；2010：<em>糖尿病患者的乙酰 CoA 是否进入呼吸链</em>。</div>
+<div class="k">
+<div class="hd">一条因果链，五个问法都能答</div>
+<p><b>酮体</b> = <b>乙酰乙酸、β-羟丁酸、丙酮</b>（肝内生成，肝外利用；<b>肝缺乏 β-酮脂酰 CoA 转移酶，不能利用酮体</b>——这是“肝造不自用”的经典考点）。</p>
+<p><b>因果链</b>：饥饿/糖尿病 → 血糖不足 → <b>胰高血糖素↑</b> → ① 脂肪动员、β-氧化加速 → 乙酰 CoA 大量生成；② 糖异生加速 → <b>草酰乙酸被大量消耗</b> → 乙酰 CoA <b>无法进入 TCA</b> → 转向<b>酮体生成</b> → 血酮升高 → <b>酮血症、酮尿症</b>。</p>
+<p><b>异味</b>：<b>丙酮</b>易挥发，经肺排出，故呼气有“烂苹果味”。<br>
+<b>酸中毒</b>：乙酰乙酸、β-羟丁酸是<b>有机酸</b>，滴定消耗血中 <b>HCO₃⁻</b>、阴离子间隙增大，使血液 pH 下降（注意：酮症酸中毒时<b>总体钾缺乏但血清钾常正常或偏高</b>，不要写成“血钾被消耗”）。<br>
+<b>危害</b>：酸中毒抑制酶活性、扰乱水盐代谢，严重时昏迷（糖尿病酮症酸中毒 DKA）。</p>
+<p><b>奇数碳为什么更好</b>：奇数碳脂肪酸 β-氧化除产生乙酰 CoA 外，末轮产生 <b>丙酰 CoA</b> →（羧化，<b>生物素</b>）→ <b>甲基丙二酰 CoA</b> →（变位酶，<b>B₁₂</b>）→ <b>琥珀酰 CoA</b> → 补充 TCA 中间物 → 生成 OAA → <b>可异生为葡萄糖</b>；偶数碳只能产乙酰 CoA，无法净补充草酰乙酸。</p>
+</div>
+<div class="q"><span class="tag">真题回放</span>2010：<em>糖尿病患者，标记的乙酰 CoA 在呼吸中是否存在</em>。<br>
+<b>答</b>：<b>存在</b>。虽然糖异生消耗 OAA 使乙酰 CoA 难以直接入 TCA，但乙酰 CoA 转向生成酮体，酮体经血液运至<b>肝外组织</b>再转变为乙酰 CoA，并补充 TCA 中间物（琥珀酰 CoA → OAA），使 TCA 得以运行，最终 <b>¹⁴CO₂ 可在呼出气中检出</b>。</div>
+
+<h3 class="item" data-lv="mid">脂肪酸合成 vs 降解（对照表）<span class="stars">★★</span> <span class="freq">真题 12</span></h3>
+<table>
+<thead><tr><th style="width:16%"></th><th>合成</th><th>β-氧化</th></tr></thead>
+<tbody>
+<tr><td>场所</td><td><b>胞质</b></td><td><b>线粒体基质</b></td></tr>
+<tr><td>酰基载体</td><td><b>ACP</b>（酰基载体蛋白）</td><td><b>CoA</b></td></tr>
+<tr><td>二碳单位</td><td>丙二酰 CoA（<b>+2C</b>，从甲基端向羧基端延伸）</td><td>乙酰 CoA（<b>−2C</b>，从羧基端向甲基端切除）</td></tr>
+<tr><td>反应序列</td><td>缩合 → 还原 → 脱水 → 还原</td><td>氧化 → 水合 → 氧化 → 硫解</td></tr>
+<tr><td>辅因子</td><td><b>NADPH</b>（还原力）</td><td><b>FAD、NAD⁺</b></td></tr>
+<tr><td>转运</td><td>柠檬酸-丙酮酸循环（乙酰 CoA 出线粒体）</td><td><b>肉碱穿梭</b></td></tr>
+<tr><td>限速酶</td><td><b>乙酰 CoA 羧化酶</b>（生物素；受柠檬酸激活、软脂酰 CoA 抑制）</td><td><b>CPTⅠ</b>（受丙二酰 CoA 抑制）</td></tr>
+<tr><td>能量</td><td>C16 消耗 <b>7 ATP + 14 NADPH</b>（折合约 <b>42 个 ATP 当量</b>）</td><td>C16 净产 <b>106 ATP</b>（两栏不可直接相减：一个是合成成本，一个是氧化收益）</td></tr>
+</tbody>
+</table>
+<div class="q"><span class="tag">真题回放</span>2012：<em>简述摄入糖量过多容易长胖的原因</em>。<br>
+<b>答</b>：① 糖 → 糖酵解 → <b>乙酰 CoA</b>，后者是脂肪酸合成的直接原料；② 糖酵解中间物 <b>磷酸二羟丙酮</b> 可还原为 <b>3-磷酸甘油</b>，提供脂肪的甘油骨架；③ 糖氧化产生大量 <b>NADPH</b> 与 <b>ATP</b>，为脂肪酸合成提供还原力与能量；④ 过量糖超出氧化与糖原储存能力，剩余部分即转化为脂肪储存。</div>
+<div class="q"><span class="tag">真题回放</span>2018、2020、2021：<em>简述高等生物中乙酰辅酶 A 的代谢去路</em>。<br>
+<b>答</b>：① 进入 <b>TCA</b> 彻底氧化供能；② 合成<b>脂肪酸</b>→脂肪、磷脂；③ 合成<b>胆固醇</b>及类固醇激素（HMG-CoA 途径）；④ 生成<b>酮体</b>作为肝向肝外组织输出的能源；⑤ 合成<b>乙酰胆碱</b>等（次要）。</div>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2025</td><td class="c">简答</td><td>什么是酮体？酮体包括哪几种？其合成原料是什么？酮体具有什么生理意义？</td></tr>
+<tr><td class="c">2024</td><td class="c">简答</td><td>为什么两极动物的腿和蹄部分含有大量不饱和脂肪酸（不饱和脂肪酸对北极动物生活的影响）。</td></tr>
+<tr><td class="c">2024</td><td class="c">简答</td><td>有氧运动为什么能够减肥？</td></tr>
+<tr><td class="c">2024</td><td class="c">简答</td><td>脂肪酸氧化也可以放出大量能量，为什么食品营养学中还是将碳水化合物作为主要能源物质</td></tr>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>1mol 甘油酯酰（脂肪酸酰链为软脂酸）在体内彻底氧化成 H₂O 和 CO₂，净产生多少 mol ATP?</td></tr>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>1mol 的油酸彻底氧化能产生多少摩尔的 ATP? 写出分析过程。</td></tr>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>在鱼藤酮存在情况下，人体肝脏细胞中，一分子软脂酸（16 碳）完全氧化是产生多少分子 ATP？请写出计算过程和依据</td></tr>
+<tr><td class="c">回忆版</td><td class="c">问答</td><td>脂肪酸 β 氧化过程与 TCA 循环有两步类似反应，写出这两步反应的化学方程式。</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>（1）淀粉液化和糖化的酶及水解特点 （2）脂肪酸 b 氧化酶和产物</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>关于奇数 C 脂肪与偶数 C 脂肪，哪个好?</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>为什么糖尿病人代谢过程中容易产生酮体？过量的酮体对机体有何危害？</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>当机体摄入糖类物质不足时，推荐摄入含有奇数碳脂肪酸的脂肪，而不推荐摄入含有偶数碳脂肪酸的脂肪酸，请从营养学分析为什么如…</td></tr>
+</tbody>
+</table>
+<h2 id="s16" class="sec" data-lv="hi"><span class="num">16</span>氨基酸代谢<span class="freq">真题 36 · 命中 28 · 年份 2002—2025（共 14 年）</span></h2>
+<p class="lead">两条主线：<b>脱氨基（转氨/氧化脱氨/联合脱氨）</b>与<b>氨的去路（尿素循环 + 丙氨酸-葡萄糖循环）</b>。所有题都能用“<b>氨基怎么走、碳骨架怎么走</b>”这两句话拆解。</p>
+
+<h3 class="item" data-lv="hi">三种脱氨基方式 <span class="stars">★★★</span></h3>
+<table>
+<thead><tr><th style="width:20%">方式</th><th style="width:24%">反应/酶</th><th>特点</th></tr></thead>
+<tbody>
+<tr><td><b>转氨基</b></td><td>氨基酸 + α-KG ⇌ α-酮酸 + 谷氨酸；<b>转氨酶</b>（ALT/GPT、AST/GOT），辅酶 <b>磷酸吡哆醛 PLP</b></td><td>只<b>转移</b>氨基，<b>不产生游离氨</b>；可逆；是“氨基集散”的第一步</td></tr>
+<tr><td><b>氧化脱氨</b></td><td>Glu + NAD(P)⁺ + H₂O → α-KG + NH₃ + NAD(P)H；<b>谷氨酸脱氢酶（GDH）</b></td><td>唯一能在体内大量<b>释放游离氨</b>的反应；受 ATP/GTP 抑制、ADP/GDP 激活</td></tr>
+<tr><td><b>联合脱氨</b></td><td>转氨 + 氧化脱氨<b>偶联</b>（多数氨基酸的主途径）；也可经<b>嘌呤核苷酸循环</b></td><td>把“不能直接脱氨”的氨基酸先转给 α-KG，再让 Glu 脱氨——<b>“借道谷氨酸”</b></td></tr>
+</tbody>
+</table>
+
+<h3 class="item" data-lv="hi">尿素循环（5 步 + 耗能）<span class="stars">★★★</span> <span class="freq">真题 10（与 TCA 关系）</span></h3>
+<div class="k">
+<div class="hd">五步反应（肝细胞，线粒体→胞质）</div>
+<p>① NH₃ + CO₂ + 2 ATP → <b>氨甲酰磷酸</b>（<b>氨甲酰磷酸合成酶Ⅰ</b>，限速，需 <b>N-乙酰谷氨酸 NAG</b> 激活）<br>
+② 氨甲酰磷酸 + 鸟氨酸 → <b>瓜氨酸</b>（鸟氨酸转氨甲酰酶）→ 出线粒体<br>
+③ 瓜氨酸 + <b>天冬氨酸</b> + ATP → <b>精氨酸琥珀酸</b>（精氨酸琥珀酸合成酶）<br>
+④ 精氨酸琥珀酸 → <b>精氨酸 + 延胡索酸</b>（<b>精氨酸琥珀酸裂解酶</b>）<br>
+⑤ 精氨酸 + H₂O → <b>尿素 + 鸟氨酸</b>（精氨酸酶）</p>
+<p><b>耗能</b>：共 <b>4 个高能键</b>（① 2 个 ATP、③ 1 个 ATP，另 ③ 生成 AMP→ADP 再耗 1 个高能键）。<br>
+<b>两个氮的来源</b>：一个来自<b>游离氨</b>（①），一个来自<b>天冬氨酸</b>（③）。</p>
+</div>
+<div class="q"><span class="tag">真题回放</span>2010：<em>尿素循环与 TCA 的关系</em>。<br>
+<b>答</b>：二者通过<b>延胡索酸</b>沟通——尿素循环第 ④ 步由<b>精氨酸琥珀酸裂解酶</b>产生<b>延胡索酸</b>，后者进入 TCA 变为苹果酸、草酰乙酸；草酰乙酸经<b>转氨基</b>接受氨基生成<b>天冬氨酸</b>，再回到尿素循环第 ③ 步作为氮供体。<b>即“天冬氨酸-延胡索酸”构成两个循环之间的桥梁（Krebs 双循环）。</b></div>
+
+<h3 class="item" data-lv="mid">碳骨架的去路：生糖与生酮氨基酸 <span class="stars">★★</span></h3>
+<div class="k">
+<p><b>生酮氨基酸（2 个）</b>：<b>Leu、Lys</b>——只能生成乙酰 CoA/乙酰乙酸，不能净生成糖。<br>
+<b>生糖兼生酮（5 个）</b>：<b>Ile、Phe、Tyr、Trp、Thr</b>——碳骨架分裂后一部分进 TCA（生糖）、一部分生成乙酰 CoA/乙酰乙酸（生酮）。<br>
+<b>生糖氨基酸（其余 13 个）</b>：Ala、Arg、Asp、Asn、Cys、Glu、Gln、Gly、His、Met、Pro、Ser、Val。<br>
+<span class="tagline">口诀：<b>“住（Leu）宿（Lys）不生糖”</b>；<b>“异苯酪色苏，又糖又酮”</b>。</span></p>
+</div>
+
+<h3 class="item" data-lv="hi">氨的转运：丙氨酸-葡萄糖循环 <span class="stars">★★★</span> <span class="freq">名解 13/16/19</span></h3>
+<div class="k">
+<p><b>肌肉</b>：氨基酸转氨给<b>丙酮酸</b> → <b>丙氨酸</b>（无毒转运形式）→ 血液 → <b>肝</b>：丙氨酸再转氨给 α-KG → 丙酮酸（用于<b>糖异生</b>）+ 谷氨酸（释放氨进尿素循环）。生成的葡萄糖经血液回肌肉，形成循环。<br>
+<b>意义</b>：把肌肉的氨<b>以无毒形式</b>运到肝，同时把碳骨架用于肝糖异生——<b>“一箭双雕”</b>。这也是 2021 年“为什么血中 Ala 和 Gln 浓度最高”的答案：<b>二者是氨的运输载体</b>。</p>
+<p><b>γ-谷氨酰循环</b>（名解 13）：小肠/肾中经<b>谷胱甘肽</b>转运氨基酸的循环（γ-谷氨酰基转移、再合成谷胱甘肽）。</p>
+</div>
+<div class="q"><span class="tag">真题回放</span>2013、2021：<em>食物中含丙氨酸但不含天冬氨酸，为何能检测到天冬氨酸</em>。<br>
+<b>答</b>：天冬氨酸是<b>非必需氨基酸</b>。Ala 经<b>转氨</b>脱氨生成<b>丙酮酸</b> → 经<b>丙酮酸羧化酶</b>（添补反应，生物素，耗 ATP）羧化为<b>草酰乙酸</b> → 草酰乙酸经<b>转氨</b>接受氨基即生成<b>天冬氨酸</b>。故食物中不含 Asp 也能检出。</div>
+<div class="q"><span class="tag">真题回放</span>2021：<em>丙氨酸 + 谷氨酸 → α-酮戊二酸 + 丙酮酸，写出酶与辅酶</em>。<br>
+<b>答</b>：<b>谷丙转氨酶（ALT/GPT）</b>，辅酶为 <b>磷酸吡哆醛（PLP，维生素 B₆）</b>；反应可逆，是“丙氨酸-葡萄糖循环”中的关键转氨步骤。</div>
+<div class="q"><span class="tag">真题回放</span>2017：<em>Ala 彻底氧化分解产生多少 ATP</em>。<br>
+<b>答</b>：Ala 经联合脱氨 → 丙酮酸 + 谷氨酸；谷氨酸经 GDH 产生 <b>1 NADH（2.5）</b>；丙酮酸 → 乙酰 CoA 产生 <b>1 NADH（2.5）</b>；乙酰 CoA 进 TCA 产生 <b>10</b>。合计 <b>15 ATP</b>。<span class="tagline">（计入尿素合成消耗的 <b>4 个高能键</b>，<b>净生成 11 ATP</b>；考试写 11 更稳）</span></div>
+<div class="q"><span class="tag">真题回放</span>2011：<em>为什么牛吃的是草，挤出来的是奶</em>。<br>
+<b>答</b>：瘤胃共生菌产生<b>纤维素酶</b>，把纤维素降解为葡萄糖 → 糖酵解生成<b>丙酮酸</b> → 进入 TCA 生成 α-KG、OAA、丙酮酸等碳骨架 → 经<b>转氨基</b>合成非必需氨基酸；同时瘤胃菌体蛋白与饲料蛋白降解为氨基酸，经吸收后在<b>乳腺</b>用于合成乳蛋白；葡萄糖还可转化为乳糖与乳脂。<b>“草→糖→碳骨架→氨基酸→奶”</b>。</div>
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2025</td><td class="c">简答</td><td>人体内有哪几种脱氨基作用？请简述其过程及生理意义。</td></tr>
+<tr><td class="c">2002</td><td class="c">简答</td><td>写出尿素循环，并简述其生理意义</td></tr>
+<tr><td class="c">2002</td><td class="c">简答</td><td>什么是一碳单位？一碳单位有哪些？氨基酸与一碳单位之间有何关系？</td></tr>
+<tr><td class="c">回忆版</td><td class="c">论述</td><td>氨对机体毒害的作用机制，怎么代谢氨。</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>患有鸟氨酸循环障碍的病人，请写出建议其饮食习惯，并从代谢途径解释原因。</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>氨基酸代谢和 VB</td></tr>
+</tbody>
+</table>
+<h2 id="s17" class="sec" data-lv="mid"><span class="num">17</span>核苷酸代谢<span class="freq">真题 16 · 命中 14 · 年份 2011—2024（共 9 年） · 纲要指定“痛风”必考</span></h2>
+<h3 class="item" data-lv="mid">从头合成 vs 补救途径 <span class="stars">★★</span></h3>
+<table>
+<thead><tr><th style="width:16%"></th><th>嘌呤核苷酸</th><th>嘧啶核苷酸</th></tr></thead>
+<tbody>
+<tr><td>从头合成原料</td><td><b>PRPP</b>（磷酸核糖焦磷酸）+ 甘氨酸 + 天冬氨酸 + 谷氨酰胺 + CO₂ + 一碳单位（<b>在磷酸核糖上逐步“拼装”</b>）</td><td>谷氨酰胺 + CO₂ + 天冬氨酸（<b>先合成嘧啶环，再与 PRPP 结合</b>）</td></tr>
+<tr><td>关键产物</td><td>先得 <b>IMP</b> → AMP / GMP</td><td>先得 <b>UMP</b> → CTP / dTMP</td></tr>
+<tr><td>限速酶</td><td><b>PRPP 酰胺转移酶</b>（受 AMP/GMP 反馈抑制）</td><td><b>氨甲酰磷酸合成酶Ⅱ</b>（胞质，受 UTP 抑制、ATP 激活）</td></tr>
+<tr><td>补救途径</td><td><b>HGPRT</b>（次黄嘌呤-鸟嘌呤磷酸核糖转移酶）、APRT</td><td>嘧啶磷酸核糖转移酶、<b>胸苷激酶</b></td></tr>
+</tbody>
+</table>
+<div class="tip"><b>一句话对比</b>：<b>嘌呤是“在核糖上建房子”，嘧啶是“先建好房子再装核糖”。</b>补救途径的意义：<b>节省能量</b>，并回收核酸降解产生的碱基——<b>脑、骨髓几乎只能靠补救</b>。HGPRT 缺陷 → <b>Lesch-Nyhan 综合征</b>（自残、高尿酸）。</div>
+
+<h3 class="item" data-lv="hi">嘌呤分解与痛风 <span class="stars">★★★</span> <span class="freq mid">纲要明确“重点掌握”</span></h3>
+<div class="k">
+<p><b>分解路径</b>：AMP → 次黄嘌呤；GMP → 鸟嘌呤 →（脱氨）<b>黄嘌呤</b> →（<b>黄嘌呤氧化酶</b>）→ <b>尿酸</b>（人类终产物，因缺乏尿酸氧化酶）。</p>
+<p><b>痛风成因</b>：尿酸生成过多或排泄不足 → 血尿酸 &gt; 饱和浓度 → 以<b>尿酸盐结晶</b>沉积于关节、软组织、肾 → 激活炎症小体 → 急性关节炎（第一跖趾关节最常见）。<br>
+<b>治疗</b>：① <b>别嘌呤醇</b>——次黄嘌呤<b>类似物</b>，竞争性抑制<b>黄嘌呤氧化酶</b>（也属机制性/“自杀性”灭活，做题写“竞争性抑制”最稳），减少尿酸生成；② 促排泄药（丙磺舒）；③ 碱化尿液、低嘌呤饮食、多饮水。</p>
+</div>
+<div class="q"><span class="tag">真题回放</span>2013、2021：<em>嘌呤和嘧啶的合成抑制剂为何有抗癌/抗病毒作用？举例说明核苷酸抗代谢物</em>。<br>
+<b>答</b>：这类物质是<b>抗代谢物</b>（与正常底物结构相似），机制有二：① <b>竞争性抑制</b>核苷酸合成途径中的关键酶，阻断原料供应；② 作为<b>伪底物掺入</b>核酸，形成异常 DNA/RNA，造成<b>链终止或突变</b>，从而抑制细胞增殖。<b>由于肿瘤细胞与病毒复制旺盛</b>，对核苷酸供应更依赖，因此选择性地被杀伤。例：<b>6-巯基嘌呤</b>（嘌呤类似物，抑制 IMP→AMP/GMP）、<b>5-氟尿嘧啶</b>（抑制胸苷酸合成酶）、<b>甲氨蝶呤</b>（叶酸类似物，抑制二氢叶酸还原酶）、<b>阿糖胞苷</b>。</div>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2024</td><td class="c">简答</td><td>别嘌呤醇治疗痛风的原理。</td></tr>
+<tr><td class="c">2014</td><td class="c">问答</td><td>嘌呤和嘧啶核苷酸的合成过程各有什么特点?其中分别有哪些氨基酸的参与?</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>5－氟尿嘧啶作为抗癌药物， （1）请解释为什么 5－氟尿嘧啶可以抑制癌症。 （2）往往不推荐病人长期服用 5－氟尿嘧啶…</td></tr>
+</tbody>
+</table>
+<h2 id="s18" class="sec" data-lv="mid"><span class="num">18</span>DNA 复制、修复与重组<span class="freq">真题 15 · 命中 11 · 年份 2010、2012、2013、2015、2016、2017、2018、2024</span></h2>
+<h3 class="item" data-lv="hi">半保留复制与半不连续复制 <span class="stars">★★★</span> <span class="freq">真题 10、12 · 名解 18</span></h3>
+<div class="q"><span class="tag">真题回放</span>2010、2012：<em>简要说明什么是 DNA 的半保留复制和半不连续复制</em>；2018 名解：<em>半不连续复制</em>；2013、2016 名解：<em>冈崎片段</em>。</div>
+<div class="k">
+<p><b>半保留复制</b>：复制时双链<b>氢键断裂、两链分开</b>，各自作为模板合成新链；子代 DNA 中<b>一条链来自亲代、一条为新合成</b>。<br>
+<b>半不连续复制</b>：因两条模板<b>反向平行</b>而 DNA 聚合酶只能 <b>5'→3'</b> 合成，故<b>前导链</b>沿复制叉方向<b>连续</b>合成；<b>后随链</b>与复制叉方向相反，只能<b>分段</b>合成<b>冈崎片段</b>再连接——一条连续、一条不连续，故名“半不连续”。<br>
+<b>冈崎片段</b>：后随链上由许多<b>不连续短片段</b>组成，每个片段带一段 RNA 引物，由 Pol Ⅰ 切除填补、连接酶封口（名解要点：发现者冈崎；原核 1000~2000 nt，真核 100~200 nt）。</p>
+</div>
+<div class="q"><span class="tag">真题回放</span>2012：<em>设计证明 DNA 半保留复制的方案</em>（Meselson-Stahl 实验）。<br>
+<b>答</b>：① 大肠杆菌在 <b>¹⁵NH₄Cl</b> 培养基中培养多代，使 DNA 全部被 ¹⁵N 标记；② 转入 <b>¹⁴NH₄Cl</b> 培养基；③ 定时取样，SDS 裂解后用 <b>CsCl 密度梯度离心</b>（140000 g，20 h）；④ 紫外下观察区带：<b>亲代</b>为一条重带（¹⁵N/¹⁵N）；<b>第一代</b>只有一条<b>中间密度带</b>（¹⁵N/¹⁴N），无重带 —— 证明<b>半保留</b>；<b>第二代</b>出现<b>中间带 + 轻带</b>（各半），且随代数增加轻带增强、中间带减弱，从不出现其它新带 —— 与半保留复制的预测<b>完全一致</b>。</div>
+
+<h3 class="item" data-lv="hi">复制所需的酶与蛋白因子 <span class="stars">★★★</span> <span class="freq">真题 17</span></h3>
+<table>
+<thead><tr><th style="width:24%">酶/蛋白</th><th>功能</th></tr></thead>
+<tbody>
+<tr><td><b>解旋酶（DnaB）</b></td><td>利用 ATP 解开双链，形成复制叉</td></tr>
+<tr><td><b>单链结合蛋白 SSB</b></td><td>结合单链，<b>防止复性、抗核酸酶水解</b>、降低二级结构</td></tr>
+<tr><td><b>拓扑异构酶</b></td><td>消除复制叉前方<b>正超螺旋</b>；Ⅰ 型切一条链，Ⅱ 型（旋转酶）切两条链</td></tr>
+<tr><td><b>引发酶（DnaG）</b></td><td>合成<b>短 RNA 引物</b>（提供 3'-OH）</td></tr>
+<tr><td><b>DNA 聚合酶Ⅲ</b></td><td>原核<b>主力复制酶</b>：5'→3' 聚合、<b>3'→5' 外切校对</b>、无 5'→3' 外切</td></tr>
+<tr><td><b>DNA 聚合酶Ⅰ</b></td><td><b>切除 RNA 引物</b>并填补缺口（5'→3' 外切 + 聚合）</td></tr>
+<tr><td><b>DNA 连接酶</b></td><td>封闭缺口，形成<b>磷酸二酯键</b>（需 ATP/NAD⁺）</td></tr>
+<tr><td>真核聚合酶</td><td><b>Pol ε</b>（<b>前导链</b>延伸）、<b>Pol δ</b>（<b>后随链</b>延伸）、Pol α（引发）、Pol γ（线粒体）、Pol β/ζ（修复）</td></tr>
+</tbody>
+</table>
+<div class="trap"><b>易错</b>：① Pol Ⅲ 是“主力”，Pol Ⅰ 是“清道夫+修补匠”；② 连接酶<b>只封口不填补</b>；③ 引发酶是 <b>RNA 聚合酶</b>（不需 3'-OH），这是“RNA 引物”的由来。</div>
+
+<h3 class="item" data-lv="mid">端粒与端粒酶 <span class="stars">★★</span> <span class="freq">真题 2010</span></h3>
+<div class="q"><span class="tag">真题回放</span>2010：<em>诺贝尔奖的端粒酶</em>。</div>
+<div class="k">
+<p><b>概念</b>：端粒酶是含 <b>RNA</b> 的<b>逆转录酶</b>，以自身 RNA 为模板合成端粒 DNA（TTAGGG 重复），延长因复制而缩短的端粒。<br>
+<b>功能</b>：① 稳定染色体末端、防止染色体间融合与降解；② <b>补偿后随链 5' 端去除 RNA 引物后的空缺</b>（解决末端复制问题）；③ 维持基因组完整与细胞增殖能力。<br>
+<b>分布与双刃剑</b>：正常体细胞活性极低，仅<b>造血细胞、干细胞、生殖细胞</b>有活性；<b>肿瘤细胞中重新激活</b> → 无限增殖（抗癌靶点）。</p>
+</div>
+
+<h3 class="item" data-lv="mid">DNA 损伤与修复（与 631 交叉）<span class="stars">★★</span></h3>
+<p>五种修复系统的对照表见《631 分子生物学手册》第 ④ 节，此处只记<b>880 常考的三句话</b>：① <b>错配修复</b>靠<b>母链甲基化</b>识别新旧链；② <b>切除修复</b>分 BER（切单个碱基）与 NER（切一段寡核苷酸，缺陷致<b>着色性干皮病</b>）；③ <b>SOS 修复</b>由 RecA 促 <b>LexA 自切割</b>启动，属<b>易错修复</b>，突变率升高。</p>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">—</td><td class="c">—</td><td>本章新增真题（半不连续复制、半保留复制实验、质粒复制条件）均已并入正文对应小节逐条讲解，不再重复列出。</td></tr>
+</tbody>
+</table>
+<h2 id="s19" class="sec" data-lv="mid"><span class="num">19</span>RNA 的生物合成与加工<span class="freq">真题 14 · 命中 9 · 年份 2001、2010、2012、2013、2014、2016、2017、2019</span></h2>
+<h3 class="item" data-lv="hi">启动子与操纵子（名解双黄蛋）<span class="stars">★★★</span> <span class="freq">启动子 12/17/19 · 操纵子 16</span></h3>
+<div class="grid2">
+<div class="k"><div class="hd">启动子（promoter）</div>
+<p>DNA 链上能<b>指示转录起始</b>的序列，是 <b>RNA 聚合酶识别与结合</b>的部位。<br>
+原核：<b>−10 区（TATAAT）</b> + <b>−35 区（TTGACA）</b>，由 <b>σ 因子</b>识别。<br>
+真核：<b>TATA 盒</b>（−25~−30）+ <b>CAAT 盒</b>、<b>GC 盒</b>等上游元件，由 <b>TFⅡD</b> 识别。</p></div>
+<div class="k"><div class="hd">操纵子（operon）</div>
+<p>原核生物在<b>转录水平</b>控制基因表达的<b>协调单位</b>，由<b>启动子 P + 操纵基因 O + 功能相关的一组结构基因</b>组成（另可有调节基因）。<br>
+一个操纵子转录出<b>一条多顺反子 mRNA</b>。<b>真核生物没有操纵子</b>。</p></div>
+</div>
+
+<h3 class="item" data-lv="hi">转录终止的两种机制 <span class="stars">★★★</span> <span class="freq">真题 10</span></h3>
+<div class="q"><span class="tag">真题回放</span>2010：<em>简述大肠杆菌转录终止信号</em>。</div>
+<div class="grid2">
+<div class="k"><div class="hd">不依赖 ρ（简单终止子）</div>
+<p>结构：<b>回文对称、富含 GC</b> 的序列（转录出<b>发夹</b>）+ 结尾 <b>约 6 个 U</b>。<br>
+机制：发夹使 RNAP <b>暂停</b>；<b>rU-dA 配对最弱</b>（2 个氢键），杂合双链易解开 → RNA 释放。</p></div>
+<div class="k"><div class="hd">依赖 ρ（Rho）</div>
+<p>结构：回文区<b>不含富 GC</b>，之后<b>无寡聚 U</b>。<br>
+机制：<b>ρ 因子</b>（六聚体解旋酶）结合新生 RNA 的 <b>rut 位点</b>，耗 ATP 沿 RNA <b>5'→3' 追赶</b>；RNAP 在终止子处暂停时，ρ 追上并<b>解旋 RNA-DNA 杂合体</b>，释放 RNA。</p></div>
+</div>
+
+<h3 class="item" data-lv="mid">两道“为什么”型辨析题 <span class="stars">★★</span> <span class="freq">真题 12、13</span></h3>
+<div class="q"><span class="tag">真题回放</span>2012：<em>为什么 m⁷GTP 抑制真核蛋白质合成而不抑制原核？为什么人工合成的 SD 序列抑制原核而不抑制真核？</em><br>
+<b>答</b>：<b>m⁷GTP</b> 是帽子结构的类似物，能<b>竞争性占据真核核糖体的帽子结合位点</b>（eIF4E），阻止 mRNA 与核糖体结合；<b>原核 mRNA 没有帽子</b>，故不受影响。<br>
+反之，<b>SD 序列</b>是原核 mRNA 的核糖体结合位点，人工合成的游离 SD 会<b>竞争性结合原核核糖体</b>，阻碍其与 mRNA 配对；<b>真核 mRNA 无 SD 序列</b>（靠帽子与扫描机制起始），故不受影响。<br>
+<span class="tagline">一句话：<b>“谁有帽子谁怕 m⁷GTP，谁有 SD 谁怕游离 SD。”</b></span></div>
+<div class="q"><span class="tag">真题回放</span>2013：<em>细菌存在转录后加工吗</em>。<br>
+<b>答</b>：<b>存在</b>，但比真核简单。主要指对初级转录物的<b>切割、修剪、修饰</b>：① rRNA 前体 → 剪切成 16S/23S/5S 并<b>甲基化</b>；② tRNA 前体 → 切除 5' 前导与 3' 尾、加 <b>CCA</b> 端、修饰碱基；③ 少数 mRNA 有切割加工。<b>但没有真核那样的加帽、加尾与剪接体剪接。</b></div>
+
+<h3 class="item" data-lv="hi">真核 mRNA 加工（交叉高频）<span class="stars">★★★</span></h3>
+<p>加 <b>m⁷G 帽</b>（5'-5' 三磷酸键）→ 3' 端在 <b>AAUAAA</b> 信号后切割并加 <b>poly(A)</b> → <b>剪接</b>（去除内含子，GU-AG 规则，剪接体 U1/U2/U4/U5/U6）→ 可选<b>RNA 编辑</b>。<br>
+<b>帽子功能</b>：保护 5' 端、翻译起始识别、核输出；<b>尾巴功能</b>：稳定性、核输出、翻译效率。详见《631 手册》第 ⑤ 节。</p>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2001</td><td class="c">简答</td><td>列出转录酶和反转录酶的催化反应式</td></tr>
+<tr><td class="c">回忆版</td><td class="c">论述</td><td>什么是逆转录酶？试论述其生物学意义（10 分）</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>转录后加工是基因表达种的一个非常重要的步骤，试举出六种 RNA 水平上的加工方式</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>mRNA 真核生物转录后加工</td></tr>
+</tbody>
+</table>
+<h2 id="s20" class="sec" data-lv="mid"><span class="num">20</span>遗传密码与蛋白质合成<span class="freq">真题 16 · 命中 11 · 年份 1999—2022（共 10 年） · 纯操作题</span></h2>
+<h3 class="item" data-lv="hi">给 DNA 写 mRNA 再翻译 <span class="stars">★★★</span> <span class="freq">真题 21、22</span></h3>
+<div class="q"><span class="tag">真题回放</span>2021：<em>DNA 编码链为 5'-ACTAGTAATTTTGCATGT-3'，写出转录的 mRNA、翻译的氨基酸顺序、mRNA 的功能</em>（考试会附密码子表）。</div>
+<div class="k">
+<div class="hd">三步法（这类题只看三件事）</div>
+<ol>
+<li><b>分清链</b>：题目给的是<b>编码链</b>（有义链，与 mRNA 同序列，只是 T→U）；若是<b>模板链</b>，则需先互补。</li>
+<li><b>写出 mRNA</b>：编码链 5'→3' 直接把 <b>T 换成 U</b>：<span class="eq">5'-ACUAGUAAUUUUGCAUGU-3'</span>。</li>
+<li><b>找起始密码子 AUG</b>，按三联体从 AUG 开始读，遇终止密码子（UAA/UAG/UGA）停止。</li>
+</ol>
+<p><b>本例读法（务必自己数一遍）</b>：编码链 5'-ACTAGTAATTTTGCATGT-3' → mRNA 5'-ACUAGUAAUUUUGCAUGU-3'。全序列只在第 15~17 位出现一个 <b>AUG</b>，其后仅剩 1 个碱基，<b>读不出完整的开放阅读框</b>；若从第 1 位起按三联体读，则是 ACU·AGU·AAU·UUU·GCA·UGU ＝ Thr-Ser-Asn-Phe-Ala-Cys。<br><b>结论</b>：资料原答案写 Met-Gln-Asp-Lys，与上述任一读法都对不上，说明<b>题干序列或原答案是回忆失真</b>的。考场遇到这种题，<b>写清“先判断链性→转录→找 AUG→按三联体读”的方法</b>，过程分比答案更稳。</p>
+</div>
+<div class="trap"><b>三个扣分点</b>：① 忘记把 <b>T→U</b>；② 不找 AUG 就从头三个三个读；③ 忘记方向性（mRNA 5'→3'，肽链 N→C）。<b>解题流程：定向 → 换 U → 找 AUG → 三联体 → 遇终止停。</b></div>
+<div class="k">
+<div class="hd">mRNA 的功能（标准答案）</div>
+<p>mRNA 是<b>信使 RNA</b>，把 DNA 上的遗传信息转录下来并携带到核糖体，以<b>密码子</b>形式决定蛋白质中氨基酸的排列顺序，是蛋白质合成的<b>直接模板</b>。</p>
+</div>
+<p><b>遗传密码六特点</b>（三联体、连续性、简并性、通用性、起始/终止、摆动性）与<b>翻译精确性六重保障</b>，见《631 手册》第 ⑦ 节，两科完全通用。</p>
+
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">回忆版</td><td class="c">问答</td><td>tRNA 的二级结构有何特点，请用简图形式画出其基本结构，并说明 tRNA 的生理功能（10 分）</td></tr>
+<tr><td class="c">回忆版</td><td class="c">问答</td><td>根据核酸的生物功能，回答下列问题。 （1）DNA 双链：3&#x27;-GTGTTAACGT-5&#x27; 5&#x…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>给出 64 个密码子，写出起始密码子，终止密码子</td></tr>
+</tbody>
+</table>
+<h2 id="s21" class="sec" data-lv="mid"><span class="num">21</span>基因表达调控与基因工程<span class="freq">真题 18 · 命中 15 · 年份 2000—2025（共 11 年）</span></h2>
+<h3 class="item" data-lv="hi">PCR：条件、原理、应用 <span class="stars">★★★</span> <span class="freq">真题 12、19、20</span></h3>
+<div class="q"><span class="tag">真题回放</span>2012：<em>PCR 如何选择反应条件（温度、循环次数、时间）？为什么</em>；2019、2020：<em>简述 PCR 的原理和应用</em>。</div>
+<div class="k">
+<div class="hd">三温度三时间（数值＋理由一起写才满分）</div>
+<table>
+<thead><tr><th style="width:14%">步骤</th><th style="width:20%">条件</th><th>为什么这样选</th></tr></thead>
+<tbody>
+<tr><td><b>变性</b></td><td><b>93~95 ℃，30 s~1 min</b></td><td>温度太低解不开双链；太高或太久会使 <b>Taq 酶失活、dNTP 降解</b></td></tr>
+<tr><td><b>退火</b></td><td><b>50~65 ℃，30 s~1 min</b>（比引物 Tm 低约 5 ℃）</td><td>过低 → <b>非特异扩增、引物二聚体</b>；过高 → 引物结合不上、产量低</td></tr>
+<tr><td><b>延伸</b></td><td><b>72 ℃，约 1 min/kb</b></td><td>Taq 酶最适温度约 72 ℃，兼顾活性与持续合成能力</td></tr>
+</tbody>
+</table>
+<p><b>循环次数</b>：<b>25~35</b> 次。太少产量不足；太多进入<b>平台期</b>（dNTP/引物耗尽、酶失活、产物抑制），且<b>非特异产物与突变增多</b>。<br>
+<b>体系五要素</b>：模板、一对引物、dNTP、<b>耐热 Taq DNA 聚合酶</b>、<b>Mg²⁺</b>（辅因子）+ 缓冲液。<br>
+<b>引物设计</b>：18~25 nt、GC 40%~60%、3' 端避免互补、两引物 Tm 接近、避免形成发夹。</p>
+<div class="hd" style="margin-top:12px">应用（写 5 条即可）</div>
+<p>① 基因/探针的扩增合成；② <b>DNA 测序</b>与二代建库；③ <b>RT-PCR</b>（RNA→cDNA，检测基因转录）；④ <b>实时定量 PCR</b>（SYBR Green / TaqMan）；⑤ 基因突变（易错 PCR、定点诱变）与<b>重组 PCR</b>；⑥ 未知序列扩增（反向 PCR、染色体步移）；⑦ 医学诊断、法医鉴定、转基因检测。</p>
+</div>
+
+<h3 class="item" data-lv="mid">限制酶与质粒 <span class="stars">★★</span> <span class="freq">真题 13</span></h3>
+<div class="q"><span class="tag">真题回放</span>2013：<em>细菌内产生的限制酶为什么不剪切自身 DNA</em>；<em>质粒在宿主细胞中复制的必要条件</em>。</div>
+<div class="grid2">
+<div class="k"><div class="hd">限制酶为何不切自身</div>
+<p>① 细菌同时拥有<b>限制酶 + 甲基化酶</b>（限制-修饰系统），自身 DNA 的识别位点已被<b>甲基化</b>，修饰后不被切割；② 有些菌株基因组中<b>本就不含</b>该识别序列；③ 极少数被切时由<b>修复系统</b>补救。这是细菌<b>防御外源 DNA</b> 的机制。</p></div>
+<div class="k"><div class="hd">质粒的 5 个条件</div>
+<p>① 有<b>自主复制起点</b>（与宿主匹配的复制元件）；② 有<b>易筛选的选择标记</b>（抗药性、营养、显色）；③ 有<b>多个单一限制酶切位点</b>（MCS）；④ 分子<b>尽可能小</b>，便于导入与扩增；⑤ <b>使用安全</b>（宿主范围有限、不随意转移、不产生有害性状）。</p></div>
+</div>
+
+<h3 class="item" data-lv="mid">操纵子调控（与 631 重叠，880 也可能出）<span class="stars">★★</span></h3>
+<p><b>乳糖操纵子（可诱导、负控 + CAP 正控）</b>与<b>色氨酸操纵子（可阻遏、负控 + 弱化子）</b>的完整机制、四象限表、弱化子 1-2-3-4 配对规则，见《631 手册》第 ⑧ 节——两科共用同一套答案，<b>背一次，两科都能用</b>。</p>
+<p><b>真核调控多级性</b>：染色质水平（甲基化/组蛋白修饰）→ 转录水平（转录因子、增强子）→ 转录后（可变剪接）→ 翻译水平（miRNA）→ 翻译后（降解/修饰）。</p>
+
+<h3>本轮新增真题（1999—2025，含无年份回忆版）</h3>
+<table>
+<thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
+<tbody>
+<tr><td class="c">2025</td><td class="c">简答</td><td>简述 PCR 技术的原理、基本流程及其主要应用。</td></tr>
+<tr><td class="c">2014</td><td class="c">问答</td><td>在下列培养基条件下，大肠杆菌中 lac 操纵子的转录速度是怎么变化的 (a)乳糖和葡萄糖 (b)葡萄糖 (c)乳糖</td></tr>
+<tr><td class="c">2001</td><td class="c">问答</td><td>试述乳糖操纵子的调控机制</td></tr>
+<tr><td class="c">2000</td><td class="c">问答</td><td>什么是酶工程？目前进行酶工程研究的手段有哪些？请说明用定点突变的方法进行酶工程研究的原理</td></tr>
+<tr><td class="c">回忆版</td><td class="c">计算</td><td>简述天冬氨酸转化为葡萄糖的反应历程，并计算消耗的 ATP 摩尔数</td></tr>
+<tr><td class="c">回忆版</td><td class="c">论述</td><td>大概是研究出一种新型酶，应用现代技术在大肠杆菌中生产酶 （1）应用了什么技术手段？详细步骤是什么？ （2）分离纯化酶的…</td></tr>
+<tr><td class="c">回忆版</td><td class="c">简答</td><td>简述什么是增强子</td></tr>
+</tbody>
+</table>
+<h2 id="s22" class="sec" data-lv="hi"><span class="num">22</span>生化实验专题（大纲第 18 条）<span class="freq">真题 3 · 命中 1 · 年份 2011（共 1 年）</span></h2>
+<p class="lead">大纲原文列了 6 项：蛋白质分离提取、SDS-PAGE、考马斯亮蓝测蛋白、核酸分离提取、琼脂糖电泳与定量、酶的分离提取及酶活测定。这部分最容易被忽略。按题库标注严格统计（<code>chap</code> 含“实验”或 <code>type=实验</code>）只有 <b>3 条</b>、其中<b>带年份的 1 条（2011）</b>；但大纲这 6 项实验的题<b>分散在各章</b>，以简答形式反复出现（SDS-PAGE 的四个为什么、考马斯亮蓝、核酸提取与鉴定、酶活测定……）。本节按大纲 6 项组织，各实验的实际年份见对应章节。</p>
+
+<h3 class="item" data-lv="hi">实验一：蛋白质的分离提取（五步流程）<span class="stars">★★★</span></h3>
+<div class="k">
+<ol>
+<li><b>选材与破碎</b>：选富含目标蛋白的组织/菌体；用<b>匀浆、超声、高压、冻融、溶菌酶</b>破细胞。</li>
+<li><b>提取</b>：<b>低温（0~4 ℃）</b>、合适 <b>pH 与离子强度</b>的缓冲液；加<b>蛋白酶抑制剂</b>（PMSF）与还原剂（DTT/β-巯基乙醇）防降解与氧化。</li>
+<li><b>粗分级（按溶解度）</b>：<b>盐析</b>（硫酸铵分段：20%~40% 去杂蛋白，40%~60% 收目标蛋白）、有机溶剂沉淀、<b>等电点沉淀</b>。</li>
+<li><b>细分级（按大小/电荷/亲和）</b>：<b>透析/超滤</b>脱盐 → <b>凝胶过滤</b>（按 Mr）或 <b>离子交换</b>（按电荷）或 <b>亲和层析</b>（按特异性）。</li>
+<li><b>浓缩与鉴定</b>：PEG/超滤浓缩 → <b>SDS-PAGE</b> 看纯度与 Mr → 测<b>比活力</b>算纯化倍数。</li>
+</ol>
+</div>
+<div class="trap"><b>为什么用硫酸铵而不是 NaCl</b>：硫酸铵溶解度大、离子强度高、<b>对蛋白变性作用小</b>，且不同蛋白在其不同饱和度下先后沉淀，可实现<b>分段盐析</b>。盐析的本质是<b>竞争性脱水 + 中和表面电荷</b>，<b>不使蛋白变性</b>（可复溶）。</div>
+
+<h3 class="item" data-lv="hi">实验二：SDS-PAGE 全流程 <span class="stars">★★★</span> <span class="freq">真题 12、13</span></h3>
+<div class="k">
+<div class="hd">操作六步</div>
+<p>① 配胶（<b>分离胶</b> pH 8.8，<b>浓缩胶</b> pH 6.8）→ ② 上样（样品 + 上样缓冲液，含 <b>SDS、β-巯基乙醇、溴酚蓝、甘油</b>，<b>沸水浴 3~5 min</b>）→ ③ 电泳（恒压/恒流，溴酚蓝前沿到胶底停止）→ ④ <b>考马斯亮蓝 R-250 染色</b> → ⑤ 脱色 → ⑥ 拍照/扫描，与<b>标准分子量 Marker</b> 比对读数。</p>
+<p><b>判读</b>：条带越靠上 Mr 越大；单一条带说明纯度高；若条带数多于预期，说明有降解或杂蛋白。<b>注意</b>：SDS-PAGE 测的是<b>亚基</b>分子量（二硫键被还原），不是天然分子量。</p>
+</div>
+
+<h3 class="item" data-lv="hi">实验三：考马斯亮蓝 G-250 测蛋白含量 <span class="stars">★★★</span> <span class="freq">真题 11、20</span></h3>
+<div class="k">
+<div class="hd">原理（三句话）</div>
+<p>① 酸性条件下染料呈<b>棕红色</b>（最大吸收 465 nm）；② 与蛋白质通过<b>疏水作用</b>结合后变为<b>蓝色</b>，最大吸收移至 <b>595 nm</b>；③ 在一定范围内，<b>A595 的增加与蛋白浓度成正比</b>。</p>
+<div class="hd" style="margin-top:12px">步骤（标准曲线法）</div>
+<p>① 配 <b>0~100 μg/mL</b> 的牛血清白蛋白（BSA）标准series，各管补足体积；② 每管加考马斯亮蓝试剂，混匀，<b>室温静置 5~15 min</b>；③ 以<b>试剂空白</b>调零，测 <b>A595</b>；④ 以浓度为横坐标、A595 为纵坐标作图（线性回归）；⑤ 同样处理待测样品，用标准曲线<b>反算浓度</b>，再乘以稀释倍数与总体积得<b>总蛋白量</b>。</p>
+<p><b>注意事项</b>：染料会<b>吸附比色皿</b>（宜用一次性塑料皿）；<b>去污剂（SDS、Triton）与强碱干扰</b>；显色不稳定，需在 1 h 内读完。</p>
+</div>
+
+<h3 class="item" data-lv="hi">实验四：核酸的提取与鉴定 <span class="stars">★★★</span> <span class="freq">真题 20</span></h3>
+<div class="k">
+<div class="hd">DNA 提取（酚-氯仿法，5 步）</div>
+<p>① <b>裂解</b>：SDS + <b>蛋白酶 K</b> 破细胞、消化蛋白；② <b>抽提</b>：等体积<b>苯酚/氯仿/异戊醇</b>（25:24:1），变性蛋白留在有机相或界面；③ <b>离心分层</b>，取<b>上层水相</b>；④ <b>沉淀</b>：加 0.1 体积 3 mol/L NaAc + <b>2 倍体积无水乙醇</b>（−20 ℃），DNA 成絮状析出；⑤ <b>洗涤</b>：70% 乙醇洗盐 → 干燥 → 溶于 TE 缓冲液（含 EDTA 抑制核酸酶）。</p>
+<p><b>RNA 提取</b>：需<b>抑制 RNase</b>（DEPC 处理、异硫氰酸胍、酸性酚），全程低温、无 RNase 环境。</p>
+<div class="hd" style="margin-top:12px">质量鉴定（四看）</div>
+<p>① <b>A260/A280</b>：DNA 约 <b>1.8</b>、RNA 约 <b>2.0</b>，偏低提示蛋白污染；② <b>A260/A230</b> &gt; 2.0，偏低提示多糖/酚残留；③ <b>琼脂糖电泳</b>：条带清晰、无拖尾、无 RNA 污染（DNA 样品中 28S/18S 带说明 RNA 未除净）；④ <b>限制酶消化</b>：能被完全切开说明纯度合格。</p>
+</div>
+
+<h3 class="item" data-lv="mid">实验五：琼脂糖凝胶电泳 <span class="stars">★★</span> <span class="freq">真题 18、19</span></h3>
+<div class="k">
+<p><b>原理</b>：琼脂糖凝胶是带孔隙的<b>分子筛</b>；DNA 带负电（磷酸骨架），在电场中向<b>正极</b>迁移；迁移率与<b>lg 分子量成反比</b>（大分子受阻大、跑得慢）。</p>
+<p><b>操作</b>：配胶（0.8%~1% 琼脂糖 + 电泳缓冲液 TAE/TBE）→ 加<b>核酸染料</b>（EB/ GelRed）→ 上样（样品 + <b>上样缓冲液</b>，含甘油增重、溴酚蓝指示）→ 电泳（5~10 V/cm）→ <b>紫外凝胶成像</b>。</p>
+<p><b>判断</b>：与 <b>DNA Marker</b> 比对可估大小与浓度；<b>质粒</b>因构型不同可呈三条带——<b>超螺旋（最快）&gt; 线性 &gt; 开环（最慢）</b>；基因组 DNA 应呈单一高分子量条带，若出现<b>拖尾</b>说明降解。</p>
+</div>
+
+<h3 class="item" data-lv="hi">实验六：酶的分离提取与酶活测定 <span class="stars">★★★</span> <span class="freq">真题 16、19、21、22</span></h3>
+<div class="k">
+<div class="hd">提取要点（与蛋白类似，但多了三条“护酶”原则）</div>
+<p>① <b>全程低温</b>（0~4 ℃）防酶失活；② 缓冲液加<b>金属离子螯合剂（EDTA）</b>与<b>还原剂（DTT）</b>，防金属催化与氧化；③ 加<b>蛋白酶抑制剂</b>；④ 尽量缩短操作时间；⑤ 有的酶需加<b>辅因子/底物</b>稳定活性构象。</p>
+<div class="hd" style="margin-top:12px">酶活测定四要素</div>
+<p>① 在<b>最适 pH 与最适温度</b>下测；② 测<b>初速度</b>（底物消耗 &lt; 5%，避免产物抑制与逆反应）；③ 底物浓度应<b>饱和</b>（≫Km，保证零级动力学）；④ 用<b>连续分光光度法</b>（如 NADH 在 340 nm 的变化）或终止法。</p>
+<p><b>计算链</b>：<span class="eq">酶活力(U/mL) = (ΔA/min × V总) / (ε × d × V酶) / 10⁶ …</span> 实际考试只需掌握：<br>
+<span class="eq">总活力 = 活力 × 体积；比活力 = 总活力/总蛋白；回收率 = 总活力₂/总活力₁；纯化倍数 = 比活力₂/比活力₁</span></p>
+</div>
+<div class="q"><span class="tag">真题回放</span>2019：<em>测酶活力实验设计（给试剂，写方法、步骤、分析）</em>。<br>
+<b>标准框架</b>：① <b>目的</b>：测定某酶粗提液的活力与比活力；② <b>原理</b>：在最适条件下，酶催化底物转化为产物，产物（或 NADH 消耗）在特定波长有吸收，吸光度变化速率与酶量成正比；③ <b>步骤</b>：配系列底物浓度 → 加酶启动反应 → 立即计时并读数（每 30 s 一次，连续 3 min）→ 取线性段算 ΔA/min → 设<b>空白对照</b>（不加酶/加失活酶）与<b>标准曲线</b>；④ <b>数据处理</b>：由标准曲线换算产物生成速率 → 计算 U、U/mg、回收率与纯化倍数；⑤ <b>误差分析</b>：温度波动、底物未饱和、产物抑制、比色皿污染。</div>
+
+<h2 id="s23" class="sec" data-lv="mid"><span class="num">23</span>计算题模板（5 类，覆盖全部真题）<span class="freq">真题 24 · 命中 9 · 年份 2013、2019、2021、2022</span></h2>
+<p class="lead">880 的计算题高度模板化。把这 5 个模板背成“条件反射”，考场上只需代入数字。</p>
+
+<table>
+<thead><tr><th style="width:20%">类型</th><th style="width:26%">核心公式</th><th>真题出处 / 易错点</th></tr></thead>
+<tbody>
+<tr><td><b>① 脂肪酸 ATP 产能</b></td><td class="eq">(n/2)×10 + (n/2−1)×4 − 2</td><td>2019/2020 软脂酸 106；2022 硬脂酸 120。易错：<b>忘记减活化消耗的 2</b>；把 (n/2−1) 写成 n/2</td></tr>
+<tr><td><b>② 甘油/甘油三酯</b></td><td class="eq">甘油 16.5（3-磷酸甘油穿梭）或 18.5（苹果酸-天冬氨酸穿梭）</td><td>2021 甘油、2022 甘油三酯。易错：<b>穿梭方式看题干</b>；甘油激酶消耗 1 ATP</td></tr>
+<tr><td><b>③ 米氏方程与双倒数</b></td><td class="eq">1/v = (Km/Vmax)(1/[S]) + 1/Vmax</td><td>2010/13/19/21 LDH。易错：斜率 = Km/Vmax（不是 Km）；截距 = 1/Vmax</td></tr>
+<tr><td><b>④ 纯化倍数/回收率</b></td><td class="eq">纯化倍数 = 比活力₂/比活力₁；回收率 = 总活力₂/总活力₁</td><td>2022。易错：用<b>总活力</b>算回收率、用<b>比活力</b>算纯化倍数，别交叉</td></tr>
+<tr><td><b>⑤ Tm 与 GC 含量</b></td><td class="eq">Tm = 69.3 + 0.41×(G+C)%</td><td>2012。易错：GC 含量用<b>百分数</b>代入；长链（&gt;100 bp）才适用</td></tr>
+</tbody>
+</table>
+
+<div class="k">
+<div class="hd">万能解题四步（任何计算题都先写这四行）</div>
+<ol>
+<li><b>写已知</b>：把题干数字连同单位抄下来（单位不统一是最大陷阱：μM / mM / mol）。</li>
+<li><b>写公式</b>：先写通式，再代数——<b>公式分往往比结果分高</b>。</li>
+<li><b>带单位运算</b>：每一步都写单位，量纲不对立刻能发现错。</li>
+<li><b>写结论句</b>：<b>“因此 1 mol 软脂酸净生成 106 mol ATP。”</b>——一句话把答案钉死。</li>
+</ol>
+</div>
+
+<h2 id="s24" class="sec" data-lv="mid"><span class="num">24</span>名词解释速查（283 条，按主题收录 260 条）</h2>
+<p class="lead">全部来自 <code>真题分类--名词解释.docx</code> 与新增真题卷：题库共 <b>283 条</b>原始词条，合并同一名词的不同写法后 <b>260 条</b>，本节按主题收录这 <b>260 条</b>。<b>加粗</b>者为资料中标注了年份的高频条目（同一名词不同写法合并后 <b>57 条</b>），必须能默写；其余按主题扫读，留有印象即可。</p>
+
+<div class="k">
+<div class="hd">一、蛋白质结构与性质</div>
+<p><b><span class="term">β-转角</span></b>〔2013〕 <b><span class="term">分子伴侣</span></b>〔2013〕 <b><span class="term">别构效应</span></b>〔2001/2012〕 <b><span class="term">别构蛋白</span></b>〔2013〕 <b><span class="term">抗体</span></b>〔2011〕 <b><span class="term">构型</span></b>〔2010〕 <b><span class="term">波尔效应</span></b>〔2010/2011/2012/2019〕 <b><span class="term">盐析</span></b>〔2010〕 <b><span class="term">蛋白质二级结构</span></b>〔2000/2005〕 <b><span class="term">蛋白质结构域</span></b>〔2010〕 <span class="term">Edman 降解</span> <span class="term">α-螺旋</span> <span class="term">β-折叠</span> <span class="term">亚基</span> <span class="term">同源蛋白质</span> <span class="term">复性</span> <span class="term">寡聚蛋白质</span> <span class="term">抗原决定簇</span> <span class="term">构象</span> <span class="term">模体</span> <span class="term">氧分数饱和度</span> <span class="term">疏水相互作用</span> <span class="term">盐溶</span> <span class="term">结构域</span> <span class="term">肌红蛋白</span> <span class="term">肽平面</span> <span class="term">蛋白质一级结构</span> <span class="term">蛋白质三级结构</span> <span class="term">蛋白质变性</span> <span class="term">蛋白质四级结构</span> <span class="term">蛋白质的三维结构</span> <span class="term">血红蛋白</span> <span class="term">超二级结构</span></p>
+</div>
+
+<div class="k">
+<div class="hd">二、酶与酶动力学</div>
+<p><b><span class="term">全酶</span></b>〔2004〕 <b><span class="term">反馈抑制</span></b>〔2002〕 <b><span class="term">同工酶</span></b>〔2010/2011/2019〕 <b><span class="term">抗体酶</span></b>〔2000〕 <b><span class="term">竞争性抑制作用</span></b>〔2010/2011〕 <b><span class="term">酶促反应的前馈与反馈</span></b>〔2004〕 <b><span class="term">酶的比活力</span></b>〔2005/2010〕 <span class="term">六大酶类</span> <span class="term">共价修饰调节</span> <span class="term">共价催化</span> <span class="term">别构调节酶 / 剂</span> <span class="term">别构酶</span> <span class="term">双倒数作图</span> <span class="term">反竞争性抑制作用</span> <span class="term">反馈调节</span> <span class="term">同促效应</span> <span class="term">固定化酶</span> <span class="term">多酶体系</span> <span class="term">定向效应</span> <span class="term">寡聚酶</span> <span class="term">温度系数</span> <span class="term">米氏常数</span> <span class="term">米氏方程</span> <span class="term">自杀抑制作用</span> <span class="term">调节酶</span> <span class="term">转换数</span> <span class="term">酶</span> <span class="term">酶原</span> <span class="term">酶活力</span> <span class="term">酶活力单位</span> <span class="term">酶的专一性</span> <span class="term">酶的最适 pH</span> <span class="term">酸 - 碱催化</span> <span class="term">非竞争性抑制作用</span> <span class="term">靠近效应</span></p>
+</div>
+
+<div class="k">
+<div class="hd">三、维生素与辅酶</div>
+<p><span class="term">水溶性维生素</span> <span class="term">生物素</span> <span class="term">硫胺素焦磷酸</span> <span class="term">磷酸吡哆醛</span> <span class="term">维生素</span> <span class="term">脂溶性维生素</span> <span class="term">转氨酶</span> <span class="term">辅基</span> <span class="term">辅酶</span> <span class="term">辅酶 A</span></p>
+</div>
+
+<div class="k">
+<div class="hd">四、糖类与脂类</div>
+<p><b><span class="term">寡糖</span></b>〔2000〕 <b><span class="term">必需脂肪酸</span></b>〔2011〕 <b><span class="term">核糖体</span></b>〔2001〕 <b><span class="term">糖异生</span></b>〔2012〕 <b><span class="term">肽聚糖</span></b>〔2005〕 <span class="term">三脂酰甘油</span> <span class="term">乳化作用</span> <span class="term">变旋</span> <span class="term">皂化值</span> <span class="term">碘值</span> <span class="term">糖异生作用</span> <span class="term">糖类</span> <span class="term">糖胺聚糖</span> <span class="term">糖苷</span> <span class="term">糖蛋白</span> <span class="term">蛋白聚糖</span> <span class="term">酸败现象</span></p>
+</div>
+
+<div class="k">
+<div class="hd">五、生物膜与运输</div>
+<p><b><span class="term">主动运输</span></b>〔2013〕 <b><span class="term">离子载体抗生素</span></b>〔2002〕 <span class="term">主动转运</span> <span class="term">内在膜蛋白</span> <span class="term">协同运输</span> <span class="term">外周膜蛋白</span> <span class="term">流动镶嵌模型</span> <span class="term">生物膜</span> <span class="term">被动转运</span> <span class="term">通透系数</span> <span class="term">通道蛋白</span> <span class="term">（膜）孔蛋白</span></p>
+</div>
+
+<div class="k">
+<div class="hd">六、核酸的结构与性质</div>
+<p><b><span class="term">减色效应</span></b>〔2012〕 <b><span class="term">增色效应</span></b>〔2013〕 <b><span class="term">核小体</span></b>〔2004〕 <b><span class="term">蛋白质的可逆变性</span></b>〔2002〕 <span class="term">Chargaff 规则</span> <span class="term">DNA 变性</span> <span class="term">DNA 复性</span> <span class="term">DNA 的双螺旋</span> <span class="term">cAMP</span> <span class="term">信使核糖核酸</span> <span class="term">增色效应 hyperchromic effect</span> <span class="term">核糖体核糖核酸</span> <span class="term">核糖核酸</span> <span class="term">核苷</span> <span class="term">核苷酸</span> <span class="term">核酸内切酶</span> <span class="term">核酸外切酶</span> <span class="term">熔解温度</span> <span class="term">碱基对</span> <span class="term">磷酸二酯键</span> <span class="term">粘性末端</span> <span class="term">脱氧核糖核酸</span> <span class="term">转移核糖核酸</span> <span class="term">限制性内切酶</span> <span class="term">黄素单核苷酸</span> <span class="term">黄素腺嘌呤二核苷酸</span></p>
+</div>
+
+<div class="k">
+<div class="hd">七、代谢总论与糖代谢</div>
+<p><b><span class="term">乙醛酸循环</span></b>〔2018〕 <b><span class="term">呼吸链</span></b>〔2010〕 <b><span class="term">巴斯德效应</span></b>〔2010/2012〕 <b><span class="term">底物磷酸化</span></b>〔2010〕 <b><span class="term">氧化磷酸化</span></b>〔2012/2019〕 <b><span class="term">糖酵解</span></b>〔2019〕 <span class="term">P/O 比</span> <span class="term">三羧酸循环</span> <span class="term">乳酸循环</span> <span class="term">底物水平磷酸化</span> <span class="term">戊糖磷酸途径</span> <span class="term">新陈代谢</span> <span class="term">有氧氧化</span> <span class="term">生物氧化</span> <span class="term">糖醛酸途径</span></p>
+</div>
+
+<div class="k">
+<div class="hd">八、脂类代谢与氨基酸代谢</div>
+<p><b><span class="term">γ-谷氨酰循环</span></b>〔2013〕 <b><span class="term">丙氨酸-葡萄糖循环</span></b>〔2013〕 <b><span class="term">酮体</span></b>〔2004/2019〕 <span class="term">α-氧化</span> <span class="term">尿素循环</span> <span class="term">氧化脱氨</span> <span class="term">生物固氮作用</span> <span class="term">生糖氨基酸</span> <span class="term">生酮氨基酸</span> <span class="term">联合脱氨基作用</span> <span class="term">脂肪动员</span> <span class="term">脂肪酸的 β-氧化</span> <span class="term">脱氨</span> <span class="term">谷胱甘肽</span> <span class="term">转氨</span></p>
+</div>
+
+<div class="k">
+<div class="hd">九、核苷酸代谢</div>
+<p><span class="term">从头合成</span> <span class="term">核苷水解酶</span> <span class="term">核苷酸的从头合成和补救途径</span> <span class="term">核苷酸磷酸化酶</span></p>
+</div>
+
+<div class="k">
+<div class="hd">十、激素与信号转导</div>
+<p><b><span class="term">第二信使</span></b>〔2001〕 <span class="term">G 蛋白</span> <span class="term">激素</span> <span class="term">激素受体</span> <span class="term">级联放大</span></p>
+</div>
+
+<div class="k">
+<div class="hd">十一、分子生物学（复制·转录·翻译·调控）</div>
+<p><b><span class="term">Km</span></b>〔2004〕 <b><span class="term">Tm</span></b>〔2012〕 <b><span class="term">亲和层析</span></b>〔2013〕 <b><span class="term">光合作用</span></b>〔2012〕 <b><span class="term">冈崎片段</span></b>〔2000/2005/2013〕 <b><span class="term">分子杂交</span></b>〔2001〕 <b><span class="term">半不连续复制</span></b>〔2018〕 <b><span class="term">反义 RNA</span></b>〔2002〕 <b><span class="term">启动子</span></b>〔2012〕 <b><span class="term">基因工程</span></b>〔2001〕 <b><span class="term">基因文库</span></b>〔2000〕 <b><span class="term">操纵子</span></b>〔2013〕 <b><span class="term">磷氧比</span></b>〔2013〕 <b><span class="term">等电点</span></b>〔2012/2019〕 <b><span class="term">等电点聚焦电泳</span></b>〔2005〕 <b><span class="term">线粒体</span></b>〔2004〕 <b><span class="term">质粒</span></b>〔2002〕 <b><span class="term">酮症</span></b>〔2018〕 <b><span class="term">高尔基体</span></b>〔2005〕 <span class="term">C3 植物</span> <span class="term">DNA 半保留半不连续复制</span> <span class="term">DNA 探针</span> <span class="term">DNA 聚合酶</span> <span class="term">DNA 超螺旋</span> <span class="term">RNA 聚合酶</span> <span class="term">SD 序列</span> <span class="term">SDS- 聚丙烯酰胺凝胶电泳</span> <span class="term">不对称转录</span> <span class="term">互补 DNA</span> <span class="term">信号肽</span> <span class="term">内含子</span> <span class="term">凝胶电泳</span> <span class="term">凝胶过滤层析</span> <span class="term">前导链</span> <span class="term">半保留复制</span> <span class="term">单链结合蛋白</span> <span class="term">双向电泳</span> <span class="term">反密码子</span> <span class="term">反式作用因子</span> <span class="term">呼吸电子传递链 /</span> <span class="term">基因</span> <span class="term">基因敲除</span> <span class="term">增强子</span> <span class="term">复制体</span> <span class="term">外显子</span> <span class="term">密码子</span> <span class="term">尼克酰胺</span> <span class="term">层析</span> <span class="term">必需氨基酸</span> <span class="term">抗生素</span> <span class="term">操纵因子</span> <span class="term">有意义链和反意义链</span> <span class="term">核心酶</span> <span class="term">核酶</span> <span class="term">模板链</span> <span class="term">氨基酸</span> <span class="term">活性部位</span> <span class="term">滞后链</span> <span class="term">离子交换层析</span> <span class="term">等电聚焦电泳</span> <span class="term">简并密码子</span> <span class="term">管家基因</span> <span class="term">终止因子</span> <span class="term">终止密码子</span> <span class="term">结构基因</span> <span class="term">编码链</span> <span class="term">翻译</span> <span class="term">聚合酶链式反应</span> <span class="term">胞吞</span> <span class="term">自由基</span> <span class="term">色谱</span> <span class="term">茚三酮反应</span> <span class="term">起始密码子</span> <span class="term">转化</span> <span class="term">转导</span> <span class="term">转录</span> <span class="term">转录因子</span> <span class="term">进化树</span> <span class="term">逆向转录</span> <span class="term">逆转录酶</span> <span class="term">透析</span> <span class="term">遗传学中心法则</span> <span class="term">遗传密码</span> <span class="term">重组 DNA 技术</span> <span class="term">阻遏物</span> <span class="term">非必需氨基酸</span> <span class="term">顺式作用元件</span> <span class="term">高压液相层析</span></p>
+</div>
+<div class="note"><b>怎么用这张表</b>：把加粗的 57 条抄成小卡片（正面词、背面三句话定义），每天过 20 张；不加粗的每天<b>朗读一遍</b>即可——880 名解只考 5 个左右，覆盖高频比背全集划算得多。</div>
+<h3>新增名解（1999—2025 真题）</h3>
+<table>
+<thead><tr><th style="width:20%">术语</th><th>定义（40 字内）</th><th class="c" style="width:14%">年份</th></tr></thead>
+<tbody>
+<tr><td><b>凝集素</b></td><td>凝集素是从植物、无脊椎动物和高等动物中提纯的一类糖蛋白或结合糖的蛋白…</td><td class="c">2016</td></tr>
+<tr><td><b>氨基酸等电点</b></td><td>在某一pH溶液中，氨基酸解离成阳离子和阴离子的趋势及程度相等，成为兼性离子…</td><td class="c">2012、2019</td></tr>
+<tr><td><b>蛋白质的等电点</b></td><td>蛋白质的等电点，指蛋白质分子上所带正、负电荷相等、净电荷为零时溶液的pH值…</td><td class="c">2014</td></tr>
+<tr><td><b>Cori 循环</b></td><td>肌肉糖酵解产生的乳酸经血液运至肝、在肝内异生为葡萄糖后再返回肌肉利用的循环…</td><td class="c">2016</td></tr>
+<tr><td><b>葡萄糖-丙氨酸循环</b></td><td>肌肉氨基酸以丙氨酸形式经血运至肝，肝内脱氨并将碳骨架异生为葡萄糖后送回肌肉的循…</td><td class="c">2016</td></tr>
+<tr><td><b>密码子的简并性</b></td><td>一种氨基酸可由两个或两个以上不同密码子编码的现象…</td><td class="c">2017</td></tr>
+<tr><td><b>别嘌呤醇</b></td><td>别嘌呤醇，次黄嘌呤的异构体，是黄嘌呤氧化酶的抑制药，能减少尿酸生成…</td><td class="c">2021</td></tr>
+<tr><td><b>逆转录</b></td><td>以 RNA 为模板、由逆转录酶催化合成 DNA 的过程，是中心法则的补充。</td><td class="c">2014</td></tr>
+</tbody>
+</table>
+
+
+<h2 id="s25" class="sec" data-lv="low"><span class="num">25</span>考前冲刺清单</h2>
+<div class="k">
+<div class="hd">Day −3：代谢主线（占分最高）</div>
+<ol>
+<li>默写糖酵解十步（酶名 + 三步不可逆 + 净产 2 ATP/2 NADH）。</li>
+<li>默写 TCA 八步（三个调控酶 + 每分子乙酰 CoA 产 10 ATP）。</li>
+<li>默写 β-氧化四步 + 肉碱穿梭，并算一遍软脂酸（106）与硬脂酸（120）。</li>
+<li>画“<b>草酰乙酸—糖异生—酮体</b>”因果链，能解释：饥饿、糖尿病、节食酸中毒、呼气异味、只吃脂肪。</li>
+<li>默写尿素循环五步 + 两个氮源 + 耗 4 个高能键。</li>
+</ol>
+</div>
+<div class="k">
+<div class="hd">Day −2：蛋白质与酶</div>
+<ol>
+<li>写 Hb 与 Mb 的五项对比（亚基、曲线、协同、敏感性、功能）。</li>
+<li>写波尔效应定义 + 分子基础（His146、盐桥、T 态）+ 生理意义。</li>
+<li>画三种抑制的双倒数图（交 y 轴/交 x 轴/平行），写 Km、Vmax 变化。</li>
+<li>写四种分离方法的“依据 + 原理”（大小、电荷、溶解度、亲和）。</li>
+<li>写 SDS-PAGE 的“四个为什么”。</li>
+<li>写蛋白含量五法（凯氏、紫外、考马斯、Lowry、双缩脲）+ 三聚氰胺原理。</li>
+</ol>
+</div>
+<div class="k">
+<div class="hd">Day −1：实验与细节</div>
+<ol>
+<li>过第 ㉒ 节六大实验的“流程 + 关键试剂 + 注意事项”。</li>
+<li>背第 ㉓ 节五个计算模板，各做一道。</li>
+<li>过第 ㉔ 节加粗的 57 条名解。</li>
+<li>检查五个最易错处：<b>甘油穿梭方式</b>、<b>β-氧化减 2 ATP</b>、<b>Km/Vmax 是斜率</b>、<b>同工酶定义</b>、<b>增色/减色方向</b>。</li>
+</ol>
+</div>
+<div class="note"><b>两科联动提醒</b>：631 与 880 有约 30% 的重叠内容（DNA 复制、转录、翻译、操纵子、PCR、印迹、SDS-PAGE、核酸变性）。<b>这部分只需背一次</b>，建议以《631 分子生物学手册》的对应章节为主，本手册只做“880 口径”的补充与差异提示。</div>
+
+<div class="note" style="margin-top:40px"><b>本版修订说明（2026-11-09）</b><br>
+本手册经三份独立审阅后修订，主要改动：<br>
+① <b>计算类</b>：葡萄糖彻底氧化的 ATP 账重写（原文漏掉 PDH 的 2 个 NADH，现为 2+20+5+2×1.5/2.5 = 30/32）；己糖激酶与丙酮酸激酶的激活剂/抑制剂更正（原文串用了 PFK-1 的调节物）；C16 合成成本补注“约 42 个 ATP 当量”，避免与氧化收益直接相减。<br>
+② <b>概念类</b>：2,6-BPG 更正为 <b>F-2,6-BP</b> 并说明它不是第二信使；PEPCK 方向更正（动物体内为 OAA→PEP，回补靠丙酮酸羧化酶/PEPC）；别嘌呤醇改为“竞争性抑制黄嘌呤氧化酶”；酮症酸中毒的血钾表述更正；糖异生标题改为“3 步绕行、4 个关键酶”；寡霉素从“呼吸链抑制剂”中单列为“ATP 合酶抑制剂”；人体不能消化纤维素的原因改为“缺乏纤维素酶”。<br>
+③ <b>计数类</b>：名词条数改按题库实测：<b>283 条（去重 260 条、带年份 57 条）</b>，第 ㉔ 节已按此全量重排；三聚氰胺含氮量改为 66.7%；CO 亲和力倍数改为约 210 倍；新增“资料自身的 12 处年份矛盾”对照表与口径边界说明。<br>
+④ <b>存疑标注</b>：遗传密码那道 2021 真题的题干序列读不出原答案，已改为“方法演示 + 存疑说明”；肽链测序题的 CNBr 片段与答案矛盾，已单列提示，不建议死背序列。<br>
+⑤ <b>数据校准（2024-11）</b>：题库扩至 <b>659 题 / 23 个年份（1999—2025）</b>，首屏数字、各章副标题、第 ① 节总表、第 ㉔ 节名解条数与各章“本轮新增真题”表均按新库重算；旧版“无大题/资料中无此题”的判断已按新数据改正。</div>
+
+</main>
+</div>
+<script>
+const bar=document.getElementById('bar');
+addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'});
+// 考点筛选：只按 h3.item[data-lv] 显隐；节标题（h2）与表格始终保留；第 25 节冲刺清单始终显示
+const lv={'hi':3,'mid':2,'low':1};
+document.querySelectorAll('#f1 button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#f1 button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  const f=b.dataset.f, need = f==='all' ? 0 : lv[f];
+  document.querySelectorAll('h3.item[data-lv]').forEach(el=>{
+    const inSprint = !!el.closest('#s25');
+    const keep = (f==='all') || inSprint || ((lv[el.dataset.lv]||1) >= need);
+    el.classList.toggle('hide', !keep);
+  });
+});
+const links=[...document.querySelectorAll('nav a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('on'));const a=links.find(l=>l.getAttribute('href')==='#'+e.target.id);if(a)a.classList.add('on');}})},{rootMargin:'-10% 0px -80% 0px'});
+secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
