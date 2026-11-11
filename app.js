@@ -9,7 +9,7 @@ if(typeof store!=='object'||store===null) store={};
 function save(){ try{ localStorage.setItem(KEY,JSON.stringify(store)); }catch(e){} }
 
 var S={subj:'all',mode:'q',mh:'',idx:0,deck:[],revealed:false,
-       chap:'',year:'',stars:0,type:'',onlyNew:false,shuffle:false,kw:'',wrongOnly:false,kwOn:true};
+       chap:'',year:'',stars:0,type:'',onlyNew:false,shuffle:false,kw:'',wrongOnly:false,kwOn:true,mkw:'',mopen:''};
 
 var $=function(s){return document.querySelector(s)};
 
@@ -19,33 +19,45 @@ function esc(s){
   });
 }
 
-/* ---------- 术语表 ---------- */
+/* ---------- 术语表 + 生化物质结构式 ---------- */
 var GL=(window.GLOSSARY&&window.GLOSSARY.items)||[];
-var GLMAP={},GLRE=null;
+var MOL=(window.STRUCTS&&window.STRUCTS.items)||[];
+var FIG=(window.FIGS&&window.FIGS.items)||[];
+var FIGMAP={};FIG.forEach(function(f){FIGMAP[f.id]=f;});
+var GLMAP={},MOLMAP={},ENT={},TAGGED=null;
 (function(){
-  if(!GL.length) return;
   var al=[];
-  GL.forEach(function(e,i){
-    var k=e.a.toLowerCase();
-    if(!GLMAP[k]){GLMAP[k]=i;al.push(e.a);}
+  function add(txt,kind,idx){
+    var k=String(txt).toLowerCase();
+    if(!k||k.length<2) return;
+    if(!ENT[k]){ ENT[k]={kind:kind,i:idx}; al.push(String(txt)); }
+  }
+  GL.forEach(function(e,i){ if(!GLMAP[e.a.toLowerCase()]) GLMAP[e.a.toLowerCase()]=i; add(e.a,'kw',i); });
+  MOL.forEach(function(e,i){
+    MOLMAP[e.id]=i;
+    add(e.name,'mol',i);
+    (e.alias||[]).forEach(function(a){ add(a,'mol',i); });
   });
-  al.sort(function(a,b){return b.length-a.length});
+  al.sort(function(a,b){ return b.length-a.length; });
   var pat=al.map(function(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|');
-  if(pat) GLRE=new RegExp('('+pat+')','gi');
+  if(pat) TAGGED=new RegExp('('+pat+')','gi');
 })();
 
 function kwHTML(text,limit){
   var raw=String(text==null?'':text);
-  if(!GLRE || !S.kwOn) return esc(raw);
-  var out='',last=0,n=0,m,max=limit||8;
-  GLRE.lastIndex=0;
-  while((m=GLRE.exec(raw))!==null){
+  if(!TAGGED || !S.kwOn) return esc(raw);
+  var out='',last=0,n=0,m,max=limit||24,seen={};
+  TAGGED.lastIndex=0;
+  while((m=TAGGED.exec(raw))!==null){
     if(n>=max) break;
-    if(m[0].length<2){ continue; }
-    var i=GLMAP[m[0].toLowerCase()];
-    if(i===undefined) continue;
+    var key=m[0].toLowerCase(), e=ENT[key];
+    if(!e){ TAGGED.lastIndex=m.index+1; continue; }
+    if(m.index<last){ TAGGED.lastIndex=last; continue; }
+    if(seen[key]>=2){ TAGGED.lastIndex=m.index+m[0].length; continue; }
+    seen[key]=(seen[key]||0)+1;
     out+=esc(raw.slice(last,m.index));
-    out+='<span class="kw" data-k="'+i+'">'+esc(m[0])+'</span>';
+    if(e.kind==='mol') out+='<span class="mol" data-m="'+MOL[e.i].id+'">'+esc(m[0])+'</span>';
+    else out+='<span class="kw" data-k="'+e.i+'">'+esc(m[0])+'</span>';
     last=m.index+m[0].length; n++;
   }
   out+=esc(raw.slice(last));
@@ -117,7 +129,7 @@ function buildDeck(){
 /* ---------- 筛选栏 ---------- */
 function buildFilters(){
   var f=$('#filters');
-  if(S.mode==='stat'||S.mode==='mn'){ f.style.display='none'; return; }
+  if(S.mode==='stat'||S.mode==='mn'||S.mode==='ms'){ f.style.display='none'; return; }
   f.style.display='flex';
   var h='';
   if(S.mode==='tm'){
@@ -175,6 +187,7 @@ function renderCard(){
   hidePop();
   var box=$('#cardBox');
   if(S.mode==='mn'){ renderManual(); return; }
+  if(S.mode==='ms'){ renderStructs(); return; }
   if(S.mode==='stat'){ renderStat(); return; }
   if(!S.deck.length){
     box.innerHTML='<div class="card" style="min-height:200px"><div class="empty">这个筛选条件下没有卡片。<br>'
@@ -194,16 +207,16 @@ function renderCard(){
       +'<span class="pill">'+esc(x.chap)+'</span><span class="pill">'+esc(x.type)+'</span>'
       +(ys.length?ys.map(function(y){return '<span class="pill gold">'+esc(yLabel(y))+'</span>'}).join(''):'<span class="pill">年份不详</span>')
       +manLink(x.subj)+'</div>';
-    h+='<h1 class="qtitle'+(x.q.length>120?' long':'')+'">'+kwHTML(x.q)+'</h1>';
+    h+='<h1 class="qtitle'+(x.q.length>120?' long':'')+'">'+kwHTML(x.q,30)+'</h1>';
     if(x.opts && x.opts.length){
       h+='<div class="opts">'+x.opts.map(function(o,idx){
           var t=String(o), has=/^[A-Za-z][\.、]/.test(t), letter=has?t.slice(0,1):String.fromCharCode(65+idx);
           var txt=has?t.slice(2).trim():t;
-          return '<div class="opt"><i>'+esc(letter)+'</i><span>'+kwHTML(txt,3)+'</span></div>';
+          return '<div class="opt"><i>'+esc(letter)+'</i><span>'+kwHTML(txt,12)+'</span></div>';
         }).join('')+'</div>';
     }
     if(S.revealed){
-      h+='<div class="ans">'+renderPoints(x)+renderNote(x)+'</div>';
+      h+='<div class="ans'+((x.figs&&x.figs.length)?' withfig':'')+'">'+renderPoints(x)+renderFigs(x)+renderNote(x)+'</div>';
     }else{
       h+='<div class="hint"><span>先自己分点作答，再翻答案</span><span><kbd>空格</kbd> 看答案 · <kbd>1</kbd> 会 · <kbd>2</kbd> 没记住</span></div>';
     }
@@ -216,7 +229,7 @@ function renderCard(){
     h+='<h1 class="qtitle">'+kwHTML(x.name,4)+'</h1>';
     if(S.revealed){
       h+='<div class="ans">'+x.points.map(function(p,i){
-        return '<div class="pt"><b class="pk">'+(i+1)+'</b><span>'+kwHTML(p,6)+'</span></div>';
+        return '<div class="pt"><b class="pk">'+(i+1)+'</b><span>'+kwHTML(p,26)+'</span></div>';
       }).join('')+'</div>';
     }else h+='<div class="hint"><span>先回忆要点，再看答案</span><span><kbd>空格</kbd> 展开</span></div>';
   }else{
@@ -225,7 +238,7 @@ function renderCard(){
       +(ys3.length?ys3.map(function(y){return '<span class="pill gold">'+esc(yLabel(y))+'</span>'}).join(''):'<span class="pill">名解</span>')
       +manLink(x.subj)+'</div>';
     h+='<h1 class="qtitle" style="font-size:24px">'+kwHTML(x.term,2)+'</h1>';
-    if(S.revealed) h+='<div class="ans">'+kwHTML(x.def,8)+'</div>';
+    if(S.revealed) h+='<div class="ans">'+kwHTML(x.def,26)+'</div>';
     else h+='<div class="hint"><span>说出定义，再翻面</span><span><kbd>空格</kbd> 翻面</span></div>';
   }
   box.innerHTML=h+'</div>';
@@ -239,18 +252,30 @@ function renderPoints(x){
   x.points.forEach(function(p,i){
     var single=(!many && (p.k==='答案'||p.k==='定义'));
     h+='<div class="pt">'+(single?'':'<b class="pk">'+(many?(i+1):'答')+'</b>')
-      +'<span>'+((!single && p.k)?'<b class="mk">'+esc(p.k)+'</b>':'')+kwHTML(p.t,6)+'</span></div>';
+      +'<span>'+((!single && p.k)?'<b class="mk">'+esc(p.k)+'</b>':'')+kwHTML(p.t,26)+'</span></div>';
   });
   if(x.printed_answer) h+='<div class="badge-ans">卷面答案：'+esc(x.printed_answer)+'</div>';
   return h+'</div>';
 }
+function renderFigs(x){
+  if(!x.figs || !x.figs.length) return '';
+  var h='';
+  x.figs.forEach(function(id){
+    var f=FIGMAP[id];
+    if(!f) return;
+    h+='<figure class="figbox">'+f.svg+'<figcaption>'+esc(f.cap)+'</figcaption>'
+      +'<div class="fid">'+esc(f.id)+'</div></figure>';
+  });
+  return h;
+}
 function renderNote(x){
-  return x.note? '<div class="trap mini"><b>提示</b>'+kwHTML(x.note,5)+'</div>' : '';
+  return x.note? '<div class="trap mini"><b>提示</b>'+kwHTML(x.note,20)+'</div>' : '';
 }
 
 function renderActs(){
   var a=$('#acts');
   if(S.mode==='stat'||S.mode==='mn'){ renderManualActs(); return; }
+  if(S.mode==='ms'){ renderStructActs(); return; }
   var none=!S.deck.length;
   a.innerHTML='<button class="btn ghost" id="bPrev"'+(none?' disabled':'')+'>← 上一张</button>'
     +'<button class="btn main" id="bShow"'+(none?' disabled':'')+'>'+(S.revealed?'收起':'看答案')+'</button>'
@@ -287,6 +312,7 @@ function grade(v){
 function updateHud(){
   if(S.mode==='mn'){ $('#pos').textContent='考点手册'; $('#ratio').textContent=''; $('#prog').style.width='0%'; return; }
   if(S.mode==='stat'){ $('#pos').textContent='统计'; $('#ratio').textContent=''; $('#prog').style.width='0%'; return; }
+  if(S.mode==='ms'){ $('#pos').textContent=MOL.length+' 个物质'; $('#ratio').textContent='结构速查'; $('#prog').style.width='100%'; return; }
   var n=S.deck.length, done=0;
   var base=(S.onlyNew||S.wrongOnly)?(S.base||n):n;
   if(S.onlyNew||S.wrongOnly){ done=Math.max(0,base-n); }
@@ -337,6 +363,47 @@ function renderManualActs(){
     +'<a class="btn main" id="m880" href="manual/880.html" target="_blank" rel="noopener">880 生物化学</a>'
     +'<span style="flex:1"></span><span class="tagline">点卡片在页面内看；按钮在新窗口打开（可单独保存）</span>';
   var b=$('#mBack'); if(b) b.onclick=function(){ S.mh=''; renderCard(); };
+}
+
+/* ---------- 结构速查 ---------- */
+function renderStructs(){
+  var box=$('#cardBox');
+  var kk=(S.mkw||'').toLowerCase();
+  var list=MOL.filter(function(m){
+    if(!kk) return true;
+    return (m.name+' '+(m.alias||[]).join(' ')+' '+(m.formula||'')).toLowerCase().indexOf(kk)>=0;
+  });
+  var h='<div class="card" style="min-height:auto">';
+  h+='<div class="meta"><span class="pill teal">结构速查</span><span class="pill">'+list.length+' / '+MOL.length+' 个物质</span></div>';
+  h+='<div class="filters" style="display:flex;margin:2px 0 12px"><input id="skw" placeholder="搜物质名 / 分子式，如 ATP、C6H12O6…" value="'+esc(S.mkw)+'" style="flex:1;max-width:420px"></div>';
+  if(S.mopen){
+    var om=MOL[MOLMAP[S.mopen]];
+    if(om){
+      h+='<div class="sbig">'+om.svg+'<div class="molform" style="margin-top:8px;font-size:12.5px;color:#8a6d2f">'
+        +esc(om.name)+' · '+esc(om.formula||'')+'</div>'
+        +'<button class="btn ghost" id="sclose" style="margin-top:8px">收起大图</button></div>';
+    }
+  }
+  h+='<div class="sgrid">'+list.map(function(m){
+    return '<div class="scard" data-mid="'+m.id+'"><div class="sn">'+esc(m.name)+'</div>'+m.svg
+      +'<div class="sf">'+esc(m.formula||'')+'</div></div>';
+  }).join('')+'</div>';
+  h+='<div class="tagline" style="margin-top:12px">点任意结构看大图；题卡与答案里凡是<span class="mol" style="cursor:default">这样</span>的虚线下划线词，点一下即可看结构式。'
+    +'结构式按标准 SMILES 经 RDKit 生成，并逐个校验分子式。</div></div>';
+  box.innerHTML=h;
+  var ik=$('#skw');
+  if(ik) ik.oninput=function(e){ S.mkw=e.target.value; renderStructs(); var n=$('#skw'); if(n){ n.focus(); n.setSelectionRange(n.value.length,n.value.length);} };
+  box.querySelectorAll('.scard').forEach(function(c){
+    c.onclick=function(){ S.mopen=c.dataset.mid; renderStructs(); window.scrollTo({top:0,behavior:'smooth'}); };
+  });
+  var sc=$('#sclose'); if(sc) sc.onclick=function(){ S.mopen=''; renderStructs(); };
+  updateHud(); renderActs();
+}
+function renderStructActs(){
+  var a=$('#acts');
+  a.innerHTML='<button class="btn ghost" id="sAll" '+(S.mkw||S.mopen?'':'disabled')+'>清空筛选</button>'
+    +'<span style="flex:1"></span><span class="tagline">共 '+MOL.length+' 个物质的结构式</span>';
+  var b=$('#sAll'); if(b) b.onclick=function(){ S.mkw=''; S.mopen=''; renderStructs(); };
 }
 
 /* ---------- 进度页 ---------- */
@@ -402,21 +469,31 @@ function renderStat(){
 
 /* ---------- 关键词弹窗 ---------- */
 function showPop(el){
-  var i=+el.dataset.k, g=GL[i];
-  if(!g) return;
-  var pop=$('#kwPop');
-  pop.innerHTML='<div class="kwhead">'+esc(g.a)+'</div>'
-    +'<div class="kwbody">'+esc(g.d)+'</div><div class="kwfoot">点空白处或按 Esc 关闭</div>';
+  var pop=$('#kwPop'), html='';
+  if(el.dataset.m){
+    var mo=MOL[MOLMAP[el.dataset.m]];
+    if(!mo) return;
+    html='<div class="kwhead">'+esc(mo.name)
+      +'<span class="kwsubj">结构式</span></div>'
+      +'<div class="molbox">'+mo.svg+'</div>'
+      +'<div class="molform">分子式 '+esc(mo.formula||'')+'</div>'
+      +'<div class="kwfoot">按标准 SMILES 经 RDKit 生成 · 点空白处或 Esc 关闭</div>';
+  }else{
+    var i=+el.dataset.k, g=GL[i];
+    if(!g) return;
+    html='<div class="kwhead">'+esc(g.a)+'</div>'
+      +'<div class="kwbody">'+esc(g.d)+'</div><div class="kwfoot">点空白处或按 Esc 关闭</div>';
+  }
+  pop.innerHTML=html;
   pop.style.display='block';
   var r=el.getBoundingClientRect();
-  var w=Math.min(420,window.innerWidth-24);
+  var w=Math.min(el.dataset.m?470:420,window.innerWidth-24);
   pop.style.width=w+'px';
   var left=Math.min(Math.max(12,r.left), window.innerWidth-w-12);
   var top=r.bottom+8;
-  pop.style.left=left+'px';
-  pop.style.top=top+'px';
+  pop.style.left=left+'px'; pop.style.top=top+'px';
   var hh=pop.offsetHeight;
-  if(top+hh>window.innerHeight-12) pop.style.top=Math.max(12,r.top-hh-8)+'px';
+  if(top+hh>window.innerHeight-12) pop.style.top=Math.max(12,Math.min(r.top-hh-8,window.innerHeight-hh-12))+'px';
   document.querySelectorAll('.kwon').forEach(function(e){e.classList.remove('kwon')});
   el.classList.add('kwon');
 }
@@ -441,7 +518,7 @@ document.querySelectorAll('#subjSeg button').forEach(function(b){
 });
 
 document.addEventListener('click',function(e){
-  var kw=e.target.closest? e.target.closest('.kw') : null;
+  var kw=e.target.closest? e.target.closest('.kw,.mol') : null;
   if(kw){ e.stopPropagation(); showPop(kw); return; }
   if(e.target.closest && e.target.closest('#kwPop')) return;
   hidePop();
@@ -451,7 +528,7 @@ document.addEventListener('keydown',function(e){
   var ae=document.activeElement, tag=ae&&ae.tagName;
   if(tag==='TEXTAREA'||tag==='SELECT') return;
   if(tag==='INPUT') return;
-  if(S.mode==='stat') return;
+  if(S.mode==='stat'||S.mode==='ms'||S.mode==='mn') return;
   if(e.code==='Space'||e.code==='Enter'){ e.preventDefault(); if(S.deck.length){S.revealed=!S.revealed;hidePop();renderCard();} }
   else if(e.key==='1'){ e.preventDefault(); grade(2); }
   else if(e.key==='2'){ e.preventDefault(); grade(1); }
@@ -462,7 +539,7 @@ document.addEventListener('keydown',function(e){
 var tx=0,ty=0;
 document.addEventListener('touchstart',function(e){ tx=e.touches[0].clientX; ty=e.touches[0].clientY; },{passive:true});
 document.addEventListener('touchend',function(e){
-  if(S.mode==='stat') return;
+  if(S.mode==='stat'||S.mode==='ms'||S.mode==='mn') return;
   var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
   if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.6){ if(dx<0) next(); else prev(); }
 },{passive:true});
@@ -471,7 +548,7 @@ document.addEventListener('touchend',function(e){
 (function initURL(){
   try{
     var p=new URLSearchParams(location.search);
-    var m=p.get('m'); if(m&&['q','kp','tm','stat','mn'].indexOf(m)>=0) S.mode=m;
+    var m=p.get('m'); if(m&&['q','kp','tm','stat','mn','ms'].indexOf(m)>=0) S.mode=m;
     var s=p.get('s'); if(s&&['all','631','880'].indexOf(s)>=0) S.subj=s;
     var y=p.get('y');
     if(y && srcOf(S.mode).some(function(x){return yearsOf(x).indexOf(y)>=0})) S.year=y;
@@ -492,4 +569,14 @@ syncTabs(); buildDeck(); if(window.__reveal) S.revealed=true; buildFilters();
   }catch(e){}
 })();
 renderCard();
+(function openMol(){
+  try{
+    var want=new URLSearchParams(location.search).get('mol');
+    if(!want) return;
+    setTimeout(function(){
+      var el=document.querySelector('.mol[data-m="'+want+'"]');
+      if(el){ el.scrollIntoView({block:'center'}); showPop(el); }
+    },60);
+  }catch(e){}
+})();
 })();

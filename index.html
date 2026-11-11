@@ -119,9 +119,27 @@ h1.qtitle,.ans{word-break:break-all}
 .hrow{gap:8px}
 
 /* 关键词 */
-.kw{border-bottom:1px dashed #b4575f;cursor:pointer;color:inherit;padding:0 1px;border-radius:2px;transition:.12s}
+.kw{border-bottom:1px dotted #b4575f;cursor:pointer;color:inherit;padding:0 1px;border-radius:2px;transition:.12s}
 .kw:hover{background:#f7e6e4}
 .kw.kwon{background:#f2d9d6}
+/* 生化物质：虚线下划线，点开看结构式 */
+.mol{border-bottom:1.5px dashed #1f5f6b;cursor:pointer;color:#12454f;padding:0 1px;border-radius:2px;transition:.12s;
+  text-underline-offset:2px;background:linear-gradient(#eaf3f4,#eaf3f4) no-repeat bottom/100% .55em}
+.mol:hover{background:#d9ecee}
+.mol.kwon{background:#c9e4e7}
+#kwPop .molbox{margin-top:10px;border:1px solid #e3dccd;border-radius:8px;background:#fff;padding:6px;text-align:center;overflow:auto}
+#kwPop .molbox svg{width:100%!important;height:auto!important;max-height:48vh;display:block;margin:0 auto}
+#kwPop .molform{font-size:12px;color:#8a6d2f;margin-top:6px;font-family:ui-monospace,Consolas,monospace}
+/* 结构速查 */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:12px;margin-top:6px}
+.scard{border:1px solid #e3dccd;border-radius:10px;background:#fffdf8;padding:8px 8px 6px;cursor:zoom-in;transition:.14s}
+.scard:hover{border-color:#bdb098;box-shadow:0 6px 18px rgba(40,30,10,.09)}
+.scard .sn{font-size:12.6px;font-weight:700;color:#1b2126;text-align:center;margin-bottom:2px}
+.scard .sf{font-size:11px;color:#8a6d2f;text-align:center;font-family:ui-monospace,Consolas,monospace}
+.scard svg{width:100%;height:118px;display:block}
+.sbig{border:1px solid #e3dccd;border-radius:12px;background:#fff;padding:14px;text-align:center}
+.sbig svg{width:100%!important;height:auto!important;max-height:60vh}
+.scard svg{width:100%!important;height:118px!important}
 #kwPop{position:fixed;display:none;z-index:99;background:#fffdf8;border:1px solid #e3dccd;border-radius:10px;
   box-shadow:0 10px 34px rgba(40,30,10,.16);padding:14px 16px;font-size:13.6px;line-height:1.72;color:#3c4247}
 #kwPop .kwhead{font-size:15.5px;font-weight:700;color:#1b2126;margin-bottom:6px;display:flex;align-items:center;gap:8px}
@@ -143,6 +161,12 @@ h1.qtitle,.ans{word-break:break-all}
 .opt i{flex:0 0 20px;height:20px;line-height:20px;text-align:center;border-radius:4px;background:#eef1f1;color:#1f5f6b;
   font-style:normal;font-weight:700;font-size:12px;margin-top:2px}
 .trap.mini{margin-top:12px;font-size:12.9px;padding:8px 12px}
+/* 插图 */
+.figbox{margin:14px 0 4px;border:1px solid #e3dccd;border-radius:10px;padding:8px 8px 6px;background:#fff}
+.figbox svg{display:block;margin:0 auto;width:auto!important;height:auto!important;max-width:100%;max-height:42vh}
+.ans.withfig{max-height:74vh}
+.figbox figcaption{font-size:12px;color:#8a6d2f;margin-top:6px;text-align:center;line-height:1.6}
+.figbox .fid{font-size:10.5px;color:#b8b0a0;font-family:ui-monospace,Consolas,monospace;text-align:center;margin-top:2px}
 
 .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:640px){.mgrid{grid-template-columns:1fr}}
@@ -171,6 +195,7 @@ h1.qtitle,.ans{word-break:break-all}
     <button data-mode="q" class="on">真题速刷</button>
     <button data-mode="kp">知识点</button>
     <button data-mode="tm">名词卡</button>
+    <button data-mode="ms">结构速查</button>
     <button data-mode="mn">考点手册</button>
     <button data-mode="stat">进度与错题</button>
   </div>
@@ -187,6 +212,8 @@ h1.qtitle,.ans{word-break:break-all}
 
 <script src="data.js"></script>
 <script src="glossary.js"></script>
+<script src="data/structs.js"></script>
+<script src="data/figs.js"></script>
 <script src="app.js"></script>
 
 <div id="kwPop"></div>

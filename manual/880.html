@@ -78,6 +78,9 @@ details[open] summary{margin-bottom:8px;padding-bottom:6px;border-bottom:1px das
 code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#ece8dd;padding:1px 5px;border-radius:3px}
 .eq{font-family:"SF Mono",Consolas,monospace;font-size:13px;background:#f2efe6;padding:2px 6px;border-radius:3px;display:inline-block;margin:2px 0}
 .term{display:inline-block;background:#f0f3f3;border:1px solid #dbe3e3;border-radius:3px;padding:1px 6px;margin:2px 2px;font-size:12.8px}
+.figbox{margin:14px 0;border:1px solid #e3dccd;border-radius:10px;padding:10px;background:#fff}
+.figbox svg{width:100%;height:auto;max-width:640px;display:block;margin:0 auto}
+.figbox figcaption{font-size:12px;color:#8a6d2f;text-align:center;margin-top:6px}
 @media(max-width:1100px){nav{display:none}main{padding:28px 20px 90px}.grid2{grid-template-columns:1fr}}
 @media print{
  nav,#bar,.filters{display:none}main{max-width:none;padding:0}
@@ -127,7 +130,7 @@ code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#ece8dd;
 <header class="hero">
 <div class="kicker">大连理工大学 · 880 生物化学及生物化学实验 · 考研</div>
 <h1>高频考点高速复习手册</h1>
-<p class="sub">以 <b>真题按章节分类（22 章全）</b> 为主干，<b>真题名词解释（283 条）</b> 补名词，<b>本科讲义与复习纲要</b> 定重点。每条考点都标注真题年份；凡本文补写的答案均标 【补全】，与原答案区分。</p>
+<p class="sub">以 <b>真题按章节分类（22 章全）</b> 为主干，<b>真题名词解释（283 条）</b> 补名词，<b>本科讲义与复习纲要</b> 定重点。每条考点都标注真题年份；凡本文补写的答案均标 【补全】，与原答案区分。<b>答案口径</b>：《880 参考答案》印刷版已并入，<b>145 题</b>采用册子原文；册子未覆盖 2006—2009、2018 卷。</p>
 <div class="meta">
 <div><b>659</b>道真题（含名解与小题）</div>
 <div><b>23</b>个年份（1999—2025）</div>
@@ -147,6 +150,7 @@ code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#ece8dd;
 <li><b>2024-11 更新</b>：新增 82 页真题卷照片，覆盖 1999—2025，已与旧 docx 数据按“卷头年份 + 科目”合并去重；题库总量由 181 题增至 <b>659 题</b>，年份覆盖由 11 个增至 <b>23 个</b>。本版首屏数字、各章副标题、第 ① 节总表、各章“本轮新增真题”表均按新库重算；旧版“资料中无大题”“资料无此题”一类判断，凡新库已有该章题目的，均已改正。</li>
 <li><b>另有</b>：<code>真题分类--填空.docx</code>（6 页）与新增卷中的填空题用于补小题细节；<code>真题分类--简答题.docx</code>（86 页）是同批题目的长篇答案版，本手册在需要“多写几句”的地方引用了它的展开。</li>
 <li><b>口径边界（重要）</b>：早期资料里标注过的 98、99、00—05、08、09 等年份，现已按<b>卷头年份</b>重判并归位到 1999—2025；同一题在不同副本里标注不一致时，<b>一律取卷头</b>。因此个别题目与旧资料的年份标注可能差一年，不影响考点判断。</li>
+<li><b>答案口径（本轮更新）</b>：<b>《880 生物化学考研真题参考答案》印刷版</b>（83 页，2001—2005、2010—2017、2019—2025，共 <b>294 条</b>答案）已并入题库，<b>145 题</b>的答案换成册子原文（<code>questions.json</code> 中 <code>src=ansbook</code>）；册子<b>未覆盖 2006—2009、2018 卷</b>，这几年的题仍用《真题分类》与新增卷的旧口径，两套口径在能量折算上不同（册子一律 NADH＝2.5、FADH₂＝1.5），引用时以条目 note 的“口径”为准。</li>
 <li><b>“命中”的定义</b>：各章副标题中的“命中 N”＝该章题目里<b>带年份标注的条目数</b>（不是考试次数，也不是分值）；“真题 N”＝该章条目总数（含名解与小题）。故“命中”恒 ≤ “真题”，差额即<b>无年份的回忆版</b>；第 ① 节总表的“年份命中”同此口径。</li>
 <li><b>章节重要性</b>另参考 <code>1-1、高分学长复习攻略/3-生化、分子重要知识点总结（复习纲要）.docx</code> 的分级（非重点/次重点/重点/超级重点），但<b>本手册的星级只由真题数据决定</b>，纲要仅用于解释“为什么某章题少”。</li>
 </ul>
@@ -175,7 +179,7 @@ code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#ece8dd;
 <div class="note"><b>三条使用建议</b><br>
 ① <b>先看第 ① 节总表</b>，把时间按“题量×年份数”分配：蛋白质（105 题）、脂类代谢（58 题）、酶（57 题）、糖酵解与糖异生（53 题）四块占了全部题量的四成以上。<br>
 ② <b>名解不要背 283 条</b>。第 ㉔ 节已把“带年份的 57 条”加粗，先把这些吃透，其余按主题扫读留印象。<br>
-③ <b>计算题单独练</b>。第 ㉓ 节给了 5 类模板（ATP 产能、米氏方程、双倒数、纯化倍数、Tm），这类题是“会就会、不会就 0 分”，投入产出比最高。</div>
+③ <b>计算题单独练</b>。第 ㉓ 节给了 6 类模板（ATP 产能、甘油/甘油三酯、米氏方程与双倒数、纯化倍数、Tm、ΔG），并附 2022—2025 四年真题实解，这类题是“会就会、不会就 0 分”，投入产出比最高。</div>
 
 <h2 id="s1"><span class="num">01</span>章节热度总表</h2>
 <p class="tagline">题量＝该章在题库中出现的题目条数（含名解与小题）；年份命中＝该章带年份标注的条目数之和。星级按题量分档：<b>≥30 题 ★★★、10—29 题 ★★、1—9 题 ★</b>，0 题为「—」。</p>
@@ -1343,17 +1347,19 @@ code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#ece8dd;
 <div class="q"><span class="tag">真题回放</span>2019：<em>测酶活力实验设计（给试剂，写方法、步骤、分析）</em>。<br>
 <b>标准框架</b>：① <b>目的</b>：测定某酶粗提液的活力与比活力；② <b>原理</b>：在最适条件下，酶催化底物转化为产物，产物（或 NADH 消耗）在特定波长有吸收，吸光度变化速率与酶量成正比；③ <b>步骤</b>：配系列底物浓度 → 加酶启动反应 → 立即计时并读数（每 30 s 一次，连续 3 min）→ 取线性段算 ΔA/min → 设<b>空白对照</b>（不加酶/加失活酶）与<b>标准曲线</b>；④ <b>数据处理</b>：由标准曲线换算产物生成速率 → 计算 U、U/mg、回收率与纯化倍数；⑤ <b>误差分析</b>：温度波动、底物未饱和、产物抑制、比色皿污染。</div>
 
-<h2 id="s23" class="sec" data-lv="mid"><span class="num">23</span>计算题模板（5 类，覆盖全部真题）<span class="freq">真题 24 · 命中 9 · 年份 2013、2019、2021、2022</span></h2>
-<p class="lead">880 的计算题高度模板化。把这 5 个模板背成“条件反射”，考场上只需代入数字。</p>
+<h2 id="s23" class="sec" data-lv="mid"><span class="num">23</span>计算题模板（6 类，覆盖全部真题）<span class="freq">真题 24 · 命中 9 · 年份 2013、2019、2021、2022</span></h2>
+<p class="lead">880 的计算题高度模板化：2022—2025 连续四年都有计算大题，落点全在下面 6 个模板内。本节模板逐条对齐《880 参考答案》印刷版，能量折算统一取 <b>NADH＝2.5、FADH₂＝1.5</b>，凡旧教材 P/O 比（3 与 2）算出的数一律不再采用。</p>
+<p class="tagline">题量口径：副标题的“24”＝题库 <code>questions.json</code> 中 <code>type=计算</code> 的条目数，其中 <b>9 条</b>带年份标注，故“命中 9”，与旧版一致；实验题里另有 <b>2 条</b>要动笔算（SDS-PAGE 条带判读、双酶切片段拼接），计入后为 <b>26 条</b>。若按“题干含计算”的宽口径把简答、论述里的计算小题也算进来，数目还会更多，本节不取该口径。</p>
 
 <table>
-<thead><tr><th style="width:20%">类型</th><th style="width:26%">核心公式</th><th>真题出处 / 易错点</th></tr></thead>
+<thead><tr><th style="width:19%">类型</th><th style="width:30%">核心公式</th><th>真题出处 / 易错点</th></tr></thead>
 <tbody>
-<tr><td><b>① 脂肪酸 ATP 产能</b></td><td class="eq">(n/2)×10 + (n/2−1)×4 − 2</td><td>2019/2020 软脂酸 106；2022 硬脂酸 120。易错：<b>忘记减活化消耗的 2</b>；把 (n/2−1) 写成 n/2</td></tr>
-<tr><td><b>② 甘油/甘油三酯</b></td><td class="eq">甘油 16.5（3-磷酸甘油穿梭）或 18.5（苹果酸-天冬氨酸穿梭）</td><td>2021 甘油、2022 甘油三酯。易错：<b>穿梭方式看题干</b>；甘油激酶消耗 1 ATP</td></tr>
-<tr><td><b>③ 米氏方程与双倒数</b></td><td class="eq">1/v = (Km/Vmax)(1/[S]) + 1/Vmax</td><td>2010/13/19/21 LDH。易错：斜率 = Km/Vmax（不是 Km）；截距 = 1/Vmax</td></tr>
-<tr><td><b>④ 纯化倍数/回收率</b></td><td class="eq">纯化倍数 = 比活力₂/比活力₁；回收率 = 总活力₂/总活力₁</td><td>2022。易错：用<b>总活力</b>算回收率、用<b>比活力</b>算纯化倍数，别交叉</td></tr>
+<tr><td><b>① 脂肪酸 β-氧化产能</b></td><td class="eq">(n/2−1)×(2.5+1.5) + (n/2)×10 − 2</td><td>2019、2020 软脂酸（16C）<b>106</b>；2022 硬脂酸（18C）<b>120</b>；油酸（18C 单不饱和）<b>118.5</b>。易错：<b>忘记减活化消耗的 2</b>；把轮数 (n/2−1) 写成 n/2；不饱和键要少一个 FADH₂</td></tr>
+<tr><td><b>② 甘油 / 甘油三酯</b></td><td class="eq">甘油 16.5（3-磷酸甘油穿梭）／18.5（苹果酸-天冬氨酸穿梭）</td><td>2021 甘油 16.5；2013 三软脂酸甘油酯 <b>334.5</b>（苹果酸穿梭 336.5）；2022 三硬脂酸甘油酯 <b>376.5</b>（378.5）。易错：<b>穿梭方式看题干</b>；甘油激酶先耗 1 ATP；甘油三酯别忘了乘 3 条脂酰链</td></tr>
+<tr><td><b>③ 米氏方程与双倒数</b></td><td class="eq">1/v = (Km/Vmax)(1/[S]) + 1/Vmax</td><td>2010/13/19/21 LDH。易错：斜率 = Km/Vmax（不是 Km）；<b>纵轴截距 = 1/Vmax</b>（不是 Vmax）；横轴截距 = −1/Km</td></tr>
+<tr><td><b>④ 纯化倍数与回收率</b></td><td class="eq">比活力＝总活力/总蛋白；纯化倍数＝本级比活力/第一步比活力；提取率＝本级总活力/第一步总活力</td><td>2022 四步纯化表：比活 <b>10→32→200→15000</b> U/mg。易错：用<b>总活力</b>算提取率、用<b>比活力</b>算纯化倍数，别交叉；体积一变就要重算总量</td></tr>
 <tr><td><b>⑤ Tm 与 GC 含量</b></td><td class="eq">Tm = 69.3 + 0.41×(G+C)%</td><td>2012。易错：GC 含量用<b>百分数</b>代入；长链（&gt;100 bp）才适用</td></tr>
+<tr><td><b>⑥ ΔG 与反应方向</b></td><td class="eq">ΔG = ΔG°′ + RT·ln Q，Q = 产物浓度积/反应物浓度积</td><td>2025 磷酸肌酸＋ADP→肌酸＋ATP。易错：ΔG°′ 由 −43.1 与 −30.5 相减得 <b>−12.6 kJ/mol</b>；25 ℃ 时 RT≈2.478 kJ/mol，ln 与 lg 别混</td></tr>
 </tbody>
 </table>
 
@@ -1366,6 +1372,106 @@ code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#ece8dd;
 <li><b>写结论句</b>：<b>“因此 1 mol 软脂酸净生成 106 mol ATP。”</b>——一句话把答案钉死。</li>
 </ol>
 </div>
+
+<h3>模板 ④ 实解（2022）：四步纯化表的比活力、纯化倍数与提取率</h3>
+<p><b>题干一句话</b>：给出离心分离、硫酸铵盐析、离子交换、亲和色谱四步的体积／总蛋白／总活力，求各步比活力与纯化倍数，并说明亲和色谱的原理。</p>
+<figure class="figbox">
+<svg viewBox='0 0 640 250' xmlns='http://www.w3.org/2000/svg' font-family='-apple-system,Segoe UI,Noto Sans SC,sans-serif'><rect width='640' height='250' fill='#fffdf8'/><defs><marker id='ah' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1b2126'/></marker></defs><rect x='20' y='28' width='600' height='30' fill='#eaf3f4' stroke='#c9c2b4'/><text x='32' y='48' font-size='11.2' fill='#1f5f6b' text-anchor='start' font-weight='700'>分离步骤</text><text x='250' y='48' font-size='11.2' fill='#1f5f6b' text-anchor='start' font-weight='700'>体积(mL)</text><text x='370' y='48' font-size='11.2' fill='#1f5f6b' text-anchor='start' font-weight='700'>总蛋白(mg)</text><text x='500' y='48' font-size='11.2' fill='#1f5f6b' text-anchor='start' font-weight='700'>总活力(IU)</text><rect x='20' y='58' width='600' height='34' fill='#fffdf8' stroke='#c9c2b4'/><text x='32' y='80' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>离心分离</text><text x='250' y='80' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>1400</text><text x='370' y='80' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>10000</text><text x='500' y='80' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>100000</text><rect x='20' y='92' width='600' height='34' fill='#f7f4ea' stroke='#c9c2b4'/><text x='32' y='114' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>硫酸铵盐析和透析</text><text x='250' y='114' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>280</text><text x='370' y='114' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>3000</text><text x='500' y='114' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>96000</text><rect x='20' y='126' width='600' height='34' fill='#fffdf8' stroke='#c9c2b4'/><text x='32' y='148' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>离子交换色谱</text><text x='250' y='148' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>90</text><text x='370' y='148' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>400</text><text x='500' y='148' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>80000</text><rect x='20' y='160' width='600' height='34' fill='#f7f4ea' stroke='#c9c2b4'/><text x='32' y='182' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>亲和色谱</text><text x='250' y='182' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>6</text><text x='370' y='182' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>3</text><text x='500' y='182' font-size='11.2' fill='#1b2126' text-anchor='start' font-weight='400'>45000</text><text x='20' y='216' font-size='10' fill='#8a6d2f' text-anchor='start' font-weight='400'>比活力＝总活力/总蛋白；纯化倍数＝本级比活力/上一步比活力；回收率＝本级总活力/上一步总活力</text><text x='20' y='234' font-size='10' fill='#1f5f6b' text-anchor='start' font-weight='400'>答案：10 → 32 → 200 → 15000 IU/mg；纯化倍数 1→3.2→20→1500；回收率 96%→80%→45%</text></svg>
+<figcaption>图 23-1　2022 年酶纯化的四步数据（答案册原表）与计算口径</figcaption>
+</figure>
+<p><b>解题步骤</b>：① 比活力＝总活力÷总蛋白，四行分别得 10、32、200、15 000 IU/mg；② 纯化倍数一律<b>以第一步为基准</b>：32/10＝3.2、200/10＝20、15 000/10＝1500；③ 提取率同法：96 000/100 000＝96%、80 000/100 000＝80%、45 000/100 000＝45%。</p>
+<p><b>最终数字</b>：比活力 <b>10→32→200→15 000 IU/mg</b>，累计纯化 <b>1→3.2→20→1500 倍</b>，累计提取率 <b>100%→96%→80%→45%</b>。</p>
+<div class="trap"><b>两个坑</b>：① 册子的纯化倍数、提取率都是<b>相对第一步</b>的累计值，不是逐级倍数，答题时写明“以粗酶液为 1”，否则 200/32＝6.25 会与 20 打架；② 册子第 ① 步列式把分母印成 1000，按表中总蛋白 10 000 计才是 10 IU/mg。</div>
+<p><b>顺带一问（亲和色谱原理）</b>：把配体（抗原／抗体、凝集素、金属离子）固相化，靠生物特异性亲和力把目标蛋白从混合物中一步“钓”出来，再改条件洗脱；故纯化倍数最高（1500 倍）、载量小，通常放在流程末端。</p>
+
+<h3>模板 ③ 实解：米氏曲线与三类可逆抑制</h3>
+<p><b>题干一句话</b>：给一组 [S]–v 或双倒数数据，求 Km、Vmax，或判断加入的是哪一类抑制剂。先画 v–[S]，再画双倒数，<b>只看两个截距动没动</b>就能定类型。</p>
+<figure class="figbox">
+<svg viewBox='0 0 640 340' xmlns='http://www.w3.org/2000/svg' font-family='-apple-system,Segoe UI,Noto Sans SC,sans-serif'><rect width='640' height='340' fill='#fffdf8'/><defs><marker id='ah' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1b2126'/></marker></defs><line x1='60' y1='300' x2='600' y2='300' stroke='#1b2126' stroke-width='1.3' marker-end='url(#ah)'/><line x1='60' y1='300' x2='60' y2='60' stroke='#1b2126' stroke-width='1.3' marker-end='url(#ah)'/><text x='596' y='318' font-size='12' fill='#1b2126' text-anchor='end' font-weight='400'>[S]</text><text x='52' y='64' font-size='12' fill='#1b2126' text-anchor='end' font-weight='400'>v</text><path d='M60,300 C130,150 220,110 600,100' fill='none' stroke='#1f5f6b' stroke-width='2.4'/><line x1='60' y1='100' x2='600' y2='100' stroke='#8a6d2f' stroke-width='1.1' stroke-dasharray='6 5'/><text x='600' y='92' font-size='12' fill='#8a6d2f' text-anchor='end' font-weight='400'>Vmax</text><line x1='190' y1='300' x2='190' y2='165' stroke='#8a6d2f' stroke-width='1' stroke-dasharray='4 4'/><line x1='60' y1='165' x2='190' y2='165' stroke='#8a6d2f' stroke-width='1' stroke-dasharray='4 4'/><text x='190' y='318' font-size='12' fill='#8a6d2f' text-anchor='middle' font-weight='400'>Km</text><text x='52' y='168' font-size='11' fill='#8a6d2f' text-anchor='end' font-weight='400'>½Vmax</text><text x='330' y='240' font-size='12.5' fill='#1f5f6b' text-anchor='middle' font-weight='400'>v = Vmax[S] / (Km + [S])</text></svg>
+<figcaption>图 23-2　米氏方程 v–[S] 曲线：Km 即 v 达 ½Vmax 时的底物浓度</figcaption>
+</figure>
+<div class="grid2">
+<figure class="figbox">
+<svg viewBox='0 0 320 330' xmlns='http://www.w3.org/2000/svg' font-family='-apple-system,Segoe UI,Noto Sans SC,sans-serif'><rect width='320' height='330' fill='#fffdf8'/><defs><marker id='ah' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1b2126'/></marker></defs><line x1='40' y1='190' x2='300' y2='190' stroke='#1b2126' stroke-width='1.3' marker-end='url(#ah)'/><line x1='160' y1='320' x2='160' y2='52' stroke='#1b2126' stroke-width='1.3' marker-end='url(#ah)'/><text x='300' y='208' font-size='11' fill='#1b2126' text-anchor='end' font-weight='400'>1/[S]</text><text x='152' y='58' font-size='11' fill='#1b2126' text-anchor='end' font-weight='400'>1/v</text><text x='152' y='208' font-size='10' fill='#1b2126' text-anchor='end' font-weight='400'>0</text><text x='10' y='20' font-size='12' fill='#1b2126' text-anchor='start' font-weight='700'>竞争性：交点在纵轴</text><text x='10' y='36' font-size='10.6' fill='#8a6d2f' text-anchor='start' font-weight='400'>Vmax 不变，Km 变大</text><line x1='55' y1='200' x2='296' y2='90' stroke='#1f5f6b' stroke-width='2'/><line x1='112' y1='189' x2='296' y2='49' stroke='#a8323a' stroke-width='2'/><circle cx='160' cy='154' r='3.2' fill='#1b2126'/><text x='174' y='132' font-size='10' fill='#8a6d2f' text-anchor='start' font-weight='400'>同一 1/Vmax</text><text x='250' y='78' font-size='10.6' fill='#1f5f6b' text-anchor='start' font-weight='400'>无抑制剂</text><text x='250' y='44' font-size='10.6' fill='#a8323a' text-anchor='start' font-weight='400'>加抑制剂</text></svg>
+<figcaption>图 23-3　双倒数作图（竞争性抑制）：纵轴截距不变，横轴截距靠近原点</figcaption>
+</figure>
+<figure class="figbox">
+<svg viewBox='0 0 320 330' xmlns='http://www.w3.org/2000/svg' font-family='-apple-system,Segoe UI,Noto Sans SC,sans-serif'><rect width='320' height='330' fill='#fffdf8'/><defs><marker id='ah' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1b2126'/></marker></defs><line x1='40' y1='190' x2='300' y2='190' stroke='#1b2126' stroke-width='1.3' marker-end='url(#ah)'/><line x1='160' y1='320' x2='160' y2='52' stroke='#1b2126' stroke-width='1.3' marker-end='url(#ah)'/><text x='300' y='208' font-size='11' fill='#1b2126' text-anchor='end' font-weight='400'>1/[S]</text><text x='152' y='58' font-size='11' fill='#1b2126' text-anchor='end' font-weight='400'>1/v</text><text x='152' y='208' font-size='10' fill='#1b2126' text-anchor='end' font-weight='400'>0</text><text x='10' y='20' font-size='12' fill='#1b2126' text-anchor='start' font-weight='700'>非竞争性：交点在横轴</text><text x='10' y='36' font-size='10.6' fill='#8a6d2f' text-anchor='start' font-weight='400'>Vmax 变小，Km 不变</text><line x1='118' y1='190' x2='296' y2='133' stroke='#1f5f6b' stroke-width='2'/><line x1='118' y1='190' x2='296' y2='79' stroke='#a8323a' stroke-width='2'/><circle cx='118' cy='190' r='3.2' fill='#1b2126'/><text x='112' y='176' font-size='10' fill='#8a6d2f' text-anchor='end' font-weight='400'>同一 −1/Km</text><text x='296' y='126' font-size='10.6' fill='#1f5f6b' text-anchor='end' font-weight='400'>无抑制剂</text><text x='296' y='72' font-size='10.6' fill='#a8323a' text-anchor='end' font-weight='400'>加抑制剂</text></svg>
+<figcaption>图 23-4　双倒数作图（非竞争性抑制）：两线交于横轴，纵轴截距变大</figcaption>
+</figure>
+</div>
+<div class="grid2">
+<figure class="figbox">
+<svg viewBox='0 0 320 330' xmlns='http://www.w3.org/2000/svg' font-family='-apple-system,Segoe UI,Noto Sans SC,sans-serif'><rect width='320' height='330' fill='#fffdf8'/><defs><marker id='ah' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1b2126'/></marker></defs><line x1='40' y1='190' x2='300' y2='190' stroke='#1b2126' stroke-width='1.3' marker-end='url(#ah)'/><line x1='160' y1='320' x2='160' y2='52' stroke='#1b2126' stroke-width='1.3' marker-end='url(#ah)'/><text x='300' y='208' font-size='11' fill='#1b2126' text-anchor='end' font-weight='400'>1/[S]</text><text x='152' y='58' font-size='11' fill='#1b2126' text-anchor='end' font-weight='400'>1/v</text><text x='152' y='208' font-size='10' fill='#1b2126' text-anchor='end' font-weight='400'>0</text><text x='10' y='20' font-size='12' fill='#1b2126' text-anchor='start' font-weight='700'>反竞争性：两线平行</text><text x='10' y='36' font-size='10.6' fill='#8a6d2f' text-anchor='start' font-weight='400'>Vmax 与 Km 同比例变小</text><line x1='30' y1='205' x2='296' y2='106' stroke='#1f5f6b' stroke-width='2'/><line x1='30' y1='156' x2='296' y2='57' stroke='#a8323a' stroke-width='2'/><text x='248' y='96' font-size='10.6' fill='#1f5f6b' text-anchor='start' font-weight='400'>无抑制剂</text><text x='248' y='47' font-size='10.6' fill='#a8323a' text-anchor='start' font-weight='400'>加抑制剂</text></svg>
+<figcaption>图 23-5　双倒数作图（反竞争性抑制）：两线平行，Km 与 Vmax 同降</figcaption>
+</figure>
+<div class="tip"><b>速判口诀</b>：纵轴截距 1/Vmax 不动 → 竞争性；横轴截距 −1/Km 不动 → 非竞争性；两条线平行 → 反竞争性；交点跑到第二象限 → 混合型。<b>结论只从截距读，别目测斜率</b>——2019 乙醇脱氢酶、2021 LDH、2023 抑制剂判断都是这一套。</div>
+</div>
+<table>
+<thead><tr><th style="width:16%">抑制类型</th><th style="width:34%">双倒数图特征</th><th class="c" style="width:11%">Vmax</th><th class="c" style="width:11%">Km</th><th>机理一句话</th></tr></thead>
+<tbody>
+<tr><td><b>竞争性</b></td><td>三条线交于<b>纵轴</b>，斜率变大、横轴截距向原点靠</td><td class="c">不变</td><td class="c">变大</td><td>抑制剂与底物抢同一活性中心，加大 [S] 可解除</td></tr>
+<tr><td><b>非竞争性</b></td><td>交于<b>横轴</b>，纵轴截距变大</td><td class="c">变小</td><td class="c">不变</td><td>抑制剂结合活性中心以外，加大 [S] 也解除不了</td></tr>
+<tr><td><b>反竞争性</b></td><td>两线<b>平行</b>，斜率不变</td><td class="c">变小</td><td class="c">变小</td><td>只与 ES 复合物结合，把 ES 拉走</td></tr>
+<tr><td><b>混合型</b></td><td>交点落在<b>第二象限</b></td><td class="c">变小</td><td class="c">变大</td><td>两种结合都有，Ki 与 Ki′ 不等</td></tr>
+</tbody>
+</table>
+
+<h3>2022—2025 真题计算实例（按答案册口径）</h3>
+<div class="k">
+<div class="hd">2022 · 计算题 1｜十八碳甘油三酯彻底氧化产能</div>
+<p><b>题干一句话</b>：一分子十八碳甘油三酯（甘油＋3 分子硬脂酸）彻底氧化为 CO₂ 和 H₂O，产生多少能量？</p>
+<p><b>解题步骤</b>：<br>
+① <b>甘油</b>：−1（甘油激酶活化）＋1.5（FADH₂）＋2（酵解底物水平磷酸化）＋1.5（胞质 NADH，3-磷酸甘油穿梭）＋2.5（丙酮酸→乙酰 CoA）＋10（TCA）＝<b>16.5</b>；胞质 NADH 若走苹果酸-天冬氨酸穿梭，把那个 1.5 换成 2.5，得 <b>18.5</b>。<br>
+② <b>硬脂酸（18C）</b>：8 轮 β-氧化得 8 FADH₂×1.5＝12、8 NADH×2.5＝20、9 乙酰 CoA×10＝90，减活化 2，净 <b>120</b>。<br>
+③ <b>合计</b>：3×120＋16.5＝<b>376.5</b>（苹果酸穿梭 378.5）。</p>
+<p><b>最终数字</b>：<b>376.5 mol ATP</b>；按 Mr≈891、39 kJ/g 折能约 3.47×10⁴ kJ/mol。</p>
+</div>
+
+<div class="k">
+<div class="hd">2022 · 计算题 2｜酶活提取率与纯化倍数</div>
+<p><b>题干一句话</b>：四步纯化的体积、总蛋白、总活力已给（见上面的纯化表图），算每步比活力、纯化倍数与提取率。</p>
+<p><b>解题步骤</b>：先逐行算比活力＝总活力/总蛋白（10、32、200、15 000），再统一除以第一步的 10 得累计纯化倍数（1、3.2、20、1500），最后除以第一步总活力 100 000 得提取率（100%、96%、80%、45%）。</p>
+<p><b>最终数字</b>：<b>比活力 15 000 IU/mg、纯化 1500 倍、提取率 45%</b>——纯度极高但收率只剩不到一半，答题时要写出“纯度与收率需权衡”。</p>
+</div>
+
+<div class="k">
+<div class="hd">2023 · 计算题 1｜鱼藤酮存在下软脂酸的净产能</div>
+<p><b>题干一句话</b>：鱼藤酮抑制复合体Ⅰ时，肝细胞中一分子软脂酸（16C）完全氧化产生多少 ATP？写出依据。</p>
+<p><b>解题步骤</b>：<br>
+① 鱼藤酮阻断复合体Ⅰ，所有 <b>NADH 计 0</b>；FADH₂ 仍经复合体Ⅱ入链，计 1.5。<br>
+② 活化耗 2 ATP（软脂酸→软脂酰 CoA）。<br>
+③ 7 轮 β-氧化：每轮 1 FADH₂＝1.5，共 <b>10.5</b>。<br>
+④ 8 个乙酰 CoA：每个只剩 1 FADH₂（1.5）＋1 GTP（1）＝2.5，共 <b>20</b>。</p>
+<p><b>最终数字</b>：−2＋10.5＋20＝<b>28.5 mol ATP</b>。<br>
+<span class="tagline">校记：册子原文写“2.5×8＋1.5×7−2＝26.5 个 ATP”，按式实为 28.5，原书笔误；题库按 28.5 收录，答题时把算式摆出来即可。</span></p>
+</div>
+
+<div class="k">
+<div class="hd">2024 · 计算题 2、3｜乳酸与磷酸烯醇式丙酮酸的彻底氧化</div>
+<p><b>题干一句话</b>：一摩尔乳酸、一摩尔磷酸烯醇式丙酮酸（PEP）分别彻底氧化成 CO₂ 和 H₂O，各产多少 ATP？</p>
+<p><b>解题步骤</b>：<br>
+① <b>乳酸</b>：乳酸→丙酮酸产 1 NADH（苹果酸-天冬氨酸穿梭 2.5）＋丙酮酸脱氢 2.5＋TCA 10＝<b>15</b>；胞质 NADH 若走 3-磷酸甘油穿梭（1.5），得 <b>14</b>。<br>
+② <b>PEP</b>：丙酮酸激酶一步底物水平磷酸化得 1 ATP＋丙酮酸脱氢 2.5＋TCA 10＝<b>13.5</b>。</p>
+<p><b>最终数字</b>：乳酸 <b>15 mol ATP</b>（旧穿梭口径 14），PEP <b>13.5 mol ATP</b>。册子原文对乳酸并列了 15 与 14，答题时写明所取穿梭方式。</p>
+</div>
+
+<div class="k">
+<div class="hd">2024 · 计算题 1｜蛋白酶粉的比活力</div>
+<p><b>题干一句话</b>：25 mg 蛋白酶粉配成 25 mL，取 0.1 mL 测活（每小时产酪氨酸 1500 μg）；另取 2 mL 凯氏定氮测得蛋白氮 0.2 mg，求 1 mL 的蛋白量与活力单位、比活力、1 g 酶制剂的总蛋白与总活力。</p>
+<p><b>解题步骤</b>：① 蛋白质量按含氮 16% 折算：0.2÷2÷0.16＝<b>0.625 mg/mL</b>；② 1500 μg/h＝25 μg/min，即 0.1 mL 含 25 U，1 mL 含 <b>250 U</b>；③ 比活力 250÷0.625＝<b>400 U/mg</b>；④ 1 g 酶制剂总蛋白 <b>0.625 g</b>、总活力 <b>2.5×10⁵ U</b>。</p>
+<p><b>最终数字</b>：<b>250 U/mL、400 U/mg、总蛋白 0.625 g、总活力 2.5×10⁵ U</b>。<br>
+<span class="tagline">口径提醒：若不做含氮 16% 折算、直接取“蛋白 0.2 mg/2 mL＝0.1 mg/mL”，比活力为 2500 U/mg——两种口径差 6.25 倍，答题时先写清是否折算。</span></p>
+</div>
+
+<div class="k">
+<div class="hd">2025 · 计算题 1｜磷酸肌酸转磷酸反应的 ΔG</div>
+<p><b>题干一句话</b>：磷酸肌酸＋ADP→肌酸＋ATP，给出四种物质的浓度、标准自由能、温度与 RT，求题设条件下的实际 ΔG。</p>
+<p><b>解题步骤</b>：① 写式 <span class="eq">ΔG = ΔG°′ + RT·ln Q</span>，Q＝[肌酸][ATP]/([磷酸肌酸][ADP])；② 求 ΔG°′：磷酸肌酸水解 −43.1 减 ATP 水解 −30.5，得 <b>−12.6 kJ/mol</b>；③ 25 ℃ 取 R＝8.314 J/(mol·K)，RT≈<b>2.478 kJ/mol</b>；④ 代入题给浓度算 Q、取 ln（lg 需 ×2.303），与 ΔG°′ 相加。</p>
+<p><b>最终数字</b>：ΔG°′＝<b>−12.6 kJ/mol</b>；ΔG 按题给浓度代入后若 &lt;0 则反应自发向右，说明磷酸肌酸可有效再生 ATP。原卷浓度与温度未转录，考场上把数字代进去即可。</p>
+</div>
+
+<div class="tip"><b>本节数字出处</b>：题干与答案均取自 <code>data/questions.json</code>（<code>type=计算</code> 条目，2022—2025 各题的 <code>note</code> 标注“口径”）与 <code>work/ans2/T880_*.md</code> 的册子转录；106、120、118.5、16.5/18.5、334.5/376.5、28.5、15、13.5、10/32/200/15 000、1/3.2/20/1500 均与册子逐位核对过，未做二次推算。</div>
 
 <h2 id="s24" class="sec" data-lv="mid"><span class="num">24</span>名词解释速查（283 条，按主题收录 260 条）</h2>
 <p class="lead">全部来自 <code>真题分类--名词解释.docx</code> 与新增真题卷：题库共 <b>283 条</b>原始词条，合并同一名词的不同写法后 <b>260 条</b>，本节按主题收录这 <b>260 条</b>。<b>加粗</b>者为资料中标注了年份的高频条目（同一名词不同写法合并后 <b>57 条</b>），必须能默写；其余按主题扫读，留有印象即可。</p>
