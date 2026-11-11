@@ -64,6 +64,12 @@ function kwHTML(text,limit){
   return out;
 }
 
+function fmtFormula(f){
+  var t=esc(f||'');
+  t=t.replace(/([A-Za-z\)])(\d+)/g,'$1<sub>$2</sub>');
+  t=t.replace(/(\+|-)$/,'<sup>$1</sup>');
+  return t;
+}
 function yearsOf(x){ return (x && x.years) ? x.years : []; }
 function yLabel(y){ y=String(y); if(y.length>=4) return y; return (parseInt(y,10)>=90? '19':'20')+y; }
 function maxYear(x){ var a=yearsOf(x).map(Number); return a.length?Math.max.apply(null,a):0; }
@@ -380,13 +386,13 @@ function renderStructs(){
     var om=MOL[MOLMAP[S.mopen]];
     if(om){
       h+='<div class="sbig">'+om.svg+'<div class="molform" style="margin-top:8px;font-size:12.5px;color:#8a6d2f">'
-        +esc(om.name)+' · '+esc(om.formula||'')+'</div>'
+        +esc(om.name)+' · '+fmtFormula(om.formula)+'</div>'
         +'<button class="btn ghost" id="sclose" style="margin-top:8px">收起大图</button></div>';
     }
   }
   h+='<div class="sgrid">'+list.map(function(m){
     return '<div class="scard" data-mid="'+m.id+'"><div class="sn">'+esc(m.name)+'</div>'+m.svg
-      +'<div class="sf">'+esc(m.formula||'')+'</div></div>';
+      +'<div class="sf">'+fmtFormula(m.formula)+'</div></div>';
   }).join('')+'</div>';
   h+='<div class="tagline" style="margin-top:12px">点任意结构看大图；题卡与答案里凡是<span class="mol" style="cursor:default">这样</span>的虚线下划线词，点一下即可看结构式。'
     +'结构式按标准 SMILES 经 RDKit 生成，并逐个校验分子式。</div></div>';
@@ -476,7 +482,7 @@ function showPop(el){
     html='<div class="kwhead">'+esc(mo.name)
       +'<span class="kwsubj">结构式</span></div>'
       +'<div class="molbox">'+mo.svg+'</div>'
-      +'<div class="molform">分子式 '+esc(mo.formula||'')+'</div>'
+      +'<div class="molform">分子式 '+fmtFormula(mo.formula)+'</div>'
       +'<div class="kwfoot">按标准 SMILES 经 RDKit 生成 · 点空白处或 Esc 关闭</div>';
   }else{
     var i=+el.dataset.k, g=GL[i];

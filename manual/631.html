@@ -81,6 +81,9 @@ details[open] summary{margin-bottom:8px;padding-bottom:6px;border-bottom:1px das
 .tagline{font-size:12.4px;color:var(--ink3);margin-top:4px}
 .lead{font-size:15.4px;color:var(--ink2);border-left:3px solid var(--red);padding-left:14px;margin:16px 0 10px}
 code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#efeae0;padding:1px 5px;border-radius:3px}
+.figbox{margin:14px 0;border:1px solid #e3dccd;border-radius:10px;padding:10px;background:#fff}
+.figbox svg{width:100%;height:auto;max-width:620px;display:block;margin:0 auto}
+.figbox figcaption{font-size:12px;color:#8a6d2f;text-align:center;margin-top:6px}
 </style>
 </head>
 <body>
@@ -116,6 +119,7 @@ code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#efeae0;
 <div><b>384</b>道真题（含名解与小题）</div>
 <div><b>19</b>个年份（2002—2025）</div>
 <div><b>80</b>条名词解释</div>
+<div><b>128</b>题按答案册口径</div>
 <div><b>12</b>个大纲模块</div>
 </div>
 </header>
@@ -129,6 +133,7 @@ code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#efeae0;
 <li><b>旁证来源</b>：<code>期末题分类--名词解释/填空选择/简答答题.docx</code>，本科期末 2007—2011 年多套 A/B 卷，用于判断“同一个点在教学上是否被反复强调”。期末题不进入“考频”计数，只作 <span class="freq mid">期末 N 次</span> 标注。</li>
 <li><b>频度含义</b>：<span class="freq">真题 2 年</span> = 该考点在 2 个不同年份的真题里出现过（<b>真题 N 年 = 在 N 个年份出现过</b>，不是题量）；<b>不是</b>“押题概率”。条目标题里的年份同样写全四位，如“真题 2018 年”表示“该题出自 2018 年”，与“N 年”的频次口径不同。题库现有 19 个年份，2022—2025 每年都在出新题，近年题权重更高；本手册的星级以题量为准，判据写在每节开头。</li>
 <li><b>名词解释</b>：631 题库共 <b>80 条</b>名解词条（旧 docx 17 条 + 新增卷 58 条，另有多条同名/近义条目分散在正文各节表格），第 ⑮ 节按年份列出其中的 75 条，可直接当“名解题库”刷。</li>
+<li><b>答案口径（本轮新增）</b>：<b>《631 分子生物学考研真题答案》印刷版</b>（80 页，2002—2025）已并入题库，全册 <b>205 条</b>答案；其中 <b>128 道</b>题的答案已换成该册口径（<code>questions.json</code> 中 <code>src=ansbook</code> / <code>ansbook-audited</code>，note 标“口径：《631 参考答案》印刷版 · 年份 · 小节”）。本手册凡引具体口径处（如聚合酶亚基、错配率、循环数、克隆酶反应）一律以题库为准。<b>册子未覆盖 2009—2010、2012 卷</b>，这三个年份的题目仍按原资料与教材口径，标【补全】。</li>
 <li><b>2024-11 更新</b>：新增 82 页真题卷照片，631 实际覆盖 2002—2025，已与旧 docx 数据按“卷头年份 + 科目”合并去重；题库总量由 85 题增至 <b>384 题</b>，年份覆盖由 4 个增至 <b>19 个</b>。本版首屏数字、各节副标题、第 ① 节总表、各节“本轮新增真题”表均按新库重算；旧版“无真题年份”“几乎无真题”一类判断已据新数据改正。</li>
 <li><b>章节映射说明</b>：题库按 7 章分类（一 染色体结构／二 DNA 复制·突变·修复·重组／三 基因表达／四 基因表达调控／五 RNA 调控／六 DNA 克隆／七 分子生物学技术），本手册把这 7 章拆成 14 节讲解——例如第 ③④ 节同属第二章、第 ⑤⑥⑦ 节同属第三章——因此每节副标题是该节对应内容的题数，不是整章题数。</li>
 <li><b>答案归属</b>：原文中写“（参考知识点总结/练习册 Pxx）”的题目，答案不在本资料内，本手册按标准教材口径补全，并标注 【补全】，不与原答案混淆。</li>
@@ -146,26 +151,26 @@ code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#efeae0;
 <table>
 <thead><tr><th style="width:34%">考点</th><th class="c" style="width:12%">真题年份</th><th class="c" style="width:9%">真题</th><th class="c" style="width:11%">期末</th><th class="c" style="width:10%">星级</th><th class="c">所在节</th></tr></thead>
 <tbody>
-<tr><td><b>克隆与基因工程</b></td><td class="c">2002—2025 间 17 年</td><td class="c">63 题</td><td class="c">1 次</td><td class="c stars">★★★</td><td class="c">⑫</td></tr>
-<tr><td><b>转录与转录后加工</b></td><td class="c">2002—2025 间 14 年</td><td class="c">62 题</td><td class="c">名解+简答高频</td><td class="c stars">★★★</td><td class="c">⑤</td></tr>
-<tr><td><b>细碎考点补丁</b></td><td class="c">2002—2025 间 12 年</td><td class="c">37 题</td><td class="c">多次</td><td class="c stars">★★★</td><td class="c">⑭</td></tr>
-<tr><td><b>翻译与遗传密码</b></td><td class="c">2002—2024 间 9 年</td><td class="c">34 题</td><td class="c">6 次</td><td class="c stars">★★★</td><td class="c">⑦</td></tr>
+<tr><td><b>克隆与基因工程</b></td><td class="c">2002—2025 间 17 年</td><td class="c">64 题</td><td class="c">1 次</td><td class="c stars">★★★</td><td class="c">⑫</td></tr>
+<tr><td><b>转录与转录后加工</b></td><td class="c">2002—2025 间 14 年</td><td class="c">61 题</td><td class="c">名解+简答高频</td><td class="c stars">★★★</td><td class="c">⑤</td></tr>
+<tr><td><b>细碎考点补丁</b></td><td class="c">2002—2025 间 15 年</td><td class="c">56 题</td><td class="c">多次</td><td class="c stars">★★★</td><td class="c">⑭</td></tr>
+<tr><td><b>翻译与遗传密码</b></td><td class="c">2002—2024 间 9 年</td><td class="c">35 题</td><td class="c">6 次</td><td class="c stars">★★★</td><td class="c">⑦</td></tr>
 <tr><td><b>DNA 复制</b></td><td class="c">2002—2025 间 13 年</td><td class="c">33 题</td><td class="c">—</td><td class="c stars">★★★</td><td class="c">③</td></tr>
 <tr><td>分子生物学技术</td><td class="c">2002—2025 间 13 年</td><td class="c">28 题</td><td class="c">多次</td><td class="c stars">★★</td><td class="c">⑪</td></tr>
-<tr><td>名词解释速记卡（80 条）</td><td class="c">2006—2025 间 12 年</td><td class="c">23 题</td><td class="c">—</td><td class="c stars">★★</td><td class="c">⑮</td></tr>
-<tr><td>染色体与核酸结构</td><td class="c">2002—2025 间 12 年</td><td class="c">22 题</td><td class="c">—</td><td class="c stars">★★</td><td class="c">②</td></tr>
-<tr><td>原核基因调控（操纵子）</td><td class="c">2002—2025 间 9 年</td><td class="c">22 题</td><td class="c">5 次</td><td class="c stars">★★</td><td class="c">⑧</td></tr>
-<tr><td>真核基因调控与表观遗传</td><td class="c">2002—2025 间 11 年</td><td class="c">19 题</td><td class="c">组蛋白 4 次</td><td class="c stars">★★</td><td class="c">⑨</td></tr>
-<tr><td>突变 · 修复 · 重组</td><td class="c">2002—2025 间 10 年</td><td class="c">15 题</td><td class="c">多次</td><td class="c stars">★★</td><td class="c">④</td></tr>
+<tr><td>染色体与核酸结构</td><td class="c">2002—2025 间 14 年</td><td class="c">26 题</td><td class="c">—</td><td class="c stars">★★</td><td class="c">②</td></tr>
+<tr><td>原核基因调控（操纵子）</td><td class="c">2002—2025 间 9 年</td><td class="c">21 题</td><td class="c">5 次</td><td class="c stars">★★</td><td class="c">⑧</td></tr>
+<tr><td>真核基因调控与表观遗传</td><td class="c">2002—2025 间 12 年</td><td class="c">20 题</td><td class="c">组蛋白 4 次</td><td class="c stars">★★</td><td class="c">⑨</td></tr>
+<tr><td>突变 · 修复 · 重组</td><td class="c">2002—2025 间 9 年</td><td class="c">14 题</td><td class="c">多次</td><td class="c stars">★★</td><td class="c">④</td></tr>
 <tr><td>调控 RNA 与非编码 RNA</td><td class="c">2002—2025 间 7 年</td><td class="c">10 题</td><td class="c">3 次</td><td class="c stars">★★</td><td class="c">⑩</td></tr>
 <tr><td>RNA 剪接与 RNA 编辑</td><td class="c">2002、2006、2007、2008、2017、2024</td><td class="c">9 题</td><td class="c">剪接 15 次</td><td class="c stars">★</td><td class="c">⑥</td></tr>
 <tr><td>疾病与人类健康</td><td class="c">2006、2013、2024、2025</td><td class="c">7 题</td><td class="c">原癌基因 4 次</td><td class="c stars">★</td><td class="c">⑬</td></tr>
+<tr><td>名词解释速记卡（80 条，已计入各节）</td><td class="c">2006—2025 间 12 年</td><td class="c">—</td><td class="c">—</td><td class="c stars">★★</td><td class="c">⑮</td></tr>
 </tbody>
 </table>
 
 <div class="tip"><b>读表结论（30 秒版）</b><br>
-① <b>“调控”仍是主战场</b>：原核操纵子（22 题）+ 真核表观调控（19 题）+ RNA 调控（10 题），合计 <b>51 题</b>，约占全库三成，且简答/论述占比最高。<br>
-② <b>“技术 + 克隆”是最大一块</b>：分子生物学技术（28）+ 克隆与基因工程（63）＝ <b>91 题</b>，几乎年年出现，喜欢出“设计实验”大题。<br>
+① <b>“调控”仍是主战场</b>：原核操纵子（21 题）+ 真核表观调控（20 题）+ RNA 调控（10 题），合计 <b>51 题</b>，约占全库三成，且简答/论述占比最高。<br>
+② <b>“技术 + 克隆”是最大一块</b>：分子生物学技术（28）+ 克隆与基因工程（64）＝ <b>92 题</b>，几乎年年出现，喜欢出“设计实验”大题。<br>
 ③ <b>“结构”只考硬细节</b>：核小体、双螺旋、核酶——背参数和数字即可拿分，不要花时间读故事。<br>
 ④ <b>RNA 层面被反复考</b>：snRNA/miRNA/gRNA、RNAi、可变剪接、反义 RNA，是近十年新增大纲（第 10 条“调控 RNAs”）的直接体现，2021—2025 仍在出。</div>
 
@@ -176,7 +181,7 @@ code{font-family:"SF Mono",Consolas,monospace;font-size:.9em;background:#efeae0;
 <button data-f="mid">★★ 及以上</button>
 </div>
 
-<h2 id="s2" class="sec" data-lv="mid"><span class="num">02</span>染色体与核酸结构<span class="freq mid">真题 22 · 命中 16 · 年份 2002—2025 间 12 个年份</span></h2>
+<h2 id="s2" class="sec" data-lv="mid"><span class="num">02</span>染色体与核酸结构<span class="freq mid">真题 26 · 命中 20 · 年份 2002—2025 间 14 个年份</span></h2>
 <p class="lead">这一节只考“硬参数 + 结构层次”。所有分数都藏在数字里：146 bp、1.75 圈、1/7、11 bp、2 nm、3.4 nm、10 bp。</p>
 
 <h3 class="item" data-lv="mid">核小体结构特征 <span class="stars">★★</span> <span class="freq">真题 2018 年</span></h3>
@@ -248,6 +253,14 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td class="c">2014</td><td class="c">简答</td><td>原核、真核基因组的结构特点？</td></tr>
 </tbody>
 </table>
+
+<div class="k">
+<div class="hd">2024、2025 两题要点（按答案册口径）</div>
+<ul>
+<li><b>2025 简答 · DNA 双螺旋结构及其意义</b>：结构按“反向平行右手螺旋 → 骨架在外、碱基在内、直径 2 nm → A=T、G≡C 互补 → 每圈 10 bp、螺距 3.4 nm、相邻 0.34 nm、表面有大小沟”四点答；<b>意义</b>补三条——① 解释了遗传信息<b>储存的稳定性</b>，是 DNA 作为遗传物质的结构基础；② <b>碱基互补</b>为半保留复制、转录与修复提供分子基础，双链结构又允许错配修复与重组；③ <b>大沟</b>为序列特异性蛋白提供识别界面。<span class="tagline">原稿本节只列结构七要点，未写“意义”，2025 卷按册子补此三条。</span></li>
+<li><b>2024 简答 · 染色体具备哪些作为遗传物质的特征</b>：① 分子结构<b>相对稳定</b>，能稳定承载并传递遗传信息；② 能<b>自我复制</b>，保证亲子代之间遗传物质的连续性；③ 能<b>携带大量遗传信息（基因）</b>，指导蛋白质合成、控制生命过程；④ 能产生一定程度的<b>可遗传变异</b>。四条各一句，不要展开成“DNA 是遗传物质”的证明题。</li>
+</ul>
+</div>
 <h2 id="s3" class="sec" data-lv="hi"><span class="num">03</span>DNA 复制<span class="freq">真题 33 · 命中 23 · 年份 2002—2025 间 13 个年份</span></h2>
 <p class="lead">这一节考题的三个套路：① 复述后随链怎么合成；② 解释“为什么复制这么准/为什么末端复制不全”；③ 给酶和因子做功能配对。</p>
 
@@ -270,16 +283,15 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <h3 class="item" data-lv="mid">DNA 聚合酶如何维持复制忠实性 <span class="stars">★★</span> <span class="freq">真题 2013 年</span></h3>
 <div class="q"><span class="tag">真题回放</span>2013：<em>DNA 聚合酶如何维持复制忠实性？</em></div>
 <div class="k">
-<div class="hd">三层保障 + 三个数量级（这是得分核心）</div>
-<table>
-<thead><tr><th style="width:24%">层次</th><th>机制</th><th class="c" style="width:14%">错误率</th></tr></thead>
-<tbody>
-<tr><td>① 碱基互补配对</td><td>半保留复制，dNTP 按 A-T、G-C 对号入座，保证子链与母链序列一致</td><td class="c">—</td></tr>
-<tr><td>② 聚合酶的双重核对</td><td><b>底物选择</b>：模板依赖，消耗能量严格选配；<b>校对</b>：<b>3'→5' 外切酶活性</b>切除错配碱基（“编辑功能”）</td><td class="c">10⁻⁴ → 10⁻⁶</td></tr>
-<tr><td>③ 错配修复系统</td><td>以<b>母链甲基化</b>识别新旧链，切除子链错配段并重合成</td><td class="c">&lt; 10⁻⁹</td></tr>
-</tbody>
-</table>
-<p class="tagline">记法：<b>“配对—校对—修复”，10⁻⁴ → 10⁻⁶（降 2 个数量级）→ 10⁻⁹（再降 3 个数量级）。</b></p>
+<div class="hd">四个方面（答案册口径，按此四点作答）</div>
+<ol>
+<li><b>聚合酶的选择作用</b>：以母链为模板，按碱基互补选择正确的 dNTP 掺入。</li>
+<li><b>聚合酶的校正作用</b>：错配掺入的核苷酸由 <b>3'→5' 外切酶活性</b>水解切除，再重新掺入正确的核苷酸（“编辑功能”）。</li>
+<li><b>RNA 引物的合成与切除</b>：引物提供正确的 3'-OH 起点；复制后由 <b>Pol Ⅰ</b> 切除并以高保真方式填补，册子把它单列为提高准确性的重要因素。</li>
+<li><b>复制后错配碱基的修正</b>：光复活修复、剪切（切除）修复、重组修复、SOS 修复等修复系统（册子只列这四类）。</li>
+</ol>
+<p class="tagline"><b>数字补充</b>：校对使保真度提高约 <b>100~1000 倍</b>，DNA 复制的错配率约 <b>10⁻⁹~10⁻¹⁰</b>（2025 卷同题册子口径）。<br>
+<span class="tagline">原稿作“三层保障：碱基互补配对／双重核对／错配修复”，错误率写作 10⁻⁴→10⁻⁶→10⁻⁹；答案册 2013 卷只列上述四个方面，且把“RNA 引物的合成与切除”单列为一条，故按册子改写，原稿那组分级数字不再保留。</span></p>
 </div>
 
 <h3 class="item" data-lv="mid">端粒、端粒酶与末端复制问题 <span class="stars">★★</span> <span class="freq">真题 2013 年</span></h3>
@@ -334,7 +346,15 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td class="c">2014</td><td class="c">简答</td><td>真核生物 DNA 的复制在哪些水平上受到调控？</td></tr>
 </tbody>
 </table>
-<h2 id="s4" class="sec" data-lv="mid"><span class="num">04</span>突变 · 修复 · 重组<span class="freq mid">真题 15 · 命中 11 · 年份 2002—2025 间 10 个年份</span></h2>
+
+<div class="k">
+<div class="hd">2024、2025 两题要点（按答案册口径）</div>
+<ul>
+<li><b>2025 简答 · 为什么 DNA 聚合酶有校对功能、RNA 聚合酶没有</b>：① <b>结构差异</b>——DNA 聚合酶具 <b>3'→5' 外切酶</b>活性（即校对），RNA 聚合酶缺此活性，这是有无校对的直接原因；② DNA 是<b>长期遗传载体</b>，复制错误会永久传给子代、导致突变或疾病，错配率需低至 <b>10⁻⁹~10⁻¹⁰</b>；③ RNA 是<b>基因表达的临时产物</b>，单个分子出错不遗传，且可快速大量合成，允许较高错误率 <b>10⁻⁴~10⁻⁵</b>；④ <b>代价与收益</b>——校对通过切除错配碱基把保真度提高约 <b>100~1000 倍</b>；⑤ RNA 合成以<b>速度优先</b>，错误 RNA 可降解、可经多次转录稀释。<span class="tagline">本题即本节“忠实性”的对照组，两题一起背。</span></li>
+<li><b>2024 简答 · 真核 DNA 复制的特征和过程</b>：特征是<b>多起点、双向</b>复制，S 期<b>分批激活</b>以缩短复制时间；过程按“<b>ORC</b> 结合起点 → Cdc6/Cdt1 装载 <b>MCM</b> 解旋酶成前复制复合体 → CDK/DDK 磷酸化激活 MCM、<b>RPA</b> 稳定单链 → <b>pol α-引物酶</b>合成 RNA 引物 → <b>pol ε</b> 合成前导链、<b>pol δ</b> 合成后随链（<b>PCNA</b> 滑动夹、<b>RFC</b> 装载）→ RNase H 与 <b>FEN1</b> 去引物、pol δ 填补、<b>连接酶 Ⅰ</b> 封口 → <b>端粒酶</b>延长 3' 端、<b>CAF-1</b> 装配核小体”写。<span class="tagline">册子此条只列题干、未附答案，此处为教材口径【补全】。</span></li>
+</ul>
+</div>
+<h2 id="s4" class="sec" data-lv="mid"><span class="num">04</span>突变 · 修复 · 重组<span class="freq mid">真题 14 · 命中 10 · 年份 2002—2025 间 9 个年份</span></h2>
 <p class="lead">考点极稳定：六种修复各一句“识别—切除—重合成”，加上转座子的分类与遗传学效应。</p>
 
 <h3 class="item" data-lv="mid">六种 DNA 修复系统（对照表背）<span class="stars">★★</span> <span class="freq mid">期末 多次</span></h3>
@@ -391,8 +411,15 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td class="c">2015</td><td class="c">简答</td><td>何为 DNA 重组技术？其主要步骤为何？</td></tr>
 </tbody>
 </table>
-<h2 id="s5" class="sec" data-lv="hi"><span class="num">05</span>转录与转录后加工<span class="freq">真题 62 · 命中 37 · 年份 2002—2025 间 14 个年份</span></h2>
-<p class="lead">本节 62 题，是全库最大的一块：启动子结构与识别、RNA 聚合酶分工、转录终止三件事几乎年年出现。这一节必须做到“能默写序列、能画结构、能说差异”。</p>
+
+<div class="k">
+<div class="hd">2025 简答 · Holliday 中间体是什么，怎么形成和拆开（答案册口径）</div>
+<p><b>是什么</b>：同源重组过程中形成的<b>十字形四链 DNA</b>结构，由两条同源双链 DNA 交叉连接而成。</p>
+<p><b>怎么形成</b>：可用<b>双链断裂修复模型</b>（或双链入侵模型）解释——以<b>单链侵入</b>为起点，侵入后形成 <b>D-loop</b>，DNA 聚合酶沿其延伸，链交换随之产生交叉；两个交叉点<b>相对滑动</b>，最终形成 Holliday 连接。</p>
+<p><b>怎么拆开</b>：<b>RuvA/RuvB</b> 促进<b>分支迁移</b>、扩大异源双链区；<b>RuvC</b> 在两条交叉链的<b>特定对称位点</b>切割——水平切或垂直切，切割后再连接，分别产生<b>拼接重组体</b>与<b>非拼接重组体</b>两种产物。</p>
+</div>
+<h2 id="s5" class="sec" data-lv="hi"><span class="num">05</span>转录与转录后加工<span class="freq">真题 61 · 命中 36 · 年份 2002—2025 间 14 个年份</span></h2>
+<p class="lead">本节 61 题，是全库最大的一块：启动子结构与识别、RNA 聚合酶分工、转录终止三件事几乎年年出现。这一节必须做到“能默写序列、能画结构、能说差异”。</p>
 
 <h3 class="item" data-lv="hi">启动子 <span class="stars">★★★</span> <span class="freq">真题 2008 考点、2010 选择、2023 考点、2025 简答</span></h3>
 <div class="q"><span class="tag">真题回放</span>启动子<b>没有</b>真题名解，考的是考点与简答：2008 考点<em>原核生物启动子（−10 区与 −35 区的最佳间距）</em>；2010 选择<em>原核 −10 区相当于真核的 TATA 盒</em>；2023 考点<em>启动子包含 TATA 盒</em>；2025 简答<em>TATA 框的结构特征及在转录起始中的作用</em>。<br>标准定义（供名解备用）：“与基因表达启动相关的<b>顺式作用元件</b>，位于转录起始点 5' 端上游 <b>约 200 bp</b> 内，能活化 RNA 聚合酶使之与模板准确结合，具有<b>转录起始特异性</b>，控制转录的起始时间与表达程度。”<br>
@@ -416,7 +443,7 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <table>
 <thead><tr><th style="width:18%">酶</th><th style="width:34%">亚基/组成</th><th>产物</th></tr></thead>
 <tbody>
-<tr><td><b>原核 RNAP</b></td><td>核心酶 <b>α₂ββ'ω</b> + <b>σ</b> = 全酶。α：装配与启动子上游识别；β：与 β' 共同构成催化中心（β' 结合 DNA，β 结合 NTP）；ω：装配与稳定；<b>σ：识别启动子、决定起始位点</b></td><td>mRNA（及所有 RNA）</td></tr>
+<tr><td><b>原核 RNAP</b></td><td>核心酶 <b>α₂ββ'ω</b> + <b>σ</b> = 全酶。α：装配与启动子上游识别；β：与 β' 共同构成催化中心（β' 结合 DNA，β 结合 NTP）；ω：装配与稳定；<b>σ：识别启动子、决定起始位点</b></td><td>mRNA（及所有 RNA）；<b>利福平</b>专一结合 <b>β 亚基</b>（<i>rpoB</i> 产物），阻断起始后 2~3 nt 处的延伸，对真核 RNAP 无效</td></tr>
 <tr><td><b>真核 RNAP Ⅰ</b></td><td>位于核仁，需 UBF、SL1</td><td><b>rRNA 前体</b>（45S → 18S/5.8S/28S）</td></tr>
 <tr><td><b>真核 RNAP Ⅱ</b></td><td>需 TFⅡA/B/D/E/F/H；<b>α-鹅膏蕈碱极敏感</b></td><td><b>mRNA</b>、snRNA、miRNA 前体</td></tr>
 <tr><td><b>真核 RNAP Ⅲ</b></td><td>需 TFⅢA/B/C</td><td><b>tRNA、5S rRNA</b>、U6 snRNA</td></tr>
@@ -478,6 +505,16 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td class="c">2007</td><td class="c">简答</td><td>大肠杆菌 RNA 聚合酶在启动子上的定位机制</td></tr>
 </tbody>
 </table>
+
+<div class="k">
+<div class="hd">2024、2025 四题要点（按答案册口径）</div>
+<ul>
+<li><b>2025 简答 · TATA 框的结构特征及其在转录起始中的作用</b>：<b>位置</b>——起始点上游约 <b>−25~−30</b>；<b>序列</b>——保守 <b>5'-TATAAA-3'</b>（或 TATA(A/T)A(A/T)），富含 A/T、双链易解链；<b>作用</b>——由 <b>TFⅡD 的 TBP</b> 特异识别结合，引导 Pol Ⅱ 定位于 <b>+1</b> 并确定转录方向；TBP 结合使 DNA <b>弯曲</b>，依次招募 TFⅡA/B/F、Pol Ⅱ、TFⅡE/H 组装<b>前起始复合物（PIC）</b>；TFⅡH 参与起始点附近解链。<b>分布</b>——并非所有基因都有典型 TATA 框，<b>管家基因</b>多用 CpG 岛启动子；含 TATA 框者多表现为诱导性、组织特异表达，起始位点相对固定。</li>
+<li><b>2024 简答 · 真核与原核转录的区别</b>：五条对照——<b>时序性</b>（原核无时序、边转录边翻译 / 真核严格时序、时空分开）；<b>产物</b>（多顺反子 / 单顺反子）；<b>启动子识别</b>（原核由 RNA 聚合酶本身识别 / 真核需转录因子协助）；<b>转录后加工</b>（原核无 / 真核需复杂加工）；<b>聚合酶种类</b>（原核 1 种 / 真核 3 种以上）。</li>
+<li><b>2025 考点 · 利福平作用于哪个亚基</b>：<b>β 亚基</b>（<i>rpoB</i> 基因产物），结合后阻断转录起始后 <b>2~3 个核苷酸</b>处的 RNA 延伸，对真核 RNA 聚合酶无抑制作用。<span class="tagline">原卷写作“RNA PolyⅡ”，实指原核 RNA 聚合酶；本节亚基表已按此补注。</span></li>
+<li><b>2025 考点 · DNA 稀有碱基如何形成</b>：<b>复制后</b>由修饰酶催化生成——5-甲基胞嘧啶、N⁶-甲基腺嘌呤等由 <b>DNA 甲基转移酶</b>以 <b>S-腺苷甲硫氨酸</b>为甲基供体，对已合成的碱基进行甲基化、羟化等修饰形成，不是复制时直接掺入的“稀有 dNTP”。</li>
+</ul>
+</div>
 <h2 id="s6" class="sec" data-lv="low"><span class="num">06</span>RNA 剪接与 RNA 编辑<span class="freq low">真题 9 · 命中 8 · 年份 2002、2006、2007、2008、2017、2024</span></h2>
 <p class="lead">四条线：内含子四类 → 剪接体组装 → 可变剪接 → RNA 编辑。考大题通常问“内含子类型/剪接机制”，考名解就问“可变剪接”。</p>
 
@@ -527,8 +564,13 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <p><b>gRNA 机制</b>：gRNA 与 mRNA 前体<b>互补配对</b>，其“锚定区”配对后，指导在 mRNA 中<b>插入尿嘧啶（U）</b>（或删除多余的 U），形成新的密码子，产生功能不同的 mRNA。</p>
 </div>
 
-<h2 id="s7" class="sec" data-lv="hi"><span class="num">07</span>翻译与遗传密码<span class="freq">真题 34 · 命中 20 · 年份 2002—2024 间 9 个年份</span></h2>
-<p class="lead">两类题：① 密码子特性（背 6 条 + 3 个终止密码子别名）；② 翻译精确性（五重保障，论述题模板）。</p>
+<div class="k">
+<div class="hd">2024 名解 · 剪接体（答案册口径，三句话）</div>
+<p>① 剪接体是<b>小核糖核蛋白颗粒（snRNP）</b>与多种<b>非 snRNP 蛋白因子</b>组成的庞大核糖核蛋白复合体；② 其中的 snRNP 包括 <b>U1、U2、U4、U5、U6</b> 共五种，是复合体的核心组分；③ 它在核内识别 5'/3' 剪接位点与分支点，经两步<b>转酯反应</b>切除内含子、连接外显子（组装细节见上“剪接体的组分与组装”）。</p>
+</div>
+
+<h2 id="s7" class="sec" data-lv="hi"><span class="num">07</span>翻译与遗传密码<span class="freq">真题 35 · 命中 21 · 年份 2002—2024 间 9 个年份</span></h2>
+<p class="lead">两类题：① 密码子特性（背 6 条 + 3 个终止密码子别名）；② 翻译精确性（六条，论述题模板）。</p>
 
 <h3 class="item" data-lv="mid">遗传密码的特点 <span class="stars">★★</span> <span class="freq mid">期末 6 次</span></h3>
 <div class="q"><span class="tag">期末旁证</span>多套卷考“<em>简述遗传密码（三联体密码）的性质</em>”“<em>简述遗传密码的简并性和摆动假说</em>”。</div>
@@ -543,21 +585,26 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <li><b>摆动性（wobble）</b>：密码子第 3 位与反密码子第 1 位配对<b>不严格</b>（G-U 可配），使一个 tRNA 可识别多个同义密码子，解释简并性。</li>
 </ol>
 </div>
+<figure class="figbox">
+<svg viewBox='0 0 660 486' xmlns='http://www.w3.org/2000/svg' font-family='-apple-system,Segoe UI,Noto Sans SC,sans-serif'><rect width='660' height='486' fill='#fffdf8'/><defs><marker id='ah-codon' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1b2126'/></marker></defs><text x='330.0' y='24' font-size='13' fill='#1b2126' text-anchor='middle' font-weight='700'>遗传密码表（mRNA 5′→3′）</text><text x='108' y='52' font-size='10.2' fill='#8a6d2f' text-anchor='middle' font-weight='400'>第一字母</text><text x='430' y='40' font-size='10.2' fill='#8a6d2f' text-anchor='middle' font-weight='400'>第二字母</text><text x='300' y='56' font-size='11' fill='#8a6d2f' text-anchor='middle' font-weight='700'>U</text><text x='396' y='56' font-size='11' fill='#8a6d2f' text-anchor='middle' font-weight='700'>C</text><text x='492' y='56' font-size='11' fill='#8a6d2f' text-anchor='middle' font-weight='700'>A</text><text x='588' y='56' font-size='11' fill='#8a6d2f' text-anchor='middle' font-weight='700'>G</text><text x='636' y='52' font-size='10.2' fill='#8a6d2f' text-anchor='middle' font-weight='400'>第三字母</text><rect x='80' y='68' width='38' height='96' fill='#eaf3f4' stroke='#c9c2b4'/><text x='99' y='124' font-size='15' fill='#1f5f6b' text-anchor='middle' font-weight='700'>U</text><rect x='250' y='68' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='255' y='87' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UUU</text><text x='287' y='87' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>苯丙氨酸</text><text x='255' y='110' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UUC</text><text x='287' y='110' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>苯丙氨酸</text><text x='255' y='133' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UUA</text><text x='287' y='133' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>亮氨酸</text><text x='255' y='156' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UUG</text><text x='287' y='156' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>亮氨酸</text><rect x='346' y='68' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='351' y='87' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UCU</text><text x='383' y='87' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>丝氨酸</text><text x='351' y='110' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UCC</text><text x='383' y='110' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>丝氨酸</text><text x='351' y='133' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UCA</text><text x='383' y='133' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>丝氨酸</text><text x='351' y='156' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UCG</text><text x='383' y='156' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>丝氨酸</text><rect x='442' y='68' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='447' y='87' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UAU</text><text x='479' y='87' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>酪氨酸</text><text x='447' y='110' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UAC</text><text x='479' y='110' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>酪氨酸</text><text x='447' y='133' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UAA</text><text x='479' y='133' font-size='9.3' fill='#a8323a' text-anchor='start' font-weight='400'>终止</text><text x='447' y='156' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UAG</text><text x='479' y='156' font-size='9.3' fill='#a8323a' text-anchor='start' font-weight='400'>终止</text><rect x='538' y='68' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='543' y='87' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UGU</text><text x='575' y='87' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>半胱氨酸</text><text x='543' y='110' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UGC</text><text x='575' y='110' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>半胱氨酸</text><text x='543' y='133' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UGA</text><text x='575' y='133' font-size='9.3' fill='#a8323a' text-anchor='start' font-weight='400'>终止</text><text x='543' y='156' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>UGG</text><text x='575' y='156' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>色氨酸</text><rect x='80' y='168' width='38' height='96' fill='#eaf3f4' stroke='#c9c2b4'/><text x='99' y='224' font-size='15' fill='#1f5f6b' text-anchor='middle' font-weight='700'>C</text><rect x='250' y='168' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='255' y='187' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CUU</text><text x='287' y='187' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>亮氨酸</text><text x='255' y='210' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CUC</text><text x='287' y='210' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>亮氨酸</text><text x='255' y='233' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CUA</text><text x='287' y='233' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>亮氨酸</text><text x='255' y='256' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CUG</text><text x='287' y='256' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>亮氨酸</text><rect x='346' y='168' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='351' y='187' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CCU</text><text x='383' y='187' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>脯氨酸</text><text x='351' y='210' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CCC</text><text x='383' y='210' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>脯氨酸</text><text x='351' y='233' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CCA</text><text x='383' y='233' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>脯氨酸</text><text x='351' y='256' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CCG</text><text x='383' y='256' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>脯氨酸</text><rect x='442' y='168' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='447' y='187' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CAU</text><text x='479' y='187' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>组氨酸</text><text x='447' y='210' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CAC</text><text x='479' y='210' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>组氨酸</text><text x='447' y='233' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CAA</text><text x='479' y='233' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>谷氨酰胺</text><text x='447' y='256' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CAG</text><text x='479' y='256' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>谷氨酰胺</text><rect x='538' y='168' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='543' y='187' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CGU</text><text x='575' y='187' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>精氨酸</text><text x='543' y='210' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CGC</text><text x='575' y='210' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>精氨酸</text><text x='543' y='233' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CGA</text><text x='575' y='233' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>精氨酸</text><text x='543' y='256' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>CGG</text><text x='575' y='256' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>精氨酸</text><rect x='80' y='268' width='38' height='96' fill='#eaf3f4' stroke='#c9c2b4'/><text x='99' y='324' font-size='15' fill='#1f5f6b' text-anchor='middle' font-weight='700'>A</text><rect x='250' y='268' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='255' y='287' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AUU</text><text x='287' y='287' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>异亮氨酸</text><text x='255' y='310' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AUC</text><text x='287' y='310' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>异亮氨酸</text><text x='255' y='333' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AUA</text><text x='287' y='333' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>异亮氨酸</text><text x='255' y='356' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AUG</text><text x='287' y='356' font-size='9.3' fill='#1f5f6b' text-anchor='start' font-weight='400'>甲硫氨酸*</text><rect x='346' y='268' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='351' y='287' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>ACU</text><text x='383' y='287' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>苏氨酸</text><text x='351' y='310' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>ACC</text><text x='383' y='310' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>苏氨酸</text><text x='351' y='333' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>ACA</text><text x='383' y='333' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>苏氨酸</text><text x='351' y='356' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>ACG</text><text x='383' y='356' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>苏氨酸</text><rect x='442' y='268' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='447' y='287' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AAU</text><text x='479' y='287' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>天冬酰胺</text><text x='447' y='310' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AAC</text><text x='479' y='310' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>天冬酰胺</text><text x='447' y='333' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AAA</text><text x='479' y='333' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>赖氨酸</text><text x='447' y='356' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AAG</text><text x='479' y='356' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>赖氨酸</text><rect x='538' y='268' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='543' y='287' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AGU</text><text x='575' y='287' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>丝氨酸</text><text x='543' y='310' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AGC</text><text x='575' y='310' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>丝氨酸</text><text x='543' y='333' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AGA</text><text x='575' y='333' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>精氨酸</text><text x='543' y='356' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>AGG</text><text x='575' y='356' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>精氨酸</text><rect x='80' y='368' width='38' height='96' fill='#eaf3f4' stroke='#c9c2b4'/><text x='99' y='424' font-size='15' fill='#1f5f6b' text-anchor='middle' font-weight='700'>G</text><rect x='250' y='368' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='255' y='387' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GUU</text><text x='287' y='387' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>缬氨酸</text><text x='255' y='410' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GUC</text><text x='287' y='410' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>缬氨酸</text><text x='255' y='433' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GUA</text><text x='287' y='433' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>缬氨酸</text><text x='255' y='456' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GUG</text><text x='287' y='456' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>缬氨酸</text><rect x='346' y='368' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='351' y='387' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GCU</text><text x='383' y='387' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>丙氨酸</text><text x='351' y='410' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GCC</text><text x='383' y='410' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>丙氨酸</text><text x='351' y='433' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GCA</text><text x='383' y='433' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>丙氨酸</text><text x='351' y='456' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GCG</text><text x='383' y='456' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>丙氨酸</text><rect x='442' y='368' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='447' y='387' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GAU</text><text x='479' y='387' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>天冬氨酸</text><text x='447' y='410' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GAC</text><text x='479' y='410' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>天冬氨酸</text><text x='447' y='433' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GAA</text><text x='479' y='433' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>谷氨酸</text><text x='447' y='456' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GAG</text><text x='479' y='456' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>谷氨酸</text><rect x='538' y='368' width='96' height='96' fill='#fff' stroke='#c9c2b4'/><text x='543' y='387' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GGU</text><text x='575' y='387' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>甘氨酸</text><text x='543' y='410' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GGC</text><text x='575' y='410' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>甘氨酸</text><text x='543' y='433' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GGA</text><text x='575' y='433' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>甘氨酸</text><text x='543' y='456' font-size='9.3' fill='#8a6d2f' text-anchor='start' font-weight='400'>GGG</text><text x='575' y='456' font-size='9.3' fill='#1b2126' text-anchor='start' font-weight='400'>甘氨酸</text><text x='330.0' y='474' font-size='10.6' fill='#8a6d2f' text-anchor='middle' font-weight='400'>64 个密码子：61 个编码氨基酸；UAA/UAG/UGA 终止；AUG（*）兼起始</text></svg>
+<figcaption>标准遗传密码表（64 个密码子）</figcaption>
+</figure>
+
 <div class="q"><span class="tag">真题回放</span>补充题：<em>终止密码子的种类及其别名</em>——UAA 赭石（ochre）、UAG 琥珀（amber）、UGA 蛋白石（opal）。</div>
 
 <h3 class="item" data-lv="mid">确保翻译精确性的机制（论述题）<span class="stars">★★</span></h3>
 <div class="q"><span class="tag">资料原题</span>补充题：<em>论述确保蛋白质翻译精确的机制</em>（6 个层次，原答案完整）。</div>
 <div class="k">
-<div class="hd">五重保障</div>
+<div class="hd">六条（题库原答六点，按序作答）</div>
 <ol>
 <li><b>能量保障</b>：每形成 1 个肽键至少水解 <b>4 个高能磷酸键</b>（2 ATP 用于氨酰化 + 1 GTP 用于进位 + 1 GTP 用于移位），高耗能换取高保真。</li>
 <li><b>氨酰-tRNA 合成酶的双重校对</b>：既识别 tRNA（反密码子、 acceptor 臂），又识别氨基酸（活性中心“筛子”排除相近氨基酸）；错误时水解校正（<b>化学校对</b>与<b>动力学校对</b>）。</li>
 <li><b>核糖体</b>：小亚基<b>译码中心</b>（16S rRNA 与密码子-反密码子小沟作用）监控配对；错误时通过<b>动力学校对</b>（aa-tRNA 解离速率差异）剔除。</li>
-
+<li><b>反密码子识别与校正 tRNA</b>：反密码子与密码子的准确识别保证准确率；<b>校正 tRNA</b> 可经<b>反密码子区突变</b>校正<b>错义、无义与移码</b>突变。</li>
 <li><b>蛋白因子</b>：起始因子保证只有 <b>fMet-tRNA / Met-tRNAᵢ</b> 进入 <b>P 位</b>；延伸因子（EF-Tu）保证其余 aa-tRNA 只进 <b>A 位</b>。</li>
 <li><b>密码子简并性</b>：同义密码子使突变后氨基酸性质变化最小（“安全性”）。</li>
 </ol>
-<div class="trap"><b>关于“校正 tRNA”（suppressor tRNA）</b>：它能通过反密码子突变在突变密码子处插入氨基酸，把突变表型“压制”下去，属<b>遗传学抑制</b>，<b>不属于翻译保真机制</b>——相反它降低了局部保真度。常被误抄进“确保翻译精确的机制”，考试写进去会被扣分。</div>
+<div class="trap"><b>关于“校正 tRNA”（suppressor tRNA）</b>：题库原答把它列为第六条机制的组成部分——通过反密码子突变在突变密码子处插入氨基酸，把突变表型“压制”下去。原稿曾批注“不属于翻译保真机制、写进去扣分”，与题库口径不符，<b>现按题库更正：应当写入</b>；但表述要分清层次——它是“纠正<b>已发生</b>的突变”，而前五条是“<b>防止</b>错误发生”，两者得分点不同。</div>
 </div>
 
 <h3 class="item" data-lv="low">原核 vs 真核翻译起始差异 <span class="stars">★</span></h3>
@@ -589,7 +636,22 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td class="c">2002</td><td class="c">简答</td><td>简述大肠杆菌翻译时掺入一个氨基酸的过程</td></tr>
 </tbody>
 </table>
-<h2 id="s8" class="sec" data-lv="mid"><span class="num">08</span>原核基因调控（操纵子）<span class="freq mid">真题 22 · 命中 13 · 年份 2002—2025 间 9 个年份</span></h2>
+
+<div class="k">
+<div class="hd">2024 简答 · 核糖体的活性中心有哪些（答案册口径）</div>
+<ol>
+<li><b>mRNA 结合位点</b>：在小亚基上、肽基转移位点附近，结合 mRNA 与起始因子。</li>
+<li><b>A 位（AA-tRNA 位点）</b>：新到来的氨酰-tRNA 进入的位置。</li>
+<li><b>P 位（肽酰-tRNA 位点）</b>：容纳携带延伸中肽链的 tRNA。</li>
+<li><b>E 位（去氨酰-tRNA 位点）</b>：肽链转给 A 位 tRNA 后，空载 tRNA 由此退出到胞质。</li>
+<li><b>转肽酶中心</b>：位于 P 位与 A 位连接处，是成肽键的部位。</li>
+<li><b>EF-G 结合位点</b>：与肽酰-tRNA 由 A 位转至 P 位相关；此外还有起始、延伸、终止因子的结合位点。</li>
+</ol>
+<p class="tagline">记法：<b>“一个 mRNA 位 + 三 tRNA 位（A/P/E）+ 一个催化中心 + 因子位”</b>，六条按此顺序写不会漏。</p>
+<p><b>2024 名解 · 遗传密码</b>：核酸中<b>核苷酸残基序列</b>与蛋白质中<b>氨基酸残基序列</b>之间的对应关系——连续的 <b>3 个核苷酸</b>为一个密码子（故称三联体密码），每个密码子代表一个氨基酸，遗传密码据此把核苷酸序列翻译为氨基酸序列。</p>
+<p><b>2024 名解 · 信号肽</b>：新合成的多肽链上的一段氨基酸序列，功能是<b>指导蛋白质跨膜转运</b>；一般位于新生肽链的 <b>N 端</b>，但并不一定在 N 端；它把蛋白引导至不同转运系统、决定其去向，转运完成后被<b>信号肽酶</b>切除，成为成熟蛋白。</p>
+</div>
+<h2 id="s8" class="sec" data-lv="mid"><span class="num">08</span>原核基因调控（操纵子）<span class="freq mid">真题 21 · 命中 12 · 年份 2002—2025 间 9 个年份</span></h2>
 <p class="lead">全书最稳定的高频区。乳糖操纵子（2010、2022；2014、2015 也考）+ 色氨酸操纵子（2018）几乎构成“调控大题”的全部。答题必须画出“结构—阻遏—去阻遏—正调控”四段。</p>
 
 <h3 class="item" data-lv="hi">乳糖操纵子（lac）<span class="stars">★★★</span> <span class="freq">真题 2010、2022 年</span></h3>
@@ -600,7 +662,7 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <p><b>调节基因 lacI</b>（上游，组成型表达）→ <b>启动子 P</b> → <b>操纵基因 O</b> → <b>结构基因 lacZ（β-半乳糖苷酶）、lacY（通透酶）、lacA（转乙酰基酶）</b>。三个结构基因共转录为<b>一条多顺反子 mRNA</b>。</p>
 <div class="hd" style="margin-top:12px">② 负调控（阻遏）</div>
 <p><b>无乳糖</b>：lacI 产生的<b>阻遏蛋白（四聚体）</b>结合 O 区，<b>物理阻挡</b> RNAP 结合/前移 → 转录关闭（本底表达极低）。<br>
-<b>有乳糖</b>：乳糖经 β-半乳糖苷酶转化为<b>别乳糖（allolactose）</b>，作为<b>诱导物</b>结合阻遏蛋白 → 构象改变 → 从 O 区<b>解离</b> → 转录开启。这是<b>可诱导的负调控</b>。</p>
+<b>有乳糖</b>：乳糖经 β-半乳糖苷酶转化为<b>别乳糖（allolactose）</b>，作为<b>诱导物</b>结合阻遏蛋白 → 构象改变 → 从 O 区<b>解离</b> → 转录开启。这是<b>可诱导的负调控</b>。<span class="tagline">（2014 年答案册把 allolactose 写作“异构乳糖”，与“别乳糖”是同一物质的两种译名，答题写哪个都对。）</span></p>
 <div class="hd" style="margin-top:12px">③ 正调控（CAP-cAMP）</div>
 <p><b>葡萄糖缺乏</b> → cAMP 升高 → cAMP 与 <b>CAP（CRP）</b>结合 → CAP 构象改变 → 结合 P 上游的 CAP 位点 → <b>促进 RNAP 结合</b>，转录效率提高 <b>50 倍</b>。<br>
 <b>葡萄糖充足</b> → cAMP 低 → CAP 不结合 → 即使去阻遏，转录也很弱。</p>
@@ -661,8 +723,8 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td class="c">2014</td><td class="c">简答</td><td>什么是葡萄糖效应？</td></tr>
 </tbody>
 </table>
-<h2 id="s9" class="sec" data-lv="mid"><span class="num">09</span>真核基因调控与表观遗传<span class="freq mid">真题 19 · 命中 14 · 年份 2002—2025 间 11 个年份</span></h2>
-<p class="lead">本节 19 题（简答 7、名解 5、选择 3、考点 2、填空 1、判断 1），并非只有名解：名解集中在表观遗传（2011）、表观调控与组蛋白密码（2013）、转录因子（2021），简答则常用“<em>什么是表观调控，其主要形式有哪些</em>”收口。名解写成“定义 + 分子基础 + 生物学意义”三句即可。</p>
+<h2 id="s9" class="sec" data-lv="mid"><span class="num">09</span>真核基因调控与表观遗传<span class="freq mid">真题 20 · 命中 15 · 年份 2002—2025 间 12 个年份</span></h2>
+<p class="lead">本节 20 题（简答 8、名解 5、选择 3、考点 2、填空 1、判断 1），并非只有名解：名解集中在表观遗传（2011）、表观调控与组蛋白密码（2013）、转录因子（2021），简答则常用“<em>什么是表观调控，其主要形式有哪些</em>”收口。名解写成“定义 + 分子基础 + 生物学意义”三句即可。</p>
 
 <h3 class="item" data-lv="hi">表观遗传 / 表观调控 / 组蛋白密码（三连名解）<span class="stars">★★★</span> <span class="freq">真题 2011、2013 年</span></h3>
 <div class="q"><span class="tag">真题回放</span>2011 名解：<em>表观遗传</em>（2020 另考“表观遗传学”）；2013 名解：<em>表观调控</em>、<em>组蛋白密码</em>（组蛋白密码仅 2013 年考过）。</div>
@@ -694,7 +756,7 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <div class="k">
 <div class="hd">结构域三件套</div>
 <ul>
-<li><b>DNA 结合结构域</b>：<b>锌指</b>（C2H2，最常见）、<b>同源域</b>（helix-turn-helix）、<b>bZIP</b>（亮氨酸拉链）、<b>bHLH</b>、<b>HMG</b>。</li>
+<li><b>DNA 结合结构域</b>：<b>锌指</b>（C2H2，最常见）、<b>同源域</b>（helix-turn-helix）、<b>bZIP</b>（亮氨酸拉链）、<b>bHLH</b>、<b>HMG</b>。<span class="tagline">（2024 简答只要求列名称：螺旋-转折-螺旋 HTH、锌指、碱性亮氨酸拉链 bZIP、碱性螺旋-环-螺旋 bHLH，照册子写名称即可，不必展开。）</span></li>
 <li><b>转录激活结构域</b>：<b>酸性</b>（如 Gal4）、<b>富含 Gln/Pro</b> 型；通过招募 <b>共激活因子/中介体（Mediator）/HAT</b> 起效。</li>
 <li><b>二聚化结构域</b>（部分因子）：形成同/异二聚体，扩大调控组合的多样性。</li>
 </ul>
@@ -739,6 +801,15 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td class="c">2016</td><td class="c">简答</td><td>在基因的表达调控中增强子的作用特点有哪些? 有哪些类型的增强子?</td></tr>
 </tbody>
 </table>
+
+<div class="k">
+<div class="hd">2025 两题要点（按答案册口径）</div>
+<ul>
+<li><b>2025 简答 · 真核与原核基因表达调控的特点</b>：<b>原核</b>——主要发生在<b>转录起始</b>水平，典型机制是<b>操纵子</b>（阻遏蛋白、激活蛋白等简单元件响应环境）；无核膜，<b>转录与翻译偶联</b>，功能相关基因共用一个启动子、转成<b>多顺反子</b> mRNA；DNA <b>裸露、无染色质</b>，调控直接依赖 DNA 序列与蛋白因子结合；信号主要来自<b>环境营养物与代谢物</b>，反应迅速，以适应外界为目的。<br>
+<b>真核</b>——<b>多层次</b>调控（染色质重塑、转录起始、RNA 加工与运输、翻译起始、翻译后修饰与降解）；有<b>染色质与表观</b>层（染色质开闭、组蛋白乙酰化/甲基化/磷酸化、DNA 甲基化），转录在核、翻译在胞质，<b>时空分离</b>；<b>顺式元件</b>（增强子、沉默子、绝缘子）与<b>反式因子</b>协同，多为<b>单顺反子</b>，可变剪接使一基因产生多种异构体；信号含发育、激素与细胞间通讯，具严格的<b>时空特异性</b>。</li>
+<li><b>2025 名解 · 反式作用因子</b>：通过<b>扩散作用</b>与 DNA 上特定<b>顺式元件</b>结合、从而调控靶基因转录的<b>蛋白质因子</b>；结合具序列特异性，与“顺式作用元件（DNA 序列本身）”成对记忆。</li>
+</ul>
+</div>
 <h2 id="s10" class="sec" data-lv="mid"><span class="num">10</span>调控 RNA 与非编码 RNA<span class="freq mid">真题 10 · 命中 8 · 年份 2002、2010、2015、2019、2021、2024、2025</span></h2>
 <p class="lead">RNAi 是本节唯一的三星级考点（2013 名解 + 2019 大题），必须能默写“Dicer → siRNA → RISC → 切割/抑制/异染色质化”这条链，外加生物学意义与应用。</p>
 
@@ -767,7 +838,7 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tbody>
 <tr><td><b>snRNA</b></td><td>100~300 nt</td><td>核质（U1、U2、U4、U5、U6）；<b>U3 在核仁</b></td><td>与蛋白组成 <b>snRNP</b>，是剪接体的核心，参与 mRNA 前体剪接；U3 参与 18S rRNA 前体加工</td></tr>
 <tr><td><b>snoRNA</b></td><td>60~300 nt</td><td>核仁</td><td>指导 rRNA 的<b>甲基化与假尿苷化</b>（修饰位点由 snoRNA 与 rRNA 互补决定）</td></tr>
-<tr><td><b>miRNA</b></td><td><b>20~25 nt</b></td><td>基因组编码 → pri-miRNA →（Drosha）pre-miRNA →（Dicer）成熟体</td><td>内源性调控非编码 RNA，具<b>保守性、组织特异性、时序性</b>；入 RISC 后<b>抑制翻译</b>或降解靶 mRNA</td></tr>
+<tr><td><b>miRNA</b></td><td><b>20~25 nt</b>（2021 名解作 21~23 nt）</td><td>基因组编码 → pri-miRNA →（Drosha）pre-miRNA →（Dicer）成熟体</td><td>内源性调控非编码 RNA，具<b>保守性、组织特异性、时序性</b>；入 RISC 后<b>抑制翻译</b>或降解靶 mRNA</td></tr>
 <tr><td><b>siRNA</b></td><td>21~23 nt</td><td>外源 dsRNA / 转座子 / 病毒</td><td>与靶序列<b>完全互补</b>，引导 RISC <b>切割</b> mRNA，引起 RNAi</td></tr>
 <tr><td><b>gRNA</b></td><td>约 40~80 nt</td><td>锥虫线粒体</td><td><b>RNA 编辑的模板</b>，与 mRNA 前体配对，指导<b>插入/删除 U</b></td></tr>
 <tr><td><b>lncRNA</b></td><td>&gt; 200 nt</td><td>核/质</td><td>不编码蛋白，<b>支架/向导/诱饵/竞争</b>四类作用；例：Xist（X 失活）、HOTAIR（招募 PRC2）</td></tr>
@@ -797,6 +868,13 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td class="c">2015</td><td class="c">简答</td><td>何为 RNA 干扰？其作用机制怎样？</td></tr>
 </tbody>
 </table>
+
+<div class="k">
+<div class="hd">2025 论述 · microRNA 的形成与作用机制（答案册口径，按两问分写）</div>
+<p><b>（1）形成（五步）</b>：miRNA 基因在核内由 <b>RNA 聚合酶 Ⅱ</b> 转录，生成带发夹的 <b>pri-miRNA</b> → 核内<b>微处理器复合物（Drosha + DGCR8）</b>切割发夹，释放约 <b>70 nt</b> 的 <b>pre-miRNA</b> → <b>Exportin-5</b> 识别并运出核 → 胞质中 <b>Dicer（+ TRBP）</b>切去末端环，产生约 <b>22 nt</b> 的双链 <b>miRNA/miRNA*</b> → 双链解旋，成熟链以 <b>Argonaute</b> 为核心装入 <b>RISC</b>，另一条链被弃去。</p>
+<p><b>（2）作用机制</b>：以第 <b>2~8 位“种子序列”</b>与靶 mRNA 的 <b>3'UTR</b> 互补配对；<b>完全互补</b>时由 RISC 直接<b>切割</b> mRNA（主要见于植物）；<b>不完全互补</b>时抑制<b>翻译起始或延伸</b>，或招募 <b>CCR4-NOT</b> 复合物促<b>脱腺苷酸化</b>而降解，或把 mRNA 送入 <b>P 小体</b>储存/降解。一个 miRNA 可调控多个靶基因，多个 miRNA 也可协同调控同一靶基因，构成精细的转录后调控网络。</p>
+<p class="tagline">与 RNAi 的分界：<b>miRNA 内源、核内 Drosha 先切、不完全互补以抑制翻译为主</b>；<b>siRNA 外源、胞质 Dicer 一步切、完全互补以切割为主</b>。</p>
+</div>
 <h2 id="s11" class="sec" data-lv="mid"><span class="num">11</span>分子生物学技术<span class="freq mid">真题 28 · 命中 23 · 年份 2002—2025 间 13 个年份</span></h2>
 <p class="lead">技术题的特点是“问得实、给分碎”。答题一律用“<b>原理一句话 + 步骤编号 + 应用一句话</b>”的三段式，比长篇大论得分高。</p>
 
@@ -832,7 +910,7 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td><b>延伸</b></td><td><b>72 ℃，1 min/kb</b></td><td>Taq 从引物 3'-OH 加 dNTP，5'→3' 合成</td></tr>
 </tbody>
 </table>
-<p class="tagline">循环数一般 <b>25~35</b>；过多会导致平台效应与非特异产物。引物设计：长 <b>18~25 nt</b>、GC 40%~60%、3' 端避免互补形成二聚体、Tm 相近。</p>
+<p class="tagline">循环数一般 <b>20~30</b>（答案册 2019、2020、2023 三卷均作 20~30；原稿作 25~35，按册子更正）；过多会导致平台效应与非特异产物。册子 2020 卷给的单程序为 <b>94 ℃ 1 min → 55 ℃ 1 min → 72 ℃ 2 min</b>，末轮 <b>72 ℃ 10 min 补齐</b>。引物设计：长 <b>18~25 nt</b>、GC 40%~60%、3' 端避免互补形成二聚体、Tm 相近。</p>
 <div class="hd" style="margin-top:12px">九类应用（记名称即可，考场上写 5~6 个就够）</div>
 <p>① 基因/探针合成（含<b>不对称 PCR</b> 制备单链）；② DNA 测序（二代测序建库）；③ <b>RT-PCR</b>（以 cDNA 为模板，用于基因转录分析、建库、克隆）；④ <b>PCR 筛库</b>（多孔板逐级稀释）；⑤ <b>实时定量 PCR</b>（SYBR Green 非特异 / TaqMan 探针特异）；⑥ 突变产生与分析（<b>易错 PCR</b>、<b>DNA 改组</b>、<b>定点诱变</b>）；⑦ <b>重组 PCR</b>（无合适酶切位点时拼接片段）；⑧ 未知序列扩增（<b>反向 PCR</b>、<b>染色体步移</b>、<b>锅柄 PCR</b>、<b>锚定 PCR</b>）；⑨ <b>RAPD</b> 基因组比较。</p>
 </div>
@@ -866,9 +944,14 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 </div>
 <div class="k">
 <div class="hd">SDS-PAGE 为什么能测分子量（2010 真题，期末也考）</div>
-<p><b>两条理由</b>：① SDS 是<b>阴离子去污剂</b>，大量结合使各蛋白带<b>相同密度的负电荷</b>，掩盖原有电荷差异；② SDS 是<b>变性剂</b>，破坏氢键与疏水作用，使蛋白伸展为<b>同样的棒状</b>。因此迁移率只取决于<b>分子量</b>，且与分子量的<b>对数</b>呈线性关系。<br>
+<p><b>两条理由</b>：① SDS 是<b>阴离子去污剂</b>，大量结合使各蛋白带<b>相同密度的负电荷</b>，掩盖原有电荷差异；② SDS 是<b>变性剂</b>，破坏氢键与疏水作用，使蛋白伸展为<b>同样的棒状</b>。因此迁移率只取决于<b>分子量</b>，且与分子量的<b>对数</b>呈线性关系。册子 2011 卷另补两点：<b>浓缩胶</b>孔径大、阻力小、迁移快，起<b>浓缩</b>样品的作用；进入<b>分离胶</b>后靠凝胶的<b>分子筛效应</b>按分子量分成区带。故可用于<b>纯度检测、分子量测定（与标准蛋白比对）与亚基分析</b>。<br>
 <b>三个“为什么”</b>（期末原题）：加<b>巯基乙醇</b>——还原二硫键，解离亚基；<b>沸水煮沸</b>——充分变性并助 SDS 结合；<b>凝胶前抽气</b>——除去气泡，避免聚合不均与条带畸变。</p>
 </div>
+
+<figure class="figbox">
+<svg viewBox='0 0 400 340' xmlns='http://www.w3.org/2000/svg' font-family='-apple-system,Segoe UI,Noto Sans SC,sans-serif'><rect width='400' height='340' fill='#fffdf8'/><defs><marker id='ah-sds' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1b2126'/></marker></defs><rect x='70' y='58' width='250' height='240' fill='#f7f4ea' stroke='#1b2126'/><text x='24' y='46' font-size='10.5' fill='#1b2126' text-anchor='start' font-weight='400'>kDa</text><text x='62' y='82' font-size='10.5' fill='#1b2126' text-anchor='end' font-weight='400'>80</text><line x1='84' y1='78' x2='146' y2='78' stroke='#1b2126' stroke-width='4' stroke-linecap='round'/><text x='62' y='132' font-size='10.5' fill='#1b2126' text-anchor='end' font-weight='400'>60</text><line x1='84' y1='128' x2='146' y2='128' stroke='#1b2126' stroke-width='4' stroke-linecap='round'/><text x='62' y='182' font-size='10.5' fill='#1b2126' text-anchor='end' font-weight='400'>40</text><line x1='84' y1='178' x2='146' y2='178' stroke='#1b2126' stroke-width='4' stroke-linecap='round'/><text x='62' y='232' font-size='10.5' fill='#1b2126' text-anchor='end' font-weight='400'>20</text><line x1='84' y1='228' x2='146' y2='228' stroke='#1b2126' stroke-width='4' stroke-linecap='round'/><line x1='164' y1='78' x2='226' y2='78' stroke='#1f5f6b' stroke-width='4' stroke-linecap='round'/><line x1='164' y1='178' x2='226' y2='178' stroke='#1f5f6b' stroke-width='4' stroke-linecap='round'/><line x1='164' y1='228' x2='226' y2='228' stroke='#1f5f6b' stroke-width='4' stroke-linecap='round'/><line x1='244' y1='128' x2='306' y2='128' stroke='#a8323a' stroke-width='4' stroke-linecap='round'/><line x1='244' y1='222' x2='306' y2='222' stroke='#a8323a' stroke-width='4' stroke-linecap='round'/><line x1='244' y1='234' x2='306' y2='234' stroke='#a8323a' stroke-width='4' stroke-linecap='round'/><text x='115' y='50' font-size='11' fill='#1b2126' text-anchor='middle' font-weight='400'>Marker</text><text x='195' y='50' font-size='11' fill='#1b2126' text-anchor='middle' font-weight='400'>蛋白A</text><text x='275' y='50' font-size='11' fill='#1b2126' text-anchor='middle' font-weight='400'>蛋白B</text><text x='195' y='320' font-size='10.8' fill='#8a6d2f' text-anchor='middle' font-weight='400'>SDS-PAGE：只按分子量分离；条带数＝亚基种类数</text></svg>
+<figcaption>SDS-PAGE 条带判读：只按分子量分离</figcaption>
+</figure>
 
 <h3 class="item" data-lv="low">核酸质量检测与电泳图判读 <span class="stars">★</span> <span class="freq">真题 2018、2019 年</span></h3>
 <div class="q"><span class="tag">真题回放</span>2018：<em>检测核酸提取物质量的方法</em>；2019：<em>给出电泳图，判断细菌 DNA 与质粒 DNA 各在哪条泳道</em>。</div>
@@ -887,7 +970,16 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td class="c">2011</td><td class="c">简答</td><td>SDS-PAGE（类似生化）</td></tr>
 </tbody>
 </table>
-<h2 id="s12" class="sec" data-lv="hi"><span class="num">12</span>克隆与基因工程<span class="freq">真题 63 · 命中 45 · 年份 2002—2025 间 17 个年份</span></h2>
+
+<div class="k">
+<div class="hd">2024、2025 三题要点（按答案册口径）</div>
+<ul>
+<li><b>2025 简答 · Southern 与 Northern 的区别、原理和应用</b>：<b>对象</b>——Southern 检 <b>DNA</b>、Northern 检 <b>RNA</b>；<b>原理</b>同为标记探针的<b>核酸分子杂交</b>；<b>共同流程</b>——凝胶电泳按大小分离 → 转膜固定 → 与探针杂交 → 放射自显影/化学发光。<b>差异在样品处理</b>：Southern 先<b>限制酶消化 + 碱变性</b>成单链，再毛细管或电转移至硝酸纤维素膜/尼龙膜；Northern <b>不酶切</b>，须用甲醛/乙二醛<b>变性胶</b>保持单链，全程 <b>RNase-free</b>（器具试剂经 DEPC 处理），对 RNase 无特殊要求的是 Southern。<b>应用</b>：Southern 查序列<b>存在、拷贝数、结构变化、RFLP、基因重排与转基因整合拷贝</b>；Northern 查 <b>mRNA 表达水平、分子量及剪接变体</b>。</li>
+<li><b>2025 考点 · DNA 芯片基于哪项研究</b>：<b>核酸分子杂交</b>——把大量已知序列探针固定于固相支持物，与标记靶核酸杂交后扫描检测；本质是 <b>Southern 固相杂交原理的高通量微型化</b>。</li>
+<li><b>2024 论述 · 验证 DNA 是遗传物质 + 三种组学比较</b>：（1）<b>肺炎球菌转化实验</b>（Griffith 体内转化、Avery 等体外分离出转化因子并证明是 DNA）+ <b>T2 噬菌体感染实验</b>（Hershey-Chase 用 ³⁵S/³²P 分别标记蛋白质与 DNA，证明只有 DNA 进入宿主）。（2）同一人的<b>淋巴细胞与肝细胞</b>：<b>基因组相同</b>（同一受精卵而来，DNA 序列一致）、<b>蛋白质组不同</b>（差异基因表达）、<b>代谢组也不同</b>（酶系不同→代谢物组成与含量不同）。<span class="tagline">册子此条只答第（2）问一句判断，第（1）问按经典实验【补全】。</span></li>
+</ul>
+</div>
+<h2 id="s12" class="sec" data-lv="hi"><span class="num">12</span>克隆与基因工程<span class="freq">真题 64 · 命中 46 · 年份 2002—2025 间 17 个年份</span></h2>
 <p class="lead">大纲说这一块“分值可占 40%~50%”。好消息是：<b>所有题都能用一条主线串起来——“分、切、接、转、筛”</b>。先把主线背成肌肉记忆，再往里填细节。</p>
 
 <h3 class="item" data-lv="hi">分子克隆路线（总纲）<span class="stars">★★★</span> <span class="freq">真题 2018、2019 年</span></h3>
@@ -928,7 +1020,7 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <div class="q"><span class="tag">真题回放</span>2019：<em>蓝白斑筛选原理</em>（原答案含 α-互补与 X-gal 显色）。</div>
 <div class="k">
 <div class="hd">α-互补原理（必须写清“两个片段来自哪里”）</div>
-<p>β-半乳糖苷酶可分成两部分：<b>α 肽段</b>（N 端 146 aa，基因在<b>载体</b>上，且含不影响 ORF 的<b>多克隆位点 MCS</b>）与 <b>C 段</b>（基因在宿主菌 <b>DH5α</b> 染色体上）。两者在同一菌株表达时可<b>互补</b>成有活性的酶，切割无色底物 <b>X-gal</b> 产生<b>深蓝色</b>产物（5,5'-二溴-4,4'-二氯靛蓝）。</p>
+<p>β-半乳糖苷酶可分成两部分：<b>α 肽段</b>（N 端一段肽链，基因在<b>载体</b>上，且含不影响 ORF 的<b>多克隆位点 MCS</b>）与 <b>C 段</b>（基因在宿主菌 <b>DH5α</b> 染色体上）。两者在同一菌株表达时可<b>互补</b>成有活性的酶，切割无色底物 <b>X-gal</b> 产生<b>深蓝色</b>靛蓝产物（5,5'-二溴-4,4'-二氯靛蓝；册子简作“5-溴-4-靛蓝”）。<span class="tagline">（原稿在 α 肽段后标“146 aa”，答案册未给此数，不必写具体长度；写“α 肽段 / LacZ′ 片段”即可。）</span></p>
 <p><b>插入失活</b>：外源基因插入 MCS → 改变 α 肽段 ORF → 不能互补 → 无酶活性 → 菌落<b>白色</b>。</p>
 <table>
 <thead><tr><th style="width:34%">菌株类型</th><th class="c" style="width:22%">能否存活</th><th class="c">菌落颜色</th></tr></thead>
@@ -948,6 +1040,7 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <p><b>B. 提高基因剂量</b>：⑥ 选<b>松弛型质粒</b>提高拷贝数。</p>
 <p><b>C. 保护产物</b>：⑦ 选<b>蛋白酶缺陷</b>宿主（如 lon⁻、ompT⁻）；⑧ 以<b>融合蛋白</b>形式表达（防降解、便于纯化）。</p>
 <p><b>D. 减轻负担与促折叠</b>：⑨ 用<b>可诱导</b>表达载体，把菌体生长与表达<b>分期</b>，避免代谢负荷；⑩ 宿主高表达<b>分子伴侣</b>促正确折叠；另可<b>分泌表达</b>（融合信号肽，便于纯化）或以<b>包涵体</b>形式表达后复性。</p>
+<p class="tagline">2025 卷同题按册子原文只列 <b>6 条</b>：强启动与终止 / RBS（SD 或 Kozak）优化 / 高拷贝与密码子优化 / 融合或标签促可溶 / <b>培养条件控制</b> / 减降解与纯化。原稿 10 条是 2010 卷原答，两版取<b>并集</b>最稳；其中“<b>控制培养条件（温度、诱导剂浓度与诱导时间）</b>”是册子新增、原稿未列的一条，务必补上。</p>
 </div>
 
 <h3 class="item" data-lv="mid">载体、限制酶与转化 <span class="stars">★★</span> <span class="freq">真题 2019 年</span></h3>
@@ -1005,13 +1098,15 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 </table>
 
 <div class="k">
-<div class="hd">上表中 5 道题的要点（正文未展开，各补 2~3 句）</div>
+<div class="hd">上表中 7 道题的要点（正文未展开，各补 2~3 句）</div>
 <ul>
 <li><b>2020 CRISPR/Cas9 与 dCas9</b>：CRISPR 是细菌/古菌的获得性免疫系统，<b>间隔序列（spacer）</b>来自入侵噬菌体 DNA，转录为 crRNA 后与 tracrRNA 退火成 sgRNA。Cas9 在 sgRNA 引导下识别靶 DNA 的 <b>PAM（5'-NGG）</b>，由 HNH 与 RuvC 两个核酸酶域分别切靶链与非靶链，产生<b>平末端双链断裂</b> → 经 NHEJ 造成移码而敲除，或经同源重组实现定点敲入。<b>dCas9</b>（D10A + H840A 双突变）失去切割活性、保留 sgRNA 引导的结合能力，用于 CRISPRi（占位阻断转录）、CRISPRa（融合激活域）、活细胞成像与碱基编辑（融合脱氨酶）。</li>
 <li><b>2023 基因沉默与基因敲除</b>：<b>敲低（knockdown）</b>不改变基因组序列、只降低表达——siRNA/shRNA 经 RISC 切割 mRNA、CRISPRi 用 dCas9 占位、反义寡核苷酸阻断翻译；<b>敲除（knockout）</b>破坏基因组序列——CRISPR/Cas9、TALEN、ZFN 造成双链断裂后由 NHEJ 产生移码或大片段缺失，也可用同源重组双交换做完全敲除。应用：功能基因鉴定、小鼠疾病模型、作物改良、基因治疗研究；判读上“敲除看有无、敲低看多少”。</li>
-<li><b>2024 Gateway 大规模克隆</b>：基于 λ 噬菌体<b>位点特异性重组</b>，BP 反应（attB×attP，BP 克隆酶）把目的基因转入供体载体 pDONR 得 entry clone；LR 反应（attL×attR，LR 克隆酶）再转入各种目的载体得 expression clone，产物为 attB1/B2、attL1/L2 等杂合位点。步骤：PCR 给目的基因加 attB 接头 → BP → LR → 筛选鉴定。优点是方向固定、不用限制酶消化、同一 entry clone 可并行转入多种表达载体，适合高通量。</li>
+<li><b>2024 Gateway 大规模克隆</b>：基于 λ 噬菌体的<b>位点特异性重组</b>，不经传统酶切连接即可快速克隆，并保持正确的 <b>ORF 与方向</b>；所得片段可在不同载体间<b>平行转移</b>，适合大规模克隆可读框。步骤：① <b>TOPO 反应</b>——Entry 载体上的特异序列 <b>CCCTT</b> 被拓扑异构酶识别切开，酶以其 <b>274 位酪氨酸</b>与切口处磷酸基团形成共价键而偶联在载体上；② <b>正向连入</b>——加入 PCR 产物后，载体的 <b>3' 突出端 GTGG</b> 攻击产物、与接头序列 <b>CACC</b> 配对退火，去掉多余的 GTGG，使产物以正确方向连入 Entry 载体；③ <b>LR 重组</b>——由 <b>Int、IHF、Xis</b> 酶混合物催化，Entry 的 <b>attL1/attL2</b> 与目的载体的 <b>attR1/attR2</b> 定向重组；④ <b>att 位点转换</b>——重组后形成新的 <b>attB1、attB2</b> 位点，目的基因转移至表达载体。<br><span class="tagline">原稿作“BP 反应（attB×attP，BP 克隆酶）→ pDONR，LR 产物为 attB1/B2 与 attL1/L2 杂合位点”，与册子口径不符，<b>按 2024 年册子原文更正</b>：Entry 由 TOPO 反应构建，LR 后新生成 attB1/attB2。</span></li>
 <li><b>2022 双酶切与片段拼接计算</b>：选两种识别序列不同、产生<b>不同黏端</b>的酶，分别切载体与插入片段 —— 两端黏端互不兼容，可强制<b>定向连接</b>，同时避免载体自连。计算时先按各酶位点在环状/线状 DNA 上的位置，用“总长 − 切下片段长”逐段推出各片段长度；拼接时按末端兼容性对齐，各片段长度之和应等于重组体总长、酶切位点间距要与给定图谱一致，以此验证构建是否正确。</li>
 <li><b>2022 动物转基因方法</b>：① 受精卵<b>原核显微注射</b>（最经典，效率低但可直接建立转基因系）；② 慢病毒/逆转录病毒载体感染早期胚胎；③ <b>胚胎干细胞（ES）打靶</b>后注入囊胚得嵌合体（可定点修饰）；④ 精子载体法、体细胞核移植；⑤ <b>CRISPR/Cas9 直接注射受精卵</b>（现主流）。鉴定：PCR/Southern 查整合、qPCR 查拷贝数、Western 与表型查表达及可遗传性。</li>
+<li><b>2025 论述 · 已知 N 端氨基酸序列如何得到基因全长、如何克隆表达</b>：（1）<b>拿全长</b>——按 N 端序列反推密码子、合成一组<b>简并引物</b>，先做 3'- 或 5'-RACE 取得部分 cDNA；用 RT-PCR 扩增<b>内部片段</b>并测序；再设计基因特异引物配 5'/3' 接头引物做<b>双端 RACE</b>；把内部片段与两端拼接成完整 cDNA，用跨全长引物 PCR 验证<b>读框与序列</b>；最后以 Southern blot 或筛基因组文库<b>确认基因组结构</b>。（2）<b>克隆表达</b>——从文库筛选或 PCR 取得目的基因，选含诱导型 <b>T7</b> 或组成型 <b>CMV</b> 启动子、RBS/Kozak 与标签的表达载体；限制酶切开目的基因与载体 MCS，连接成重组表达质粒，转化大肠杆菌、酵母、昆虫或哺乳动物细胞；用抗性标记或报告基因筛阳性克隆，<b>IPTG 诱导</b>，以 SDS-PAGE、Western blot 与酶活测定检测，并优化温度、时间与诱导剂浓度，必要时放大发酵纯化。</li>
+<li><b>2025 简答 · 载体的特征</b>：① 有<b>复制起点 ori</b>，能在宿主内自主复制、独立传代；② 有<b>多克隆位点 MCS</b>，插入外源基因后不破坏复制与选择功能；③ 有<b>选择标记</b>（抗生素抗性基因或营养缺陷互补基因）；④ <b>分子小</b>，易操作、易转化、易大量提取；⑤ 能在宿主中<b>稳定遗传</b>，传代不丢失；⑥ 不带有毒基因或致病序列，对宿主与环境<b>安全</b>。<span class="tagline">原稿“载体三条件（＋1）”只到第 ④ 条，第 ⑤⑥ 条按 2025 年册子补。</span></li>
 </ul>
 </div>
 <h2 id="s13" class="sec" data-lv="low"><span class="num">13</span>疾病与人类健康<span class="freq low">真题 7 · 命中 7 · 年份 2006、2013、2024、2025</span></h2>
@@ -1051,8 +1146,16 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td class="c">2024</td><td class="c">论述</td><td>CAR-T 细胞疗法原理及优缺点。</td></tr>
 </tbody>
 </table>
-<h2 id="s14" class="sec" data-lv="hi"><span class="num">14</span>细碎考点补丁（期末小题挖出来的）<span class="freq">真题 37 · 命中 22 · 年份 2002—2025 间 12 个年份</span></h2>
-<p class="lead">这些点以选择、判断、填空的小题为主（新题库该节 37 题，其中简答 10 道、问答 1 道，其余为小题），属于“选择填空的陷阱库”。考前 20 分钟扫一遍，能救 2~3 个选择题。</p>
+
+<div class="k">
+<div class="hd">2024、2025 两题要点（按答案册口径）</div>
+<ul>
+<li><b>2024 论述 · CAR-T 细胞疗法的原理及优缺点</b>：<b>原理</b>——提取患者外周血 <b>T 细胞</b>，经基因修饰使其表达<b>嵌合抗原受体（CAR）</b>，体外扩增后回输，借<b>抗原-抗体结合</b>机制特异杀伤肿瘤细胞，属个体化疗法。<b>优点</b>：① 用患者自身 T 细胞，可克服肿瘤<b>下调 MHC、降低抗原呈递</b>的免疫逃逸；② CAR 既可用蛋白抗原也可用<b>糖脂类非蛋白抗原</b>，靶点范围广，作用<b>不受 MHC 限制</b>，同一抗原的 CAR 可广泛使用；③ 新一代 CAR 加入促增殖与活化序列，进入体内仍能增殖，并具<b>免疫记忆</b>、可长期存活。<b>缺点</b>：① <b>细胞因子风暴</b>——快速杀伤时释放大量细胞因子攻击其他组织，致高热、低血压、休克甚至死亡，另有感染、发热、乏力、ARDS；② 对<b>实体瘤</b>疗效远不如血液系统肿瘤；③ 个体差异使制备的细胞不同、<b>疗效不一</b>，治疗后仍可<b>复发</b>。<br><span class="tagline">答题顺序：一句定义 → 制备回输流程 → 三优 → 三劣，每题都能套。</span></li>
+<li><b>2025 判断 · 禽流感病毒是单链 DNA（ ）</b>：<b>错（×）</b>。禽流感病毒属正黏病毒科甲型流感病毒，基因组为 <b>8 个节段的单股负链 RNA</b>，不是单链 DNA。<span class="tagline">同类陷阱：流感、副流感、狂犬、埃博拉、SARS-CoV-2 都是 <b>RNA</b> 病毒；痘病毒、腺病毒、噬菌体才是 DNA 病毒。</span></li>
+</ul>
+</div>
+<h2 id="s14" class="sec" data-lv="hi"><span class="num">14</span>细碎考点补丁（期末小题挖出来的）<span class="freq">真题 56 · 命中 38 · 年份 2002—2025 间 15 个年份</span></h2>
+<p class="lead">这些点以选择、判断、填空的小题为主（新题库该节 56 题：简答 10 道、问答 1 道、名解 28 条，其余为判断/选择/考点小题），属于“选择填空的陷阱库”。考前 20 分钟扫一遍，能救 2~3 个选择题。</p>
 
 <table>
 <thead><tr><th style="width:26%">考点</th><th>准确表述</th></tr></thead>
@@ -1077,6 +1180,7 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <tr><td>Northern 杂交探针</td><td>单链 <b>DNA 或 RNA</b> 探针，检测 <b>RNA</b></td></tr>
 <tr><td>DNA 连接酶作用</td><td>催化形成<b>磷酸二酯键</b>（不是填补缺口、不是加 dNTP）</td></tr>
 <tr><td>多亚基蛋白的优点</td><td>经济利用 DNA、降低随机错误影响、活性可<b>快速开关</b></td></tr>
+<tr><td>DNA 稀有碱基的形成</td><td><b>复制后</b>由修饰酶催化：5-甲基胞嘧啶、N⁶-甲基腺嘌呤等由 <b>DNA 甲基转移酶</b>以 <b>S-腺苷甲硫氨酸</b>为甲基供体，对已合成的碱基进行甲基化、羟化而成（2025 考点，不是复制时直接掺入）</td></tr>
 </tbody>
 </table>
 
@@ -1086,6 +1190,7 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <thead><tr><th style="width:12%">年份</th><th style="width:12%">题型</th><th>题目</th></tr></thead>
 <tbody>
 <tr><td class="c">2024</td><td class="c">简答</td><td>DNA 结合结构域有哪些。</td></tr>
+<tr><td class="c">2025</td><td class="c">考点</td><td>DNA 稀有碱基如何形成？</td></tr>
 <tr><td class="c">2023</td><td class="c">简答</td><td>Pcr 的原理和影响因素</td></tr>
 <tr><td class="c">2016</td><td class="c">简答</td><td>简述利用双脱氧末端终止法（Sanger 法）测定 DNA 一级结构的原理。</td></tr>
 <tr><td class="c">2015</td><td class="c">简答</td><td>简述证实 DNA 是遗传信息携带者的两个经典实验设计。</td></tr>
@@ -1098,7 +1203,7 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <div class="hd">2016 年 Sanger 法（上表题，补要点）</div>
 <p><b>原理</b>：以单链 DNA 为模板，加入引物、DNA 聚合酶与四种 dNTP，另加少量<b>双脱氧核苷三磷酸（ddNTP）</b>——其 2'、3' 位均无羟基，掺入后无法形成下一个磷酸二酯键，<b>链延伸在此终止</b>，得到一组以特定碱基结尾、长度相差 1 nt 的片段。<b>四组反应</b>各用一种 ddNTP（带不同荧光），产物经高分辨率凝胶或毛细管电泳按长度分离，由短到长读取荧光颜色即得新合成链序列，再按碱基互补写出模板链序列。</p>
 </div>
-<h2 id="s15" class="sec" data-lv="mid"><span class="num">15</span>名词解释速记卡（题库 80 条）<span class="freq mid">真题 23 · 命中 20 · 年份 2006—2025 间 12 个年份</span></h2>
+<h2 id="s15" class="sec" data-lv="mid"><span class="num">15</span>名词解释速记卡（题库 80 条）<span class="freq mid">80 条名解 · 年份 2006—2025 间 12 个年份（真题数已计入各节）</span></h2>
 <p class="lead">题库口径共 <b>80 条</b>名词解释。本节按年份展开其中 75 条：先是旧 docx 的 17 条（<b>年份已逐条按 <code>questions.json</code> 校正</b>，其中 4 条题库并无对应名解，单列在最后），再是新增真题卷的 58 条（含 12 条无年份回忆版）。其余同名/近义条目（密码子、管家基因、外显子、信号肽、遗传密码、反式作用因子、增强子、半保留复制等）已在 ②⑤⑦⑨⑫ 各节表格中给出要点。<b>本节年份一律以题库为准</b>，不再沿用旧 docx 的 2010—2019 分组。背法：先背“定义首句”，再补“机制/意义”一句。</p>
 
 <details><summary>2006 年（1 条）：转化</summary>
@@ -1238,14 +1343,20 @@ DNA 双螺旋 →（<b>1/7</b>）核小体串珠 →（<b>1/6</b>）30 nm 螺线
 <div class="k">
 <div class="hd">Day −1：补漏</div>
 <ol>
-<li>过一遍第 ⑭ 节“细碎考点补丁”20 条。</li>
+<li>过一遍第 ⑭ 节“细碎考点补丁”21 条。</li>
 <li>过一遍第 ⑮ 节 80 条名解，遮住答案自测。</li>
 <li>把第 ① 节热度表里所有 ★★★ 行，各写一句“如果考，我怎么开头”。</li>
 <li>检查三个最容易写错的字：<b>左手</b>超螺旋、<b>Pol Ⅰ</b> 切引物、<b>别乳糖</b>是诱导物。</li>
 </ol>
 </div>
 
-<div class="note"><b>最后提醒</b>：本手册的“频度”来自资料标注年份（10/13/18/19）与期末复现，样本有限。<b>星级低 ≠ 不考</b>——大纲第 12 条（疾病与健康）真题偏少（7 题），但属新增内容，反而是最可能“出其不意”的地方。考前至少把 ⑬ 节的表格读两遍。</div>
+<div class="note"><b>最后提醒</b>：本手册的“频度”来自题库标注的 19 个年份（2002—2025）与期末复现。<b>星级低 ≠ 不考</b>——大纲第 12 条（疾病与健康）真题偏少（7 题），但属新增内容，反而是最可能“出其不意”的地方。考前至少把 ⑬ 节的表格读两遍。</div>
+<div class="note" style="margin-top:40px"><b>本次更新（2026-11-11）</b><br>
+① <b>口径对齐</b>：《631 参考答案》印刷版（80 页，2002—2025，205 条答案）已并入题库，<b>128 题</b>采用册子原文。正文按册子改了 <b>7 处</b>具体口径：DNA 聚合酶忠实性由“三层保障”改为册子<b>四方面</b>（补“RNA 引物的合成与切除”，撤去无出处的 10⁻⁴→10⁻⁶→10⁻⁹ 分级）；“确保翻译精确”由 5 条补为题库 <b>6 条</b>（增“反密码子识别与校正 tRNA”，并撤回原“校正 tRNA 不得写入”的批注）；PCR 循环数 <b>25~35 → 20~30</b>；Gateway 的 Entry 构建改为册子 <b>TOPO 反应</b>（CCCTT／GTGG／CACC、274 位酪氨酸）与 <b>LR</b>（Int/IHF/Xis）产物 attB1/attB2；外源基因高效表达补册子新增的“<b>培养条件控制</b>”；乳糖操纵子处注明册子把 allolactose 译作“<b>异构乳糖</b>”；蓝白斑的 α 肽段删去册子未给的“146 aa”，改为“α 肽段 / LacZ′ 片段”。<br>
+② <b>补 2024—2025</b>：按 <code>questions.json</code> 中 years 含 24／25 的 <b>35 题</b>逐节补入，第 ②—⑦、⑨—⑭ 各节均设“要点”块，每条“题干一句话 + 答案要点”；册子只给题干未附答案者标【补全】。<br>
+③ <b>配图</b>：第 ⑦ 节内联“标准遗传密码表”、第 ⑪ 节内联“SDS-PAGE 条带判读”共 <b>2 幅</b>（取自 <code>data/figs.js</code>，外套 <code>.figbox</code> + <code>figcaption</code>）。其余内容页无对应图源，故不铺图。<br>
+④ <b>统计</b>：384 题／19 个年份／80 条名解／128 题用册子口径，均按 <code>questions.json</code> 实数。<br>⑤ <b>复核（同日二次）</b>：各节“真题/命中/年份”按题库实数重算（题量合计仍 384）；第 ⑮ 节不再单列真题数（80 条名解已计入各节）；PCR 循环数与单程序的册子年份、乳糖操纵子“异构乳糖”译名的出处、忠实性第 4 点的修复系统四类，均按题库同题 <code>points</code> 校正。</div>
+
 <div class="note" style="margin-top:40px"><b>本版修订说明（2026-11-09）</b><br>
 本手册按审稿意见逐条修订，事实与年份一律以 <code>site/data/questions.json</code>（subj=631，384 题）为准，主要改动：<br>
 ① <b>事实类</b>：Ⅰ 类内含子产物改为“线性内含子”；Ⅳ 类剪接改为“核酸内切酶＋连接酶”；转座子 Tn5 归入非复制型、复制型代表改为 Tn3/Mu；X-gal 显色产物补全为 5,5'-二溴-4,4'-二氯靛蓝；AAV 改为“以附加体为主、整合率极低”；U3 改为参与 18S rRNA 前体加工；启动子补入 Pol Ⅲ 基因内启动子例外；HinfⅠ 识别位点更正为 5 bp；λ 抗终止改为 N 蛋白（early→delayed early）与 Q 蛋白（qut→late）分工；原核高效表达要素中的“增强子”改为 UP 元件（原核无增强子）；修复系统由“五种”改为“六种”。<br>
