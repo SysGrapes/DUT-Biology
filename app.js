@@ -9,7 +9,7 @@ if(typeof store!=='object'||store===null) store={};
 function save(){ try{ localStorage.setItem(KEY,JSON.stringify(store)); }catch(e){} }
 
 var S={subj:'all',mode:'q',mh:'',idx:0,deck:[],revealed:false,
-       chap:'',year:'',stars:0,type:'',onlyNew:false,shuffle:false,kw:'',wrongOnly:false,kwOn:true,mkw:'',mopen:''};
+       chap:'',year:'',stars:0,type:'',onlyNew:false,shuffle:false,kw:'',wrongOnly:false,kwOn:true,mkw:'',mopen:'',sq:'',sres:null,stime:0};
 
 var $=function(s){return document.querySelector(s)};
 
@@ -135,7 +135,7 @@ function buildDeck(){
 /* ---------- 筛选栏 ---------- */
 function buildFilters(){
   var f=$('#filters');
-  if(S.mode==='stat'||S.mode==='mn'||S.mode==='ms'){ f.style.display='none'; return; }
+  if(S.mode==='stat'||S.mode==='mn'||S.mode==='ms'||S.mode==='ss'){ f.style.display='none'; return; }
   f.style.display='flex';
   var h='';
   if(S.mode==='tm'){
@@ -194,6 +194,7 @@ function renderCard(){
   var box=$('#cardBox');
   if(S.mode==='mn'){ renderManual(); return; }
   if(S.mode==='ms'){ renderStructs(); return; }
+  if(S.mode==='ss'){ renderSearch(); return; }
   if(S.mode==='stat'){ renderStat(); return; }
   if(!S.deck.length){
     box.innerHTML='<div class="card" style="min-height:200px"><div class="empty">这个筛选条件下没有卡片。<br>'
@@ -282,6 +283,7 @@ function renderActs(){
   var a=$('#acts');
   if(S.mode==='stat'||S.mode==='mn'){ renderManualActs(); return; }
   if(S.mode==='ms'){ renderStructActs(); return; }
+  if(S.mode==='ss'){ renderSearchActs(); return; }
   var none=!S.deck.length;
   a.innerHTML='<button class="btn ghost" id="bPrev"'+(none?' disabled':'')+'>← 上一张</button>'
     +'<button class="btn main" id="bShow"'+(none?' disabled':'')+'>'+(S.revealed?'收起':'看答案')+'</button>'
@@ -319,6 +321,13 @@ function updateHud(){
   if(S.mode==='mn'){ $('#pos').textContent='考点手册'; $('#ratio').textContent=''; $('#prog').style.width='0%'; return; }
   if(S.mode==='stat'){ $('#pos').textContent='统计'; $('#ratio').textContent=''; $('#prog').style.width='0%'; return; }
   if(S.mode==='ms'){ $('#pos').textContent=MOL.length+' 个物质'; $('#ratio').textContent='结构速查'; $('#prog').style.width='100%'; return; }
+  if(S.mode==='ss'){
+    var n=(S.sres||[]).length;
+    $('#pos').textContent = S.sq? n+' 条结果' : '全文搜索';
+    $('#ratio').textContent = S.sq? (S.stime+' ms') : '';
+    $('#prog').style.width = S.sq? '100%' : '0%';
+    return;
+  }
   var n=S.deck.length, done=0;
   var base=(S.onlyNew||S.wrongOnly)?(S.base||n):n;
   if(S.onlyNew||S.wrongOnly){ done=Math.max(0,base-n); }
@@ -369,6 +378,220 @@ function renderManualActs(){
     +'<a class="btn main" id="m880" href="manual/880.html" target="_blank" rel="noopener">880 生物化学</a>'
     +'<span style="flex:1"></span><span class="tagline">点卡片在页面内看；按钮在新窗口打开（可单独保存）</span>';
   var b=$('#mBack'); if(b) b.onclick=function(){ S.mh=''; renderCard(); };
+}
+
+/* ---------- 全文搜索 ---------- */
+var SIDX=null;
+function buildSearchIndex(){
+  if(SIDX) return SIDX;
+  var a=[];
+  (D.questions||[]).forEach(function(x){
+    var body=(x.points||[]).map(function(p){ return (p.k? p.k+'：':'')+p.t; }).join('\n');
+    if(x.opts&&x.opts.length) body+='\n'+x.opts.join(' ');
+    if(x.printed_answer) body+='\n卷面答案：'+x.printed_answer;
+    a.push({k:'q',id:x.id,subj:x.subj,chap:x.chap||'',type:x.type||'',years:x.years||[],
+            title:x.q, body:body, note:x.note||'', extra:''});
+  });
+  var QT={}; a.forEach(function(e){ QT[e.subj+'|'+e.title]=1; });
+  var TM={};
+  (D.terms||[]).forEach(function(x){
+    var key=x.term+'|'+x.subj;
+    if(!TM[key]) TM[key]={k:'tm',id:x.term,subj:x.subj,chap:'名词解释',type:'名词解释',
+                          years:(x.years||[]).slice(),title:x.term,body:x.def||'',note:'',extra:''};
+    else{
+      var o=TM[key];
+      if((x.def||'').length>(o.body||'').length) o.body=x.def;
+      (x.years||[]).forEach(function(y){ if(o.years.indexOf(y)<0) o.years.push(y); });
+    }
+  });
+  Object.keys(TM).forEach(function(k){
+    var o=TM[k];
+    if(QT[o.subj+'|'+o.title]) return;   // 与同名真题重复，只留真题卡
+    a.push(o);
+  });
+  (D.kps||[]).forEach(function(x){
+    a.push({k:'kp',id:x.name,subj:x.subj,chap:x.chap||'',type:'知识点',years:x.years||[],
+            title:x.name, body:(x.points||[]).join('\n'), note:'', extra:''});
+  });
+  SIDX=a; return a;
+}
+
+function stoks(q){
+  return String(q||'').toLowerCase().split(/[\s，,、；;]+/).filter(function(t){ return t.length>0; }).slice(0,6);
+}
+
+function hl(s,toks){
+  var low=String(s||'').toLowerCase(), marks=[];
+  toks.forEach(function(t){
+    var p=0;
+    while((p=low.indexOf(t,p))>=0){ marks.push([p,p+t.length]); p+=Math.max(1,t.length); }
+  });
+  marks.sort(function(a,b){ return a[0]-b[0]; });
+  var merged=[];
+  marks.forEach(function(m){
+    var last=merged[merged.length-1];
+    if(last && m[0]<=last[1]) last[1]=Math.max(last[1],m[1]);
+    else merged.push([m[0],m[1]]);
+  });
+  var out='', last=0;
+  merged.forEach(function(m){
+    out+=esc(s.slice(last,m[0]))+'<mark>'+esc(s.slice(m[0],m[1]))+'</mark>';
+    last=m[1];
+  });
+  return out+esc(s.slice(last));
+}
+
+function snippet(body,toks,width){
+  var low=String(body||'').toLowerCase(), best=-1;
+  toks.forEach(function(t){ var p=low.indexOf(t); if(p>=0 && (best<0 || p<best)) best=p; });
+  if(best<0) best=0;
+  var w=width||130, from=Math.max(0,best-40);
+  var cut=body.slice(from,from+w).replace(/\n+/g,' ');
+  return (from>0?'…':'')+cut+(from+w<body.length?'…':'');
+}
+
+function doSearch(){
+  var idx=buildSearchIndex(), toks=stoks(S.sq);
+  var t0=(window.performance&&performance.now)?performance.now():Date.now();
+  if(!toks.length){ S.sres=[]; S.stime=0; return; }
+  var res=[];
+  idx.forEach(function(e){
+    if(S.subj!=='all' && e.subj!==S.subj) return;
+    var T=(e.title||'').toLowerCase(), B=(e.body||'').toLowerCase(),
+        N=(e.note||'').toLowerCase(), C=(e.chap+' '+e.type+' '+e.subj).toLowerCase();
+    var hay=T+'\n'+B+'\n'+N+'\n'+C, ok=true, sc=0;
+    for(var i=0;i<toks.length;i++){
+      var t=toks[i], p=hay.indexOf(t);
+      if(p<0){ ok=false; break; }
+      if(T.indexOf(t)>=0) sc+=14;
+      if(B.indexOf(t)>=0) sc+=5;
+      if(N.indexOf(t)>=0) sc+=3;
+      if(C.indexOf(t)>=0) sc+=2;
+      if(T===t || (T.indexOf(t)===0 && t.length>=T.length-2)) sc+=10;
+    }
+    if(!ok) return;
+    sc += Math.min(6, Math.floor((e.years||[]).length));
+    if(e.k==='q') sc+=2;
+    res.push({e:e,sc:sc});
+  });
+  res.sort(function(a,b){ return b.sc-a.sc; });
+  S.sres=res.map(function(r){ return r.e; });
+  SQLASTSUBJ=S.subj;
+  S.stime=Math.round(((window.performance&&performance.now)?performance.now():Date.now())-t0);
+}
+
+var SQTIMER=null, SQCOMPOSING=false, SQBUILT=false, SQLASTSUBJ='';
+
+function searchShellHTML(){
+  return '<div class="card" style="min-height:auto">'
+    +'<div class="sec-title" style="margin-top:0">全文搜索</div>'
+    +'<div class="sbox"><input id="sq" autocomplete="off" autocorrect="off" spellcheck="false" '
+    +'placeholder="搜真题、答案、名词解释、考点，如「米氏方程 抑制」「软脂酸 106」「pre-miRNA」" value="'+esc(S.sq)+'">'
+    +'<button class="btn main" id="sgo">搜索</button></div>'
+    +'<div class="sstat" id="stip"></div>'
+    +'<div id="sres"></div></div>';
+}
+
+function bindSearchShell(){
+  var input=$('#sq'); if(!input) return;
+  var go=function(delay){
+    clearTimeout(SQTIMER);
+    SQTIMER=setTimeout(function(){ doSearch(); renderResults(); updateHud(); }, delay||0);
+  };
+  input.oninput=function(){
+    S.sq=input.value;
+    if(SQCOMPOSING) return;          // 拼音/五笔组合中，不打断输入法
+    go(260);
+  };
+  input.addEventListener('compositionstart',function(){ SQCOMPOSING=true; clearTimeout(SQTIMER); });
+  input.addEventListener('compositionend',function(){
+    SQCOMPOSING=false; S.sq=input.value; go(60);
+  });
+  input.onkeydown=function(e){ if(e.key==='Enter'){ e.preventDefault(); S.sq=input.value; go(0); } };
+  $('#sgo').onclick=function(){ S.sq=input.value; go(0); };
+  var res=$('#sres');
+  res.onclick=function(e){
+    var it=e.target.closest? e.target.closest('.sitem') : null;
+    if(!it) return;
+    jumpTo(it.dataset.k, it.dataset.id);
+  };
+  SQBUILT=true;
+}
+
+function renderSearch(){
+  var box=$('#cardBox');
+  if(!SQBUILT || !document.getElementById('sq')){
+    box.innerHTML=searchShellHTML();
+    bindSearchShell();
+  }
+  if(S.sq && (!S.sres || SQLASTSUBJ!==S.subj)) doSearch();
+  renderResults();
+  updateHud();
+  renderActs();
+}
+
+function renderResults(){
+  var res=S.sres||[];
+  var tip=$('#stip');
+  if(tip){
+    if(!S.sq) tip.textContent=(S.subj==='all'?'':'当前只搜 '+(S.subj==='631'?'631 分子生物学':'880 生物化学')+'（顶部可切换科目）');
+    else tip.textContent='共 '+res.length+' 条 · '+S.stime+' ms · 点结果跳转'
+      +(S.subj==='all'?'':'（只搜 '+(S.subj==='631'?'631':'880')+'）');
+  }
+  var box=$('#sres'); if(!box) return;
+  if(!S.sq){
+    box.innerHTML='<div class="sempty">输入关键词，会在 <b>'+(D.questions||[]).length+'</b> 道真题（含答案与提示）、<b>'
+      +(D.terms||[]).length+'</b> 条名词解释、<b>'+(D.kps||[]).length
+      +'</b> 个考点里一起找。<br>多个词用空格分开＝同时包含（AND），例如「三羧酸 限速」「PCR 循环」。<br>'
+      +'点结果直接跳到那张卡；按 <kbd>/</kbd> 可随时回到搜索框。</div>';
+    return;
+  }
+  if(!res.length){
+    box.innerHTML='<div class="sempty">没有找到「<b>'+esc(S.sq)+'</b>」。<br>换个说法试试：少写几个字、去掉标点，或只搜核心名词（如「冈崎」「氧化磷酸化」）。</div>';
+    return;
+  }
+  var toks=stoks(S.sq);
+  var h='<div class="sres">';
+  res.slice(0,80).forEach(function(e){
+    var yr=(e.years||[]).map(yLabel).join('/');
+    var title=e.title.length>110? e.title.slice(0,110)+'…' : e.title;
+    var bodyTxt=e.k==='tm'? e.body : snippet(e.body,toks,150);
+    h+='<div class="sitem" data-k="'+e.k+'" data-id="'+esc(e.id)+'">'
+      +'<div class="sh"><span class="pill '+(e.subj==='631'?'red':'teal')+'">'+esc(e.subj)+'</span>'
+      +'<span class="pill">'+esc(e.type||e.chap)+'</span>'
+      +(e.chap&&e.chap!==e.type?'<span class="pill">'+esc(e.chap.slice(0,14))+'</span>':'')
+      +(yr?'<span class="pill gold">'+esc(yr)+'</span>':'')+'</div>'
+      +'<div class="st">'+hl(title,toks)+'</div>'
+      +(bodyTxt?'<div class="sx">'+hl(bodyTxt,toks)+'</div>':'')
+      +(e.note?'<div class="sg">'+hl(snippet(e.note,toks,90),toks)+'</div>':'')
+      +'</div>';
+  });
+  h+='</div>';
+  if(res.length>80) h+='<div class="sstat">仅显示前 80 条，共 '+res.length+' 条，请把关键词写具体些。</div>';
+  box.innerHTML=h;
+}
+
+function renderSearchActs(){
+  var a=$('#acts');
+  a.innerHTML='<button class="btn ghost" id="sClear">清空</button>'
+    +'<span style="flex:1"></span><span class="tagline">搜索范围：真题题干 / 答案分点 / 提示 · 名词解释 · 考点</span>';
+  var b=$('#sClear'); if(b) b.onclick=function(){
+    S.sq=''; S.sres=null; S.stime=0; var el=$('#sq'); if(el){ el.value=''; el.focus(); }
+    renderResults(); updateHud();
+  };
+}
+
+function jumpTo(kind,id){
+  var m = kind==='q'? 'q' : (kind==='tm'? 'tm' : 'kp');
+  S.mode=m; S.subj='all'; S.chap=''; S.year=''; S.type=''; S.stars=0;
+  S.onlyNew=false; S.wrongOnly=false; S.kw='';
+  syncTabs(); buildDeck(); buildFilters();
+  for(var i=0;i<S.deck.length;i++){
+    if(String(idOf(m,S.deck[i]))===String(id)){ S.idx=i; break; }
+  }
+  S.revealed=true;
+  renderCard();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 /* ---------- 结构速查 ---------- */
@@ -531,10 +754,14 @@ document.addEventListener('click',function(e){
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape'){ hidePop(); return; }
+  if(e.key==='/' && (!document.activeElement||document.activeElement.tagName!=='INPUT')){
+    e.preventDefault(); if(S.mode!=='ss'){ S.mode='ss'; resetFilters(); syncTabs(); refresh(); }
+    var si=document.getElementById('sq'); if(si) si.focus(); return;
+  }
   var ae=document.activeElement, tag=ae&&ae.tagName;
   if(tag==='TEXTAREA'||tag==='SELECT') return;
   if(tag==='INPUT') return;
-  if(S.mode==='stat'||S.mode==='ms'||S.mode==='mn') return;
+  if(S.mode==='stat'||S.mode==='ms'||S.mode==='mn'||S.mode==='ss') return;
   if(e.code==='Space'||e.code==='Enter'){ e.preventDefault(); if(S.deck.length){S.revealed=!S.revealed;hidePop();renderCard();} }
   else if(e.key==='1'){ e.preventDefault(); grade(2); }
   else if(e.key==='2'){ e.preventDefault(); grade(1); }
@@ -545,7 +772,7 @@ document.addEventListener('keydown',function(e){
 var tx=0,ty=0;
 document.addEventListener('touchstart',function(e){ tx=e.touches[0].clientX; ty=e.touches[0].clientY; },{passive:true});
 document.addEventListener('touchend',function(e){
-  if(S.mode==='stat'||S.mode==='ms'||S.mode==='mn') return;
+  if(S.mode==='stat'||S.mode==='ms'||S.mode==='mn'||S.mode==='ss') return;
   var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
   if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.6){ if(dx<0) next(); else prev(); }
 },{passive:true});
@@ -554,12 +781,13 @@ document.addEventListener('touchend',function(e){
 (function initURL(){
   try{
     var p=new URLSearchParams(location.search);
-    var m=p.get('m'); if(m&&['q','kp','tm','stat','mn','ms'].indexOf(m)>=0) S.mode=m;
+    var m=p.get('m'); if(m&&['q','kp','tm','ss','stat','mn','ms'].indexOf(m)>=0) S.mode=m;
     var s=p.get('s'); if(s&&['all','631','880'].indexOf(s)>=0) S.subj=s;
     var y=p.get('y');
     if(y && srcOf(S.mode).some(function(x){return yearsOf(x).indexOf(y)>=0})) S.year=y;
     var st=p.get('st'); if(st && [1,2,3].indexOf(+st)>=0) S.stars=+st;
     var t=p.get('t'); if(t) S.type=t;
+    var kw=p.get('q'); if(kw) S.sq=kw;
     if(p.get('r')==='1') window.__reveal=1;
   }catch(e){}
 })();

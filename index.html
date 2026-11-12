@@ -107,6 +107,13 @@ h1.qtitle{overflow-wrap:anywhere;word-break:break-word}
 .filters{overflow-x:auto;scrollbar-width:none}
 .filters::-webkit-scrollbar{display:none}
 @media(max-width:640px){
+  .tabs{flex-wrap:wrap;gap:8px 14px;overflow-x:visible;padding-bottom:4px}
+  .tabs button{padding:6px 0;font-size:13.8px}
+  .hrow{flex-wrap:wrap;row-gap:6px}
+  .seg{margin-left:0}
+  .sbox{flex-direction:column;align-items:stretch}
+  .sbox input{min-width:0;width:100%}
+  .sbox .btn{width:100%}
   .filters select{max-width:46vw}
   h1.qtitle{font-size:19px}
   .meta .pill{font-size:11px}
@@ -130,6 +137,20 @@ h1.qtitle,.ans{word-break:break-all}
 #kwPop .molbox{margin-top:10px;border:1px solid #e3dccd;border-radius:8px;background:#fff;padding:6px;text-align:center;overflow:auto}
 #kwPop .molbox svg{width:100%!important;height:auto!important;max-height:48vh;display:block;margin:0 auto}
 #kwPop .molform{font-size:12px;color:#8a6d2f;margin-top:6px;font-family:ui-monospace,Consolas,monospace}
+/* 全文搜索 */
+.sbox{display:flex;gap:8px;align-items:center;margin:2px 0 10px;flex-wrap:wrap}
+.sbox input{flex:1;min-width:200px;font-size:15px;padding:10px 13px;border:1px solid #d8d0c0;border-radius:10px;background:#fffdf8;color:#1b2126}
+.sbox input:focus{outline:none;border-color:#1f5f6b;box-shadow:0 0 0 3px rgba(31,95,107,.09)}
+.sstat{font-size:12.5px;color:#8a8f94}
+.sres{margin-top:6px}
+.sitem{padding:11px 12px;border:1px solid #e8e2d5;border-radius:10px;margin-bottom:9px;cursor:pointer;background:#fffdf8;transition:.13s}
+.sitem:hover{border-color:#c9bfa8;box-shadow:0 5px 16px rgba(40,30,10,.07)}
+.sitem .sh{display:flex;gap:7px;align-items:center;margin-bottom:5px;flex-wrap:wrap}
+.sitem .st{font-size:14.6px;font-weight:700;color:#1b2126;line-height:1.5}
+.sitem .sx{font-size:13.2px;color:#5b646b;line-height:1.72;margin-top:3px}
+.sitem mark{background:#fbe6a8;color:inherit;border-radius:2px;padding:0 1px}
+.sitem .sg{font-size:11.5px;color:#9aa1a8;margin-top:6px}
+.sempty{padding:26px 8px;color:#8a8f94;font-size:13.5px;line-height:1.9}
 /* 结构速查 */
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:12px;margin-top:6px}
 .scard{border:1px solid #e3dccd;border-radius:10px;background:#fffdf8;padding:8px 8px 6px;cursor:zoom-in;transition:.14s}
@@ -195,6 +216,7 @@ h1.qtitle,.ans{word-break:break-all}
     <button data-mode="q" class="on">真题速刷</button>
     <button data-mode="kp">知识点</button>
     <button data-mode="tm">名词卡</button>
+    <button data-mode="ss">全文搜索</button>
     <button data-mode="ms">结构速查</button>
     <button data-mode="mn">考点手册</button>
     <button data-mode="stat">进度与错题</button>
@@ -210,11 +232,11 @@ h1.qtitle,.ans{word-break:break-all}
   <span id="ratio">—</span>
 </div></div>
 
-<script src="data.js"></script>
-<script src="glossary.js"></script>
-<script src="data/structs.js"></script>
-<script src="data/figs.js"></script>
-<script src="app.js"></script>
+<script src="data.js?v=20261112b"></script>
+<script src="glossary.js?v=20261112b"></script>
+<script src="data/structs.js?v=20261112b"></script>
+<script src="data/figs.js?v=20261112b"></script>
+<script src="app.js?v=20261112b"></script>
 
 <div id="kwPop"></div>
 </body>
