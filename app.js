@@ -1,15 +1,26 @@
 /* 考研速刷台 · 逻辑层 v3：分点答案 + 关键词点击解释 */
 (function(){
 'use strict';
-var D = window.DATA || {questions:[],terms:[],kps:[]};
-var KEY='swipe_v3';
-var store={};
-try{ store=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ store={}; }
-if(typeof store!=='object'||store===null) store={};
-function save(){ try{ localStorage.setItem(KEY,JSON.stringify(store)); }catch(e){} }
+/* 两套题库：考研真题 / 期末考试题。数据互不污染，刷题进度各存一份 localStorage。 */
+var PG_DATA = window.DATA || {questions:[],terms:[],kps:[]};
+var FN_DATA = window.FINAL_DATA || {questions:[],terms:[],kps:[]};
+var KEY='swipe_v3', KEY_FINAL='swipe_v3_final';  // 考研沿用旧键，保证用户已有进度不丢
 
-var S={subj:'all',mode:'q',mh:'',idx:0,deck:[],revealed:false,
+var S={domain:'pg',subj:'all',mode:'q',mh:'',idx:0,deck:[],revealed:false,
        chap:'',year:'',stars:0,type:'',onlyNew:false,shuffle:false,kw:'',wrongOnly:false,kwOn:true,mkw:'',mopen:'',sq:'',sres:null,stime:0};
+
+// 尽早确定题库域：必须在读进度之前，否则会拿错 localStorage 键
+try{ if(new URLSearchParams(location.search).get('d')==='fn') S.domain='fn'; }catch(e){}
+
+var D = S.domain==='fn'? FN_DATA : PG_DATA;
+function curKey(){ return S.domain==='fn'? KEY_FINAL : KEY; }
+function loadStore(){
+  var o={};
+  try{ o=JSON.parse(localStorage.getItem(curKey())||'{}'); }catch(e){ o={}; }
+  return (o && typeof o==='object' && !Array.isArray(o))? o : {};
+}
+var store=loadStore();
+function save(){ try{ localStorage.setItem(curKey(),JSON.stringify(store)); }catch(e){} }
 
 var $=function(s){return document.querySelector(s)};
 
@@ -142,7 +153,7 @@ function buildFilters(){
     h+='<input id="fKw" placeholder="搜名词 / 定义…" value="'+esc(S.kw)+'">';
   }else{
     var cs=chaps();
-    h+='<select id="fChap"><option value="">全部章节</option>';
+    h+='<select id="fChap"><option value="">'+(S.domain==='fn'?'全部场次':'全部章节')+'</option>';
     cs.forEach(function(c){ h+='<option value="'+esc(c)+'">'+esc(c)+'</option>'; });
     h+='</select>';
   }
@@ -197,11 +208,18 @@ function renderCard(){
   if(S.mode==='ss'){ renderSearch(); return; }
   if(S.mode==='stat'){ renderStat(); return; }
   if(!S.deck.length){
-    box.innerHTML='<div class="card" style="min-height:200px"><div class="empty">这个筛选条件下没有卡片。<br>'
-      + (S.wrongOnly?'错题已清空，去“进度与错题”看看，或关掉“只看错题”。'
-         :(S.onlyNew?'全部刷完了，关掉“只看未刷”继续复习。'
-         :'换个章节 / 年份 / 题型试试，或切到“全部科目”。'))
-      +'</div></div>';
+    var msg;
+    if(S.domain==='fn' && S.subj==='880'){
+      msg='880 生物化学暂未收录期末考试题目。<br>'
+        +'现有期末题原始资料只有 631 分子生物学的 7 个场次（257 题）。<br>'
+        +'补齐 880 期末试卷后，可按同样格式导入这一栏。';
+    }else{
+      msg='这个筛选条件下没有卡片。<br>'
+        + (S.wrongOnly?'错题已清空，去“进度与错题”看看，或关掉“只看错题”。'
+           :(S.onlyNew?'全部刷完了，关掉“只看未刷”继续复习。'
+           :'换个'+(S.domain==='fn'?'场次':'章节')+' / 年份 / 题型试试，或切到“全部科目”。'));
+    }
+    box.innerHTML='<div class="card" style="min-height:200px"><div class="empty">'+msg+'</div></div>';
     renderActs(); updateHud(); return;
   }
   if(S.idx>=S.deck.length) S.idx=0;
@@ -211,10 +229,12 @@ function renderCard(){
   if(S.mode==='q'){
     var ys=yearsOf(x);
     h+='<div class="meta"><span class="pill '+(x.subj==='631'?'red':'teal')+'">'+esc(x.subj)+'</span>'
+      +(S.domain==='fn'?'<span class="pill teal">期末</span>':'')
       +'<span class="pill">'+esc(x.chap)+'</span><span class="pill">'+esc(x.type)+'</span>'
       +(ys.length?ys.map(function(y){return '<span class="pill gold">'+esc(yLabel(y))+'</span>'}).join(''):'<span class="pill">年份不详</span>')
       +manLink(x.subj)+'</div>';
-    h+='<h1 class="qtitle'+(x.q.length>120?' long':'')+'">'+kwHTML(x.q,30)+'</h1>';
+    var qt = (S.domain==='fn' && !S.revealed && x.q_masked) ? x.q_masked : x.q;
+    h+='<h1 class="qtitle'+(qt.length>120?' long':'')+'">'+kwHTML(qt,30)+'</h1>';
     if(x.opts && x.opts.length){
       h+='<div class="opts">'+x.opts.map(function(o,idx){
           var t=String(o), has=/^[A-Za-z][\.、]/.test(t), letter=has?t.slice(0,1):String.fromCharCode(65+idx);
@@ -252,14 +272,32 @@ function renderCard(){
   renderActs(); updateHud();
 }
 
+function tableHTML(t){
+  var cells=[];
+  String(t||'').split('\n').forEach(function(l){
+    if(!/^\s*\|/.test(l)) return;
+    var cs=l.replace(/^\s*\|/,'').replace(/\|\s*$/,'').split('|').map(function(c){return c.trim();});
+    if(cs.every(function(c){return /^[-: ]*$/.test(c);})) return;  // markdown 分隔行
+    cells.push(cs);
+  });
+  if(!cells.length) return '';
+  var h='<table class="ftab"><tbody>';
+  cells.forEach(function(r,i){
+    h+='<tr>'+r.map(function(c){
+      return i===0? '<th>'+kwHTML(c,10)+'</th>' : '<td>'+kwHTML(c,20)+'</td>';
+    }).join('')+'</tr>';
+  });
+  return h+'</tbody></table>';
+}
 function renderPoints(x){
   if(!x.points || !x.points.length) return '<div class="tagline">（此题原卷无答案）</div>';
   var many = x.points.length>1;
   var h='<div class="pts'+(many?' multi':'')+'">';
   x.points.forEach(function(p,i){
     var single=(!many && (p.k==='答案'||p.k==='定义'));
+    var body = /^\s*\|/.test(p.t) ? tableHTML(p.t) : kwHTML(p.t,26);
     h+='<div class="pt">'+(single?'':'<b class="pk">'+(many?(i+1):'答')+'</b>')
-      +'<span>'+((!single && p.k)?'<b class="mk">'+esc(p.k)+'</b>':'')+kwHTML(p.t,26)+'</span></div>';
+      +'<span>'+((!single && p.k)?'<b class="mk">'+esc(p.k)+'</b>':'')+body+'</span></div>';
   });
   if(x.printed_answer) h+='<div class="badge-ans">卷面答案：'+esc(x.printed_answer)+'</div>';
   return h+'</div>';
@@ -345,8 +383,8 @@ function renderManual(){
   var box=$('#cardBox');
   if(!S.mh){
     var m=[
-      {k:'631',t:'分子生物学',d:'染色体结构 · DNA 复制修复重组 · 转录加工 · 翻译 · 表达调控 · RNA 调控 · 克隆与检测',n:'384 题 · 80 名解'},
-      {k:'880',t:'生物化学',d:'静态生化 · 动态代谢 · 分子生物学 · 实验 · 计算模板 · 名解速查',n:'659 题 · 283 名解'}
+      {k:'631',t:'分子生物学',d:'染色体结构 · DNA 复制修复重组 · 转录加工 · 翻译 · 表达调控 · RNA 调控 · 克隆与检测',n:S.domain==='fn'?'期末复习 · 按章节对照':'384 题 · 80 名解'},
+      {k:'880',t:'生物化学',d:'静态生化 · 动态代谢 · 分子生物学 · 实验 · 计算模板 · 名解速查',n:S.domain==='fn'?'期末复习 · 按章节对照':'659 题 · 283 名解'}
     ];
     var h='<div class="card" style="min-height:auto">'
       +'<div class="sec-title">两份高频考点手册已并入，点卡片直接看</div>'
@@ -359,7 +397,10 @@ function renderManual(){
     });
     h+='</div>'
       +'<div class="tagline" style="margin-top:14px">手册按章节给“考什么 + 怎么答 + 真题年份”，与题卡共用同一套数据；'
-      +'看某个考点想刷题，回到“真题速刷”按章节筛即可。</div></div>';
+      +'看某个考点想刷题，回到“'+(S.domain==='fn'?'期末速刷':'真题速刷')+'”按'+(S.domain==='fn'?'场次':'章节')+'筛即可。</div>'
+      +(S.domain==='fn'?'<div class="domnote">这两份手册按考研真题口径整理，期末复习时可作知识框架对照；'
+        +'期末原题与标准答案请回到「期末速刷」。两套题库的刷题进度互不影响。</div>':'')
+      +'</div>';
     box.innerHTML=h;
     box.querySelectorAll('.mcard').forEach(function(a){
       a.onclick=function(e){ e.preventDefault(); S.mh=a.dataset.mh; renderCard(); };
@@ -540,9 +581,13 @@ function renderResults(){
   }
   var box=$('#sres'); if(!box) return;
   if(!S.sq){
-    box.innerHTML='<div class="sempty">输入关键词，会在 <b>'+(D.questions||[]).length+'</b> 道真题（含答案与提示）、<b>'
-      +(D.terms||[]).length+'</b> 条名词解释、<b>'+(D.kps||[]).length
-      +'</b> 个考点里一起找。<br>多个词用空格分开＝同时包含（AND），例如「三羧酸 限速」「PCR 循环」。<br>'
+    var scopeTip = S.domain==='fn'
+      ? '会在 <b>'+(D.questions||[]).length+'</b> 道期末考试题（题干 / 答案分点 / 提示 / 选项）里查找。'
+      : '会在 <b>'+(D.questions||[]).length+'</b> 道真题（含答案与提示）、<b>'
+        +(D.terms||[]).length+'</b> 条名词解释、<b>'+(D.kps||[]).length+'</b> 个考点里一起找。';
+    box.innerHTML='<div class="sempty">输入关键词，'+scopeTip
+      +'<br>搜索范围随顶部「考研真题 / 期末考试题」切换。<br>'
+      +'多个词用空格分开＝同时包含（AND），例如「三羧酸 限速」「PCR 循环」。<br>'
       +'点结果直接跳到那张卡；按 <kbd>/</kbd> 可随时回到搜索框。</div>';
     return;
   }
@@ -574,7 +619,8 @@ function renderResults(){
 function renderSearchActs(){
   var a=$('#acts');
   a.innerHTML='<button class="btn ghost" id="sClear">清空</button>'
-    +'<span style="flex:1"></span><span class="tagline">搜索范围：真题题干 / 答案分点 / 提示 · 名词解释 · 考点</span>';
+    +'<span style="flex:1"></span><span class="tagline">搜索范围：'
+    +(S.domain==='fn'?'期末题题干 / 答案分点 / 提示 / 选项':'真题题干 / 答案分点 / 提示 · 名词解释 · 考点')+'</span>';
   var b=$('#sClear'); if(b) b.onclick=function(){
     S.sq=''; S.sres=null; S.stime=0; var el=$('#sq'); if(el){ el.value=''; el.focus(); }
     renderResults(); updateHud();
@@ -585,7 +631,7 @@ function jumpTo(kind,id){
   var m = kind==='q'? 'q' : (kind==='tm'? 'tm' : 'kp');
   S.mode=m; S.subj='all'; S.chap=''; S.year=''; S.type=''; S.stars=0;
   S.onlyNew=false; S.wrongOnly=false; S.kw='';
-  syncTabs(); buildDeck(); buildFilters();
+  syncTabs(); syncDomainUI(); buildDeck(); buildFilters();
   for(var i=0;i<S.deck.length;i++){
     if(String(idOf(m,S.deck[i]))===String(id)){ S.idx=i; break; }
   }
@@ -638,6 +684,7 @@ function renderStructActs(){
 /* ---------- 进度页 ---------- */
 function renderStat(){
   var q=D.questions,k=D.kps,t=D.terms;
+  var fn=S.domain==='fn', label=fn?'期末题':'真题';
   function stat(mode,arr){
     var done=0,ok=0;
     arr.forEach(function(x){ var v=store[keyOf(mode,x)]; if(v){done++; if(v===2)ok++;} });
@@ -650,40 +697,54 @@ function renderStat(){
   };}
   var all=scope('all'), cur=scope(S.subj);
   var h='<div class="grid">';
-  h+='<div class="stat"><b>'+all.q.done+' / '+all.q.total+'</b><span>真题已刷（会 '+all.q.ok+'）</span></div>';
-  h+='<div class="stat"><b>'+all.k.done+' / '+all.k.total+'</b><span>知识点已刷（会 '+all.k.ok+'）</span></div>';
-  h+='<div class="stat"><b>'+all.t.done+' / '+all.t.total+'</b><span>名词已刷（会 '+all.t.ok+'）</span></div>';
+  h+='<div class="stat"><b>'+all.q.done+' / '+all.q.total+'</b><span>'+label+'已刷（会 '+all.q.ok+'）</span></div>';
+  if(!fn){
+    h+='<div class="stat"><b>'+all.k.done+' / '+all.k.total+'</b><span>知识点已刷（会 '+all.k.ok+'）</span></div>';
+    h+='<div class="stat"><b>'+all.t.done+' / '+all.t.total+'</b><span>名词已刷（会 '+all.t.ok+'）</span></div>';
+  }
   h+='</div>';
+  if(fn){
+    h+='<div class="domnote">这里只统计「期末考试题」题库的进度；切回「考研真题」会看到完全独立的另一份进度，互不覆盖。</div>';
+  }
   if(S.subj!=='all'){
-    h+='<div class="tagline">当前只看 '+(S.subj==='631'?'631 分子生物学':'880 生物化学')+'：真题 '+cur.q.done+'/'+cur.q.total+'，知识点 '+cur.k.done+'/'+cur.k.total+'，名词 '+cur.t.done+'/'+cur.t.total+'。</div>';
+    h+='<div class="tagline">当前只看 '+(S.subj==='631'?'631 分子生物学':'880 生物化学')+'：'+label+' '+cur.q.done+'/'+cur.q.total
+      +(fn?'':'，知识点 '+cur.k.done+'/'+cur.k.total+'，名词 '+cur.t.done+'/'+cur.t.total)
+      +'。</div>';
   }
   var wq=q.filter(function(x){return store[keyOf('q',x)]===1 && (S.subj==='all'||x.subj===S.subj)});
-  h+='<div class="sec-title">真题 · 没记住（'+wq.length+'）</div>';
+  h+='<div class="sec-title">'+label+' · 没记住（'+wq.length+'）</div>';
   if(wq.length){
     h+=wq.slice(0,80).map(function(x){
       return '<div class="wrong"><b>'+esc(x.q.slice(0,70))+(x.q.length>70?'…':'')+'</b>'
         +'<div class="tagline">'+esc(x.subj)+' · '+esc(x.chap)+' · '+esc(x.type)+' · '+(yearsOf(x).length?yearsOf(x).map(yLabel).join('/'):'年份不详')+'</div></div>';
     }).join('');
     if(wq.length>80) h+='<div class="tagline">仅显示前 80 条，还有 '+(wq.length-80)+' 条未列出。</div>';
-  }else h+='<div class="tagline">还没有标记“没记住”的真题。</div>';
+  }else h+='<div class="tagline">还没有标记“没记住”的'+label+'。</div>';
 
   var wk=k.filter(function(x){return store[keyOf('kp',x)]===1 && (S.subj==='all'||x.subj===S.subj)});
-  h+='<div class="sec-title">知识点 · 没记住（'+wk.length+'）</div>';
-  if(wk.length){
-    h+=wk.slice(0,80).map(function(x){
-      return '<div class="wrong"><b>'+esc(x.name)+'</b><div class="tagline">'+esc(x.subj)+' · '+esc(x.chap)+'</div></div>';
-    }).join('');
-    if(wk.length>80) h+='<div class="tagline">仅显示前 80 条，还有 '+(wk.length-80)+' 条未列出。</div>';
-  }else h+='<div class="tagline">还没有标记“没记住”的知识点。</div>';
+  if(!fn){
+    h+='<div class="sec-title">知识点 · 没记住（'+wk.length+'）</div>';
+    if(wk.length){
+      h+=wk.slice(0,80).map(function(x){
+        return '<div class="wrong"><b>'+esc(x.name)+'</b><div class="tagline">'+esc(x.subj)+' · '+esc(x.chap)+'</div></div>';
+      }).join('');
+      if(wk.length>80) h+='<div class="tagline">仅显示前 80 条，还有 '+(wk.length-80)+' 条未列出。</div>';
+    }else h+='<div class="tagline">还没有标记“没记住”的知识点。</div>';
+  }
 
   h+='<div class="sec-title">操作</div>';
   h+='<button class="btn main" id="bGoWrong">去刷错题（'+wq.length+'）</button> '
     +'<button class="btn ghost" id="bGoNew">去刷未刷</button> '
-    +'<button class="btn no" id="bReset">清空全部进度</button>';
-  h+='<div class="tagline">进度保存在本机浏览器（localStorage），换浏览器或清缓存会丢失。</div>';
+    +'<button class="btn no" id="bReset">清空当前题库进度</button>';
+  h+='<div class="tagline">进度保存在本机浏览器（localStorage）；两套题库各存一份，'
+    +'此处的「清空」只影响当前题库。换浏览器或清缓存会丢失。</div>';
 
   $('#cardBox').innerHTML='<div class="card" style="min-height:auto">'+h+'</div>';
-  $('#bReset').onclick=function(){ if(confirm('确定清空全部刷题进度？此操作不可恢复。')){ store={}; save(); renderStat(); } };
+  $('#bReset').onclick=function(){
+    if(confirm('确定清空「'+(fn?'期末考试题':'考研真题')+'」这一套题库的刷题进度？另一套不受影响。此操作不可恢复。')){
+      store={}; save(); renderStat();
+    }
+  };
   $('#bGoWrong').onclick=function(){
     if(!wq.length){ alert('当前没有错题，先去刷几道吧。'); return; }
     S.mode='q'; S.wrongOnly=true; S.onlyNew=false; S.chap=''; S.year=''; S.stars=0; S.type='';
@@ -733,12 +794,49 @@ function hidePop(){
 
 /* ---------- 切换 ---------- */
 function syncTabs(){
-  document.querySelectorAll('#modeTabs button').forEach(function(b){ b.classList.toggle('on',b.dataset.mode===S.mode); });
+  var fn=S.domain==='fn';
+  document.querySelectorAll('#modeTabs button').forEach(function(b){
+    var m=b.dataset.mode;
+    b.style.display = (fn && (m==='kp'||m==='tm')) ? 'none' : '';
+    b.classList.toggle('on',m===S.mode);
+    if(m==='q') b.textContent = fn? '期末速刷' : '真题速刷';
+  });
   document.querySelectorAll('#subjSeg button').forEach(function(b){ b.classList.toggle('on',b.dataset.subj===S.subj); });
+}
+function syncDomainUI(){
+  document.querySelectorAll('#domSeg button').forEach(function(b){
+    b.classList.toggle('on', b.dataset.dom===S.domain);
+  });
+  var bs=document.getElementById('brandSub');
+  if(bs) bs.textContent = S.domain==='fn'
+    ? '631 分子 · 期末试题 · 2007—2011'
+    : '631 分子 · 880 生化 · 1999—2025 真题';
+  document.body.classList.toggle('domfn', S.domain==='fn');
+}
+function setDomain(d){
+  if((d!=='pg' && d!=='fn') || d===S.domain) return;
+  S.domain=d;
+  D = (d==='fn')? FN_DATA : PG_DATA;
+  store = loadStore();                    // 换成另一套题库的独立进度
+  SIDX=null; SQBUILT=false; S.sres=null; SQLASTSUBJ='';   // 搜索索引按域重建
+  S.mode='q'; S.subj='all'; S.mh=''; S.mopen=''; S.mkw='';
+  S.sq=''; S.stime=0;
+  resetFilters();
+  syncDomainUI(); syncTabs(); refresh();
+  try{
+    var u=new URL(location.href);
+    u.searchParams.set('d',d);
+    u.searchParams.delete('id'); u.searchParams.delete('mol');
+    history.replaceState(null,'',u.toString());
+  }catch(e){}   // file:// 下可能不支持，忽略即可
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 function resetFilters(){ S.chap='';S.year='';S.stars=0;S.kw='';S.type='';S.onlyNew=false;S.wrongOnly=false;S.idx=0;S.revealed=false; }
 function refresh(){ buildDeck(); buildFilters(); renderCard(); }
 
+document.querySelectorAll('#domSeg button').forEach(function(b){
+  b.onclick=function(){ setDomain(b.dataset.dom); };
+});
 document.querySelectorAll('#modeTabs button').forEach(function(b){
   b.onclick=function(){ S.mode=b.dataset.mode; resetFilters(); syncTabs(); refresh(); };
 });
@@ -790,8 +888,10 @@ document.addEventListener('touchend',function(e){
     var kw=p.get('q'); if(kw) S.sq=kw;
     if(p.get('r')==='1') window.__reveal=1;
   }catch(e){}
+  // 期末题库没有「知识点 / 名词卡」，深链带这两个页签时回落到速刷
+  if(S.domain==='fn' && (S.mode==='kp'||S.mode==='tm')) S.mode='q';
 })();
-syncTabs(); buildDeck(); if(window.__reveal) S.revealed=true; buildFilters();
+syncTabs(); syncDomainUI(); buildDeck(); if(window.__reveal) S.revealed=true; buildFilters();
 (function jump(){
   try{
     var id=new URLSearchParams(location.search).get('id');
